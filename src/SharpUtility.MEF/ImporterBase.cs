@@ -6,31 +6,25 @@ using System.Linq;
 
 namespace SharpUtility.MEF
 {
-    public class Importer<T>
+    public class ImporterBase<T>
     {
-        public Importer(string pluginPath)
-        {
-            PluginPath = pluginPath;
-        }
-
-        public string PluginPath { get; set; }
-
         public int AvailableNumberOfOperation
         {
             get { return Operations != null ? Operations.Count() : 0; }
         }
 
+        [ImportMany]
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
         public IEnumerable<Lazy<T>> Operations { get; private set; }
 
-        public void DoImport()
+        public void DoImport(string pluginPath)
         {
             //An aggregate catalog that combines multiple catalogs
             var catalog = new AggregateCatalog();
 
             //Add all the parts found in all assemblies in
             //the same directory as the executing program
-            catalog.Catalogs.Add(new DirectoryCatalog(PluginPath));
+            catalog.Catalogs.Add(new DirectoryCatalog(pluginPath));
 
             //Create the CompositionContainer with the parts in the catalog.
             var container = new CompositionContainer(catalog);
