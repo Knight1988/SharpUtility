@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.Core", "SharpUtility.Core\SharpUtility.Core.csproj", "{9CFC6221-753E-4674-B0DA-B085D8DF82A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.MEF", "SharpUtility.MEF\SharpUtility.MEF.csproj", "{64DF1990-C4D3-456D-BB0E-EBFBCAA8A218}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CFC6221-753E-4674-B0DA-B085D8DF82A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CFC6221-753E-4674-B0DA-B085D8DF82A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CFC6221-753E-4674-B0DA-B085D8DF82A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CFC6221-753E-4674-B0DA-B085D8DF82A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64DF1990-C4D3-456D-BB0E-EBFBCAA8A218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64DF1990-C4D3-456D-BB0E-EBFBCAA8A218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64DF1990-C4D3-456D-BB0E-EBFBCAA8A218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64DF1990-C4D3-456D-BB0E-EBFBCAA8A218}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
