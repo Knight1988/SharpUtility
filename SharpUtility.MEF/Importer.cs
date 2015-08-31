@@ -8,10 +8,6 @@ namespace SharpUtility.MEF
 {
     public class Importer<T>
     {
-#pragma warning disable 649
-        private IEnumerable<Lazy<T>> _operations;
-#pragma warning restore 649
-
         public Importer(string pluginPath)
         {
             PluginPath = pluginPath;
@@ -21,8 +17,11 @@ namespace SharpUtility.MEF
 
         public int AvailableNumberOfOperation
         {
-            get { return _operations != null ? _operations.Count() : 0; }
+            get { return Operations != null ? Operations.Count() : 0; }
         }
+
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
+        public IEnumerable<Lazy<T>> Operations { get; private set; }
 
         public void DoImport()
         {
