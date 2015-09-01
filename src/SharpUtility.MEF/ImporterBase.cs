@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace SharpUtility.MEF
 {
-    public abstract class ImporterBase<T> where T : class
+    public class ImporterBase<T> where T : class
     {
         private FileSystemWatcher _fileWatcher;
 
