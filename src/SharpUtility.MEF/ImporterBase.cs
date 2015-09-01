@@ -7,19 +7,22 @@ using System.Linq;
 
 namespace SharpUtility.MEF
 {
-    public class ImporterBase<T> where T : class
+    public abstract class ImporterBase<T> where T : class
     {
         private FileSystemWatcher _fileWatcher;
 
         public ImporterBase()
         {
             AddFileWatcher();
+            var path = Environment.CurrentDirectory + "\\Plugins\\";
+            Directory.CreateDirectory(path);
+            PluginPath = path;
         }
 
         public ImporterBase(string pluginPath)
         {
-            PluginPath = pluginPath;
             AddFileWatcher();
+            PluginPath = pluginPath;
         }
 
         public bool ReloadOnChanged
@@ -28,7 +31,11 @@ namespace SharpUtility.MEF
             set { _fileWatcher.EnableRaisingEvents = value; }
         }
 
-        public string PluginPath { get; set; }
+        public string PluginPath
+        {
+            get { return _fileWatcher.Path; }
+            set { _fileWatcher.Path = value; }
+        }
 
         public int AvailableNumberOfOperation
         {
@@ -43,7 +50,6 @@ namespace SharpUtility.MEF
         {
             _fileWatcher = new FileSystemWatcher
             {
-                Path = PluginPath,
                 Filter = "*.dll",
                 NotifyFilter =
                     NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.CreationTime | NotifyFilters.Size

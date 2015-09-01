@@ -8,7 +8,6 @@ using Contracts;
 namespace ExportSumLib
 {
     [Export(typeof(IComponent))]
-    [ExportMetadata("Symbol", '+')]
     public class SumOfNumberComponent : IComponent
     {
         public string Description
