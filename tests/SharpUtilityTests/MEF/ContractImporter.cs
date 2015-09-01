@@ -1,11 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using Contracts;
+﻿using Contracts;
 using SharpUtility.MEF;
 
 namespace SharpUtilityTests.MEF
 {
-    class ContractImporter : ImporterBase<IComponent>
+    internal class ContractImporter : ImporterBase<IComponent>
     {
+        public ContractImporter()
+        {
+        }
+
+        public ContractImporter(string pluginPath) : base(pluginPath)
+        {
+        }
     }
 }

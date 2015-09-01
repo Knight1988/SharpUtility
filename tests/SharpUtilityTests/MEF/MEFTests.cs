@@ -13,8 +13,8 @@ namespace SharpUtilityTests
         [TestMethod]
         public void TestMethod1()
         {
-            var t = new ContractImporter();
-            t.DoImport(Environment.CurrentDirectory);
+            var t = new ContractImporter(Environment.CurrentDirectory);
+            t.DoImport();
             Assert.AreEqual(1, t.AvailableNumberOfOperation);
 
             var result = t.Operations.First().Value.ManipulateOperation(125, 5, 10, 27, 45, 19, 10);

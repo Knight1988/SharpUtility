@@ -7,9 +7,20 @@ using System.Linq;
 
 namespace SharpUtility.MEF
 {
-    public class ImporterBase<T> 
+    public class ImporterBase<T> where T : class
     {
-        private readonly FileSystemWatcher _fileWatcher;
+        private FileSystemWatcher _fileWatcher;
+
+        public ImporterBase()
+        {
+            AddFileWatcher();
+        }
+
+        public ImporterBase(string pluginPath)
+        {
+            PluginPath = pluginPath;
+            AddFileWatcher();
+        }
 
         public bool ReloadOnChanged
         {
@@ -17,9 +28,19 @@ namespace SharpUtility.MEF
             set { _fileWatcher.EnableRaisingEvents = value; }
         }
 
-        public ImporterBase(string pluginPath)
+        public string PluginPath { get; set; }
+
+        public int AvailableNumberOfOperation
         {
-            PluginPath = pluginPath;
+            get { return Operations != null ? Operations.Count() : 0; }
+        }
+
+        [ImportMany]
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
+        public IEnumerable<Lazy<T>> Operations { get; private set; }
+
+        private void AddFileWatcher()
+        {
             _fileWatcher = new FileSystemWatcher
             {
                 Path = PluginPath,
@@ -42,17 +63,6 @@ namespace SharpUtility.MEF
         {
             DoImport();
         }
-
-        public string PluginPath { get; set; }
-
-        public int AvailableNumberOfOperation
-        {
-            get { return Operations != null ? Operations.Count() : 0; }
-        }
-
-        [ImportMany]
-        // ReSharper disable once UnusedAutoPropertyAccessor.Local
-        public IEnumerable<Lazy<T>> Operations { get; private set; }
 
         public void DoImport()
         {
