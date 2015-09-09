@@ -56,13 +56,21 @@
   <ItemGroup>
     <Compile Include="MEF\ContractImporter.cs" />
     <Compile Include="MEF\MEFTests.cs" />
+    <Compile Include="Net\Mail\ExtentedSmtpClientTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\SharpUtility.Core\SharpUtility.Core.csproj">
+      <Project>{9CFC6221-753E-4674-B0DA-B085D8DF82A5}</Project>
+      <Name>SharpUtility.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\SharpUtility.MEF\SharpUtility.MEF.csproj">
       <Project>{64DF1990-C4D3-456D-BB0E-EBFBCAA8A218}</Project>
       <Name>SharpUtility.MEF</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -42,7 +42,7 @@ namespace SharpUtility.MEF
             get { return Operations != null ? Operations.Count() : 0; }
         }
 
-        [ImportMany(AllowRecomposition = true)]
+        [ImportMany(AllowRecomposition = true, RequiredCreationPolicy = CreationPolicy.Shared)]
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
         public IEnumerable<Lazy<T>> Operations { get; private set; }
 

@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Code.cs" />
     <Compile Include="Linq\JoinExtensions.cs" />
+    <Compile Include="Net\Mail\ExtentedSmtpClient.cs" />
     <Compile Include="Net\UTF8WebClient.cs">
       <SubType>Component</SubType>
     </Compile>
