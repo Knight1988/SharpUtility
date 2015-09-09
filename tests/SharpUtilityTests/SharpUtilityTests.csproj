@@ -40,6 +40,7 @@
       <HintPath>..\Contracts\obj\Debug\Contracts.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -57,6 +58,7 @@
     <Compile Include="MEF\ContractImporter.cs" />
     <Compile Include="MEF\MEFTests.cs" />
     <Compile Include="Net\Mail\ExtentedSmtpClientTests.cs" />
+    <Compile Include="Net\Mail\SmtpInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

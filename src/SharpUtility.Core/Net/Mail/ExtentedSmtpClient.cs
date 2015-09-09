@@ -16,6 +16,11 @@ namespace SharpUtility.Core.Net.Mail
         private CancellationTokenSource _cancellationTokenSource;
 
         /// <summary>
+        ///     Max send rate
+        /// </summary>
+        private decimal _maxSendRate = 40;
+
+        /// <summary>
         ///     Pause token
         /// </summary>
         private PauseTokenSource _pauseTokenSource;
@@ -60,9 +65,14 @@ namespace SharpUtility.Core.Net.Mail
         {
         }
 
-        public decimal MaxSendRate { get; set; }
-
-        public decimal MaxThreads { get; set; }
+        /// <summary>
+        ///     Max send rate, default 40
+        /// </summary>
+        public decimal MaxSendRate
+        {
+            get { return _maxSendRate; }
+            set { _maxSendRate = value; }
+        }
 
         /// <summary>
         ///     Pause send mail
@@ -80,38 +90,21 @@ namespace SharpUtility.Core.Net.Mail
             _pauseTokenSource.Resume();
         }
 
-        public async Task SendBulkMailAsync(IEnumerable<MailMessage> emails, int skip = 0)
+        public async Task SendBulkMailAsync(IEnumerable<MailMessage> emails)
         {
             _pauseTokenSource = new PauseTokenSource();
             _cancellationTokenSource = new CancellationTokenSource();
             var ct = _cancellationTokenSource.Token;
             var mails = emails.ToArray();
-            var tasks = new List<Task>();
             var sentMail = 0;
             var sendDelay = Task.Delay(1000, ct);
             var sendComplete = 0;
 
-            for (var i = 0; i < mails.Length; i++)
+            foreach (var mail in mails)
             {
-                if (i < skip) continue;
-
-                var mail = mails[i];
-
-                //var task = FakeSendMailAsync();
-                var task = SendMailAsync(mail).ContinueWith(t =>
-                {
-                    // Report finish after 
-                    OnSendBulkMailProgress(++sendComplete, mails.Length);
-                }, ct);
-                tasks.Add(task);
-
-                // Check max threads
-                if (tasks.Count >= MaxThreads)
-                {
-                    await
-                        Task.WhenAny(tasks)
-                            .ContinueWith(t => { tasks = tasks.Where(p => !p.IsCompleted).ToList(); }, ct);
-                }
+                await SendMailAsync(mail);
+                // Report finish after 
+                OnSendBulkMailProgress(++sendComplete, mails.Length);
 
                 // Check send rate
                 sentMail++;
@@ -131,8 +124,6 @@ namespace SharpUtility.Core.Net.Mail
                 // Pause
                 await _pauseTokenSource.Token.WaitWhilePausedAsync();
             }
-
-            await Task.WhenAll(tasks);
         }
 
         /// <summary>

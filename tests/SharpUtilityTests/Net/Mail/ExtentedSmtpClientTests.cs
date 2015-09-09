@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using SharpUtility.Core.Net.Mail;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SharpUtilityTests.Net.Mail;
+
 namespace SharpUtility.Core.Net.Mail.Tests
 {
     [TestClass()]
@@ -15,29 +17,23 @@ namespace SharpUtility.Core.Net.Mail.Tests
         [TestMethod()]
         public void SendBulkMailAsyncTest()
         {
-            using (var client = new ExtentedSmtpClient())
+            using (var client = new ExtentedSmtpClient(SmtpInfo.Instance.Host, SmtpInfo.Instance.Port))
             {
                 // Create a network credential with your SMTP user name and password.
-                client.Credentials = new NetworkCredential(Username, Password);
+                client.Credentials = new NetworkCredential(SmtpInfo.Instance.Username, SmtpInfo.Instance.Password);
 
                 // Use SSL when accessing Amazon SES. The SMTP session will begin on an unencrypted connection, and then 
                 // the client will issue a STARTTLS command to upgrade to an encrypted connection using SSL.
                 client.EnableSsl = true;
 
-                // Send the email. 
-                try
+                var emails = new List<MailMessage>();
+
+                for (int i = 0; i < 10; i++)
                 {
-                    log.Information(
-                        "Attempting to send an email to {to} through the Amazon SES SMTP interface...", email.To);
-                    client.Send(email.ToMailMessage());
-                    log.Information("Email sent!");
+                    emails.Add(new MailMessage("test@knight1988.no-ip.info", "Knight1988@gmail.com", "Test " + i, "Test"));
                 }
-                catch (Exception ex)
-                {
-                    log.Error("The email was not sent.");
-                    log.Error("Error message: " + ex.Message);
-                    OnSendMailError();
-                }
+
+                client.SendBulkMailAsync(emails).Wait();
             }
         }
     }
