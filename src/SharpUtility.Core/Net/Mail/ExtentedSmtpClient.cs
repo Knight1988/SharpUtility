@@ -171,6 +171,14 @@ namespace SharpUtility.Core.Net.Mail
         ///     Report send mail progress event
         /// </summary>
         public event EventHandler<EmailSenderArgs> SendBulkMailProgress;
+
+        public ExtentedSmtpClient Clone()
+        {
+            return new ExtentedSmtpClient()
+            {
+                
+            };
+        }
     }
 
     public class EmailSenderArgs : EventArgs
