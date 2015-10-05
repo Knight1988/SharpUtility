@@ -20,5 +20,12 @@ namespace SharpUtilityTests
             var result = t.Operations.First().Value.ManipulateOperation(125, 5, 10, 27, 45, 19, 10);
             Assert.AreEqual(241, result);
         }
+
+        [TestMethod]
+        public void Test2()
+        {
+            var importer = new Importer();
+            var dlls = Environment.CurrentDirectory + "\\Dlls";
+        }
     }
 }
