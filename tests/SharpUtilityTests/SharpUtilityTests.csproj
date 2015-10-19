@@ -55,6 +55,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="IO\FileTests.cs" />
     <Compile Include="MEF\ContractImporter.cs" />
     <Compile Include="MEF\MEFTests.cs" />
     <Compile Include="Net\Mail\ExtentedSmtpClientTests.cs" />

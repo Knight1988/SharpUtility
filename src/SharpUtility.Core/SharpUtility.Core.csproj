@@ -47,6 +47,7 @@
     <Compile Include="Code.cs" />
     <Compile Include="Drawing\ImageHandler.cs" />
     <Compile Include="Enum\EnumExtensions.cs" />
+    <Compile Include="IO\File.cs" />
     <Compile Include="Linq\JoinExtensions.cs" />
     <Compile Include="Net\Mail\ExtentedSmtpClient.cs" />
     <Compile Include="Net\UTF8WebClient.cs">
