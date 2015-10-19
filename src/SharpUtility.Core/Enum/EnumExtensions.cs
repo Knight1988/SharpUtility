@@ -6,6 +6,11 @@ namespace SharpUtility.Core.Enum
 {
     public static  class EnumExtensions
     {
+        /// <summary>
+        /// Get string value from enum
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static string GetStringValue(this System.Enum value)
         {
             string output = null;
