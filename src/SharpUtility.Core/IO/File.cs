@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Microsoft.Win32;
 
@@ -30,7 +31,8 @@ namespace SharpUtility.Core.IO
         /// <returns></returns>
         public static Process Unlock(string path)
         {
-            return Unlock(path, UnlockerLocation);
+            if (System.IO.File.Exists(UnlockerLocation))
+                return Unlock(path, UnlockerLocation);
         }
 
         /// <summary>
@@ -42,7 +44,11 @@ namespace SharpUtility.Core.IO
         public static Process Unlock(string path, string unlockerPath)
         {
             var arg = string.Format("\"{0}\" /s \"{1}\"", unlockerPath, path);
-            return Process.Start(path, arg);
+
+            if (System.IO.File.Exists(unlockerPath))
+                return Process.Start(path, arg);
+            
+            throw new Exception("Incorrect unlocker path");
         }
 
         /// <summary>
