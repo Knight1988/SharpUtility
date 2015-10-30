@@ -65,7 +65,7 @@ namespace SharpUtility.Core.Drawing
             // To preserve the aspect ratio
             var ratioX = maxWidth / (float)originalWidth;
             var ratioY = maxHeight / (float)originalHeight;
-            var ratio = Math.Min(ratioX, ratioY);
+            var ratio = System.Math.Min(ratioX, ratioY);
 
             // New width and height based on aspect ratio
             var newWidth = (int)(originalWidth * ratio);
