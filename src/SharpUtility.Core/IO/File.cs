@@ -33,6 +33,7 @@ namespace SharpUtility.Core.IO
         {
             if (System.IO.File.Exists(UnlockerLocation))
                 return Unlock(path, UnlockerLocation);
+            return null;
         }
 
         /// <summary>
