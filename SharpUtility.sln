@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportV1", "tests\ExportV1\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportV2", "tests\ExportV2\ExportV2.csproj", "{1369A919-4987-4166-8225-C279B1E9D7EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.Core.Tests", "SharpUtility.Core.Tests\SharpUtility.Core.Tests.csproj", "{1395CFE8-7BAF-407D-9DB6-D4AFE63AF726}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{1369A919-4987-4166-8225-C279B1E9D7EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1369A919-4987-4166-8225-C279B1E9D7EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1369A919-4987-4166-8225-C279B1E9D7EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1395CFE8-7BAF-407D-9DB6-D4AFE63AF726}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1395CFE8-7BAF-407D-9DB6-D4AFE63AF726}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1395CFE8-7BAF-407D-9DB6-D4AFE63AF726}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1395CFE8-7BAF-407D-9DB6-D4AFE63AF726}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

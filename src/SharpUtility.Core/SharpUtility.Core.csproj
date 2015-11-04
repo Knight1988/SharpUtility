@@ -37,6 +37,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,6 +52,7 @@
     <Compile Include="IO\File.cs" />
     <Compile Include="Linq\JoinExtensions.cs" />
     <Compile Include="Math\MathExtensions.cs" />
+    <Compile Include="Net\FormData.cs" />
     <Compile Include="Net\Mail\ExtentedSmtpClient.cs" />
     <Compile Include="Net\UTF8WebClient.cs">
       <SubType>Component</SubType>
