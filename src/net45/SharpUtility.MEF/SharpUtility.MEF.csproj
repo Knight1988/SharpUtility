@@ -48,7 +48,7 @@
     <Compile Include="Runner.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\tests\ExportInterface\ExportInterface.csproj">
+    <ProjectReference Include="..\..\..\tests\ExportInterface\ExportInterface.csproj">
       <Project>{6A3518D7-DF73-4835-A1DC-0E96C73872AD}</Project>
       <Name>ExportInterface</Name>
     </ProjectReference>

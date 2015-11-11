@@ -54,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\SharpUtility.Core\SharpUtility.Core.csproj">
+    <ProjectReference Include="..\src\net45\SharpUtility.Core\SharpUtility.Core.csproj">
       <Project>{9CFC6221-753E-4674-B0DA-B085D8DF82A5}</Project>
       <Name>SharpUtility.Core</Name>
     </ProjectReference>
