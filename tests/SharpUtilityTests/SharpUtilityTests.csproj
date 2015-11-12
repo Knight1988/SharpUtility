@@ -64,9 +64,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\net45\SharpUtility.Core\SharpUtility.Core.csproj">
+    <ProjectReference Include="..\..\src\net45\SharpUtility.Core\SharpUtility.Core.Net45.csproj">
       <Project>{9CFC6221-753E-4674-B0DA-B085D8DF82A5}</Project>
-      <Name>SharpUtility.Core</Name>
+      <Name>SharpUtility.Core.Net45</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\net45\SharpUtility.MEF\SharpUtility.MEF.csproj">
       <Project>{64DF1990-C4D3-456D-BB0E-EBFBCAA8A218}</Project>
