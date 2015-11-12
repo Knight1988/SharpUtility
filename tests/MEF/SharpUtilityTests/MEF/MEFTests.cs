@@ -2,10 +2,8 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SharpUtility.MEF;
-using Contracts;
-using SharpUtilityTests.MEF;
 
-namespace SharpUtilityTests
+namespace SharpUtilityTests.MEF
 {
     [TestClass]
     public class MEFTests

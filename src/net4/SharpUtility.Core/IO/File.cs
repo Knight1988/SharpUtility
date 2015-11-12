@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using Microsoft.Win32;
-
-[assembly: InternalsVisibleTo("SharpUtilityTests")]
 
 namespace SharpUtility.Core.IO
 {

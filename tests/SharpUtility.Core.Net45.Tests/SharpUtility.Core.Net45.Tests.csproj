@@ -6,7 +6,7 @@
     <ProjectGuid>{28DAC5B1-A423-49F9-8640-BD8020953562}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SharpUtility.Core.Net45.Tests</RootNamespace>
+    <RootNamespace>SharpUtility.Core.Tests</RootNamespace>
     <AssemblyName>SharpUtility.Core.Net45.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -42,6 +42,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -52,6 +53,10 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="IO\FileTests.cs" />
+    <Compile Include="Math\MathExtensionsTests.cs" />
+    <Compile Include="Net\Mail\ExtentedSmtpClientTests.cs" />
+    <Compile Include="Net\Mail\SmtpInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="String\QueryStringBuilderTests.cs" />
     <Compile Include="String\StringExtensionsTests.cs" />
