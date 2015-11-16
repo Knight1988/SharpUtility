@@ -1,7 +1,7 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
 
 namespace SharpUtility.Core.Drawing
 {
@@ -10,19 +10,59 @@ namespace SharpUtility.Core.Drawing
     /// </summary>
     public static class ImageHandler
     {
+        public static Image OvalImage(this Image img)
+        {
+            var bmp = new Bitmap(img.Width, img.Height);
+            using (var gp = new GraphicsPath())
+            {
+                gp.AddEllipse(0, 0, img.Width, img.Height);
+                using (var gr = Graphics.FromImage(bmp))
+                {
+                    gr.SetClip(gp);
+                    gr.DrawImage(img, Point.Empty);
+                }
+            }
+            return bmp;
+        }
+
         public static Bitmap ResizeCrop(this Bitmap image, int width, int height)
         {
-            var ratio = image.Width > image.Height ? height / (double)image.Height : width / (double)image.Width;
+            var ratio = image.Width > image.Height ? height/(double) image.Height : width/(double) image.Width;
 
-            var newWidth = (int)(image.Width * ratio);
-            var newHeight = (int)(image.Height * ratio);
+            var newWidth = (int) (image.Width*ratio);
+            var newHeight = (int) (image.Height*ratio);
 
             var resiziedImage = image.ResizeKeepAspectRatio(newWidth, newHeight);
             // Convert other formats (including CMYK) to RGB.
             var newImage = new Bitmap(width, height, PixelFormat.Format24bppRgb);
 
-            var x = (int)(-(newWidth - width) / 2d);
-            var y = (int)(-(newHeight - height) / 2d);
+            var x = (int) (-(newWidth - width)/2d);
+            var y = (int) (-(newHeight - height)/2d);
+
+            // Draws the image in the specified size with quality mode set to HighQuality
+            using (var graphics = Graphics.FromImage(newImage))
+            {
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.DrawImage(resiziedImage, x, y, resiziedImage.Width, resiziedImage.Height);
+            }
+            return newImage;
+        }
+
+        public static Image ResizeCrop(this Image image, int width, int height)
+        {
+            var ratio = image.Width > image.Height ? height/(double) image.Height : width/(double) image.Width;
+
+            var newWidth = (int) (image.Width*ratio);
+            var newHeight = (int) (image.Height*ratio);
+
+            var resiziedImage = image.ResizeKeepAspectRatio(newWidth, newHeight);
+            // Convert other formats (including CMYK) to RGB.
+            var newImage = new Bitmap(width, height, PixelFormat.Format24bppRgb);
+
+            var x = (int) (-(newWidth - width)/2d);
+            var y = (int) (-(newHeight - height)/2d);
 
             // Draws the image in the specified size with quality mode set to HighQuality
             using (var graphics = Graphics.FromImage(newImage))
@@ -41,8 +81,29 @@ namespace SharpUtility.Core.Drawing
             // Convert other formats (including CMYK) to RGB.
             var newImage = new Bitmap(width, height, PixelFormat.Format24bppRgb);
 
-            var x = width / 2 - resiziedImage.Width / 2;
-            var y = height / 2 - resiziedImage.Height / 2;
+            var x = width/2 - resiziedImage.Width/2;
+            var y = height/2 - resiziedImage.Height/2;
+
+            // Draws the image in the specified size with quality mode set to HighQuality
+            using (var graphics = Graphics.FromImage(newImage))
+            {
+                graphics.FillRectangle(fillColor, 0, 0, newImage.Width, newImage.Height);
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.DrawImage(resiziedImage, x, y, resiziedImage.Width, resiziedImage.Height);
+            }
+            return newImage;
+        }
+
+        public static Image ResizeFill(this Image image, int width, int height, Brush fillColor)
+        {
+            var resiziedImage = image.ResizeKeepAspectRatio(width, height);
+            // Convert other formats (including CMYK) to RGB.
+            var newImage = new Bitmap(width, height, PixelFormat.Format24bppRgb);
+
+            var x = width/2 - resiziedImage.Width/2;
+            var y = height/2 - resiziedImage.Height/2;
 
             // Draws the image in the specified size with quality mode set to HighQuality
             using (var graphics = Graphics.FromImage(newImage))
@@ -63,19 +124,37 @@ namespace SharpUtility.Core.Drawing
             var originalHeight = image.Height;
 
             // To preserve the aspect ratio
-            var ratioX = maxWidth / (float)originalWidth;
-            var ratioY = maxHeight / (float)originalHeight;
+            var ratioX = maxWidth/(float) originalWidth;
+            var ratioY = maxHeight/(float) originalHeight;
             var ratio = System.Math.Min(ratioX, ratioY);
 
             // New width and height based on aspect ratio
-            var newWidth = (int)(originalWidth * ratio);
-            var newHeight = (int)(originalHeight * ratio);
+            var newWidth = (int) (originalWidth*ratio);
+            var newHeight = (int) (originalHeight*ratio);
+
+            return new Bitmap(image, newWidth, newHeight);
+        }
+
+        public static Image ResizeKeepAspectRatio(this Image image, int maxWidth, int maxHeight)
+        {
+            // Get the image's original width and height
+            var originalWidth = image.Width;
+            var originalHeight = image.Height;
+
+            // To preserve the aspect ratio
+            var ratioX = maxWidth/(float) originalWidth;
+            var ratioY = maxHeight/(float) originalHeight;
+            var ratio = System.Math.Min(ratioX, ratioY);
+
+            // New width and height based on aspect ratio
+            var newWidth = (int) (originalWidth*ratio);
+            var newHeight = (int) (originalHeight*ratio);
 
             return new Bitmap(image, newWidth, newHeight);
         }
 
         /// <summary>
-        /// Make image round corner
+        ///     Make image round corner
         /// </summary>
         /// <param name="startImage"></param>
         /// <param name="cornerRadius"></param>
@@ -92,10 +171,25 @@ namespace SharpUtility.Core.Drawing
             var gp = new GraphicsPath();
             gp.AddArc(0, 0, cornerRadius, cornerRadius, 180, 90);
             gp.AddArc(0 + roundedImage.Width - cornerRadius, 0, cornerRadius, cornerRadius, 270, 90);
-            gp.AddArc(0 + roundedImage.Width - cornerRadius, 0 + roundedImage.Height - cornerRadius, cornerRadius, cornerRadius, 0, 90);
+            gp.AddArc(0 + roundedImage.Width - cornerRadius, 0 + roundedImage.Height - cornerRadius, cornerRadius,
+                cornerRadius, 0, 90);
             gp.AddArc(0, 0 + roundedImage.Height - cornerRadius, cornerRadius, cornerRadius, 90, 90);
             g.FillPath(brush, gp);
             return roundedImage;
+        }
+
+        public static byte[] ToByteArray(this Image imageIn, ImageFormat imageFormat)
+        {
+            var ms = new MemoryStream();
+            imageIn.Save(ms, imageFormat);
+            return ms.ToArray();
+        }
+
+        public static Image ToImage(this byte[] byteArrayIn)
+        {
+            var ms = new MemoryStream(byteArrayIn);
+            var returnImage = Image.FromStream(ms);
+            return returnImage;
         }
     }
 }
