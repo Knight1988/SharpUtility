@@ -73,5 +73,29 @@ namespace SharpUtility.Core.Drawing
 
             return new Bitmap(image, newWidth, newHeight);
         }
+
+        /// <summary>
+        /// Make image round corner
+        /// </summary>
+        /// <param name="startImage"></param>
+        /// <param name="cornerRadius"></param>
+        /// <param name="backgroundColor"></param>
+        /// <returns></returns>
+        public static Image RoundCorners(Image startImage, int cornerRadius, Color backgroundColor)
+        {
+            cornerRadius *= 2;
+            var roundedImage = new Bitmap(startImage.Width, startImage.Height);
+            var g = Graphics.FromImage(roundedImage);
+            g.Clear(backgroundColor);
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            Brush brush = new TextureBrush(startImage);
+            var gp = new GraphicsPath();
+            gp.AddArc(0, 0, cornerRadius, cornerRadius, 180, 90);
+            gp.AddArc(0 + roundedImage.Width - cornerRadius, 0, cornerRadius, cornerRadius, 270, 90);
+            gp.AddArc(0 + roundedImage.Width - cornerRadius, 0 + roundedImage.Height - cornerRadius, cornerRadius, cornerRadius, 0, 90);
+            gp.AddArc(0, 0 + roundedImage.Height - cornerRadius, cornerRadius, cornerRadius, 90, 90);
+            g.FillPath(brush, gp);
+            return roundedImage;
+        }
     }
 }
