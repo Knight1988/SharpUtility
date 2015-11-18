@@ -42,6 +42,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.Core.Net4", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.Core.Net4.Tests", "tests\SharpUtility.Core.Net4.Tests\SharpUtility.Core.Net4.Tests.csproj", "{C9C9D747-EA34-42DD-8FF1-61584FE7E1F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.WinForm.Net4", "src\net4\SharpUtility.WinForm.Net4\SharpUtility.WinForm.Net4.csproj", "{C99AFA33-4197-4DE1-BEF4-1992E23D204E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.WinForm.Net45", "src\net45\SharpUtility.WinForm.Net45\SharpUtility.WinForm.Net45.csproj", "{854D8526-8E8C-4A32-BC49-4D224EA9D2B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +96,14 @@ Global
 		{C9C9D747-EA34-42DD-8FF1-61584FE7E1F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9C9D747-EA34-42DD-8FF1-61584FE7E1F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9C9D747-EA34-42DD-8FF1-61584FE7E1F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C99AFA33-4197-4DE1-BEF4-1992E23D204E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C99AFA33-4197-4DE1-BEF4-1992E23D204E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C99AFA33-4197-4DE1-BEF4-1992E23D204E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C99AFA33-4197-4DE1-BEF4-1992E23D204E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{854D8526-8E8C-4A32-BC49-4D224EA9D2B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{854D8526-8E8C-4A32-BC49-4D224EA9D2B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{854D8526-8E8C-4A32-BC49-4D224EA9D2B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{854D8526-8E8C-4A32-BC49-4D224EA9D2B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,5 +123,7 @@ Global
 		{6088DD69-BF02-4B2A-B8CA-9B7EF84FC44F} = {1D789CB1-D87D-44BE-A9AA-EADAF1816A6B}
 		{78B598F4-AFA7-42C3-AE43-82CB1FD94694} = {B6ADCAB7-BD3A-4498-B8CD-690CFFC925B3}
 		{C9C9D747-EA34-42DD-8FF1-61584FE7E1F2} = {F133496B-23D3-4A95-B516-BF981373A881}
+		{C99AFA33-4197-4DE1-BEF4-1992E23D204E} = {B6ADCAB7-BD3A-4498-B8CD-690CFFC925B3}
+		{854D8526-8E8C-4A32-BC49-4D224EA9D2B7} = {0B1E3E3B-95AD-4427-9235-879A65DEE41F}
 	EndGlobalSection
 EndGlobal
