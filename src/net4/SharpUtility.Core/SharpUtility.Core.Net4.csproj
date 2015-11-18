@@ -49,11 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\net45\SharpUtility.Core\ConsoleExtended.cs">
+      <Link>ConsoleExtended.cs</Link>
+    </Compile>
     <Compile Include="..\..\net45\SharpUtility.Core\Drawing\ImageHandler.cs">
       <Link>Drawing\ImageHandler.cs</Link>
     </Compile>
     <Compile Include="Code.cs" />
-    <Compile Include="ConsoleExtended.cs" />
     <Compile Include="Enum\EnumExtensions.cs" />
     <Compile Include="IO\File.cs" />
     <Compile Include="IO\StreamExtensions.cs" />

@@ -8,6 +8,7 @@ namespace SharpUtility.Core
 {
     public static class ConsoleExtended
     {
+        private static readonly object _lock = new object();
         public static void WritePercent(double value, double total)
         {
             WritePercent(value/total);
@@ -15,9 +16,12 @@ namespace SharpUtility.Core
 
         public static void WritePercent(double value)
         {
-            var output = string.Format("{0:P}    ", value);
-            Console.Write(output);
-            Console.SetCursorPosition(Console.CursorLeft - output.Length, Console.CursorTop);
+            lock (_lock)
+            {
+                var output = string.Format("{0:P}    ", value);
+                Console.Write(output);
+                Console.SetCursorPosition(Console.CursorLeft - output.Length, Console.CursorTop);
+            }
         }
     }
 }
