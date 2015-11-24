@@ -57,6 +57,7 @@
     <Compile Include="Math\MathExtensionsTests.cs" />
     <Compile Include="Net\Mail\ExtentedSmtpClientTests.cs" />
     <Compile Include="Net\Mail\SmtpInfo.cs" />
+    <Compile Include="System\ConvertExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="String\QueryStringBuilderTests.cs" />
     <Compile Include="String\StringExtensionsTests.cs" />

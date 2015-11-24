@@ -52,6 +52,9 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="..\SharpUtility.Core.Net45.Tests\System\ConvertExtensionsTests.cs">
+      <Link>System\ConvertExtensionsTests.cs</Link>
+    </Compile>
     <Compile Include="IO\FileTests.cs" />
     <Compile Include="Math\MathExtensionsTests.cs" />
     <Compile Include="Net\Mail\ExtentedSmtpClientTests.cs" />

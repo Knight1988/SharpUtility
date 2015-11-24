@@ -68,6 +68,7 @@
     <Compile Include="String\StringExtensions.cs" />
     <Compile Include="String\StringInjectExtensions.cs" />
     <Compile Include="String\StringValue.cs" />
+    <Compile Include="ConvertExtension.cs" />
     <Compile Include="Threading\TaskExtension.cs" />
     <Compile Include="Threading\TaskPause.cs" />
   </ItemGroup>
