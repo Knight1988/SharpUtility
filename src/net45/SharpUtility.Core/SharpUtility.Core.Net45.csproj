@@ -51,6 +51,7 @@
     <Compile Include="ConsoleExtended.cs" />
     <Compile Include="Drawing\ImageHandler.cs" />
     <Compile Include="Enum\EnumExtensions.cs" />
+    <Compile Include="IO\DirectoryExtended.cs" />
     <Compile Include="IO\File.cs" />
     <Compile Include="IO\StreamExtensions.cs" />
     <Compile Include="Linq\JoinExtensions.cs" />

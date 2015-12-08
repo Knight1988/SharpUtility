@@ -133,7 +133,6 @@ namespace SharpUtility.Core
             return defaultValue;
         }
 
-
         /// <summary>
         /// Try parse and return default if fail
         /// </summary>
