@@ -55,6 +55,9 @@
     <Compile Include="..\..\net45\SharpUtility.Core\Drawing\ImageHandler.cs">
       <Link>Drawing\ImageHandler.cs</Link>
     </Compile>
+    <Compile Include="..\..\net45\SharpUtility.Core\String\Base64.cs">
+      <Link>String\Base64.cs</Link>
+    </Compile>
     <Compile Include="Code.cs" />
     <Compile Include="Enum\EnumExtensions.cs" />
     <Compile Include="IO\File.cs" />

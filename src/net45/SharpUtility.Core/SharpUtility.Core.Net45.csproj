@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="ObjectExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="String\Base64.cs" />
     <Compile Include="String\CharLimit.cs" />
     <Compile Include="String\QueryStringBuilder.cs" />
     <Compile Include="String\RandomString.cs" />
