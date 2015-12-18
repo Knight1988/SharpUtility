@@ -23,5 +23,15 @@ namespace SharpUtility.Core
                 Console.SetCursorPosition(Console.CursorLeft - output.Length, Console.CursorTop);
             }
         }
+
+        public static void WritePercentLine(double value)
+        {
+            Console.WriteLine("{0:P}", value);
+        }
+
+        public static void WritePercentLine(double value, double total)
+        {
+            WritePercentLine(value/total);
+        }
     }
 }
