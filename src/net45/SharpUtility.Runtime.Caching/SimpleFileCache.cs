@@ -34,15 +34,53 @@ namespace SharpUtility.Runtime.Caching
             SerializeToFile(path, item);
         }
 
+        public object Get(string name)
+        {
+            var path = Path.Combine(CachePath, name);
+            if (!File.Exists(path)) return null;
+
+            var json = File.ReadAllText(path);
+            var item = JsonConvert.DeserializeObject<SimpleFileCacheItem>(json);
+
+            if (item.ExpireDate < DateTime.Now) return null;
+
+            return item.Content;
+        }
+
+        public T Get<T>(string name)
+        {
+            return (T) Get(name);
+        }
+
+        public void Remove(string name)
+        {
+            var path = Path.Combine(CachePath, name);
+            if (File.Exists(path)) File.Delete(path);
+        }
+
+        public void Clear()
+        {
+            if (Directory.Exists(CachePath))
+            {
+                Directory.Delete(CachePath, true);
+            }
+        }
+
         /// <summary>
         ///     Writes the given object instance to a text file.
         /// </summary>
         /// <param name="path"></param>
         /// <param name="item"></param>
-        private void SerializeToFile(string path, SimpleFileCacheItem item)
+        protected void SerializeToFile(string path, SimpleFileCacheItem item)
         {
             var json = JsonConvert.SerializeObject(item);
             File.WriteAllText(path, json);
+        }
+
+        protected void DeserializeFromFile(string path)
+        {
+
+            var json = File.ReadAllText(path);
         }
     }
 
