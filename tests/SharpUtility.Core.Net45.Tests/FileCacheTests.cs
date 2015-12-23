@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SharpUtility.Runtime.Caching;
 using NUnit.Framework;
 namespace SharpUtility.Runtime.Caching.Tests
 {
@@ -15,7 +9,14 @@ namespace SharpUtility.Runtime.Caching.Tests
         public void FileCacheTest()
         {
             var fileCache = new SimpleFileCache("Test");
-            fileCache.Add("Test", 1, DateTime.Now);
+            fileCache.Add("Test", 1, DateTime.Now + new TimeSpan(1, 0, 0));
+
+            var objActual = fileCache.Get("Test");
+            Assert.AreEqual(1, objActual);
+
+            fileCache.Remove("Test");
+            objActual = fileCache.Get("Test");
+            Assert.AreEqual(null, objActual);
         }
     }
 }

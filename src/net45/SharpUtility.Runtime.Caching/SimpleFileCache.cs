@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SharpUtility.Core.Security.Cryptography;
 
 namespace SharpUtility.Runtime.Caching
 {
@@ -30,13 +32,20 @@ namespace SharpUtility.Runtime.Caching
                 ExpireDate = expireDate
             };
 
-            var path = Path.Combine(CachePath, name);
+            var path = GetCachePath(name);
             SerializeToFile(path, item);
+        }
+
+        protected string GetCachePath(string name)
+        {
+            var md5 = MD5.Create();
+            name = md5.ComputeHash(name);
+            return Path.Combine(CachePath, name);
         }
 
         public object Get(string name)
         {
-            var path = Path.Combine(CachePath, name);
+            var path = GetCachePath(name);
             if (!File.Exists(path)) return null;
 
             var json = File.ReadAllText(path);
@@ -49,7 +58,7 @@ namespace SharpUtility.Runtime.Caching
 
         public T Get<T>(string name)
         {
-            return (T) Get(name);
+            return Get(name) is T ? (T) Get(name) : default(T);
         }
 
         public void Remove(string name)
