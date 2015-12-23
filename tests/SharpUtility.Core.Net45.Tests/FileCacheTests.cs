@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using NUnit.Framework;
 namespace SharpUtility.Runtime.Caching.Tests
 {
@@ -17,6 +18,20 @@ namespace SharpUtility.Runtime.Caching.Tests
             fileCache.Remove("Test");
             objActual = fileCache.Get("Test");
             Assert.AreEqual(null, objActual);
+        }
+
+        [Test]
+        public void ByteTest()
+        {
+            var fileCache = new SimpleFileCache("Test");
+
+            var expected = new byte[]
+            {
+                1, 2, 3, 4
+            };
+            fileCache.Add("Test byte", expected, DateTime.Now + new TimeSpan(1, 0, 0));
+            var objActual = fileCache.Get<byte[]>("Test byte");
+            Assert.AreEqual(expected, objActual);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace SharpUtility.Runtime.Caching
 
         public void Add(string name, object obj, DateTime expireDate)
         {
-           var item = new SimpleFileCacheItem()
+           var item = new SimpleFileCacheItem<object>()
             {
                 Content = obj,
                 ExpireDate = expireDate
@@ -49,7 +49,7 @@ namespace SharpUtility.Runtime.Caching
             if (!File.Exists(path)) return null;
 
             var json = File.ReadAllText(path);
-            var item = JsonConvert.DeserializeObject<SimpleFileCacheItem>(json);
+            var item = JsonConvert.DeserializeObject<SimpleFileCacheItem<object>>(json);
 
             if (item.ExpireDate < DateTime.Now) return null;
 
@@ -58,12 +58,20 @@ namespace SharpUtility.Runtime.Caching
 
         public T Get<T>(string name)
         {
-            return Get(name) is T ? (T) Get(name) : default(T);
+            var path = GetCachePath(name);
+            if (!File.Exists(path)) return default(T);
+
+            var json = File.ReadAllText(path);
+            var item = JsonConvert.DeserializeObject<SimpleFileCacheItem<T>>(json);
+
+            if (item.ExpireDate < DateTime.Now) return default(T);
+
+            return item.Content;
         }
 
         public void Remove(string name)
         {
-            var path = Path.Combine(CachePath, name);
+            var path = GetCachePath(name);
             if (File.Exists(path)) File.Delete(path);
         }
 
@@ -80,7 +88,7 @@ namespace SharpUtility.Runtime.Caching
         /// </summary>
         /// <param name="path"></param>
         /// <param name="item"></param>
-        protected void SerializeToFile(string path, SimpleFileCacheItem item)
+        protected void SerializeToFile(string path, SimpleFileCacheItem<object> item)
         {
             var json = JsonConvert.SerializeObject(item);
             File.WriteAllText(path, json);
@@ -88,14 +96,13 @@ namespace SharpUtility.Runtime.Caching
 
         protected void DeserializeFromFile(string path)
         {
-
             var json = File.ReadAllText(path);
         }
     }
 
-    public class SimpleFileCacheItem
+    public class SimpleFileCacheItem<T>
     {
-        public object Content { get; set; }
+        public T Content { get; set; }
         public DateTime ExpireDate { get; set; }
     }
 }
