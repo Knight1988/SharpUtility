@@ -46,12 +46,9 @@ namespace SharpUtility.Runtime.Caching
         public object Get(string name)
         {
             var path = GetCachePath(name);
-            if (!File.Exists(path)) return null;
+            var item = DeserializeFromFile<object>(path);
 
-            var json = File.ReadAllText(path);
-            var item = JsonConvert.DeserializeObject<SimpleFileCacheItem<object>>(json);
-
-            if (item.ExpireDate < DateTime.Now) return null;
+            if (item == null || item.ExpireDate < DateTime.Now) return null;
 
             return item.Content;
         }
@@ -59,12 +56,9 @@ namespace SharpUtility.Runtime.Caching
         public T Get<T>(string name)
         {
             var path = GetCachePath(name);
-            if (!File.Exists(path)) return default(T);
+            var item = DeserializeFromFile<T>(path);
 
-            var json = File.ReadAllText(path);
-            var item = JsonConvert.DeserializeObject<SimpleFileCacheItem<T>>(json);
-
-            if (item.ExpireDate < DateTime.Now) return default(T);
+            if (item == null || item.ExpireDate < DateTime.Now) return default(T);
 
             return item.Content;
         }
@@ -94,9 +88,13 @@ namespace SharpUtility.Runtime.Caching
             File.WriteAllText(path, json);
         }
 
-        protected void DeserializeFromFile(string path)
+        protected SimpleFileCacheItem<T> DeserializeFromFile<T>(string path)
         {
+            if (!File.Exists(path)) return null;
+
             var json = File.ReadAllText(path);
+            var item = JsonConvert.DeserializeObject<SimpleFileCacheItem<T>>(json);
+            return item;
         }
     }
 
