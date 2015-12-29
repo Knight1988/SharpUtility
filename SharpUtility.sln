@@ -48,6 +48,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.WinForm.Net45"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.Runtime.Caching", "src\net45\SharpUtility.Runtime.Caching\SharpUtility.Runtime.Caching.csproj", "{8450FFD3-39AA-4139-9054-209928A72224}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.GeckoFX", "src\net45\SharpUtility.GeckoFX\SharpUtility.GeckoFX.csproj", "{E8CCE684-0FB2-4B05-8FD3-2CF0A873D66A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -110,6 +112,10 @@ Global
 		{8450FFD3-39AA-4139-9054-209928A72224}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8450FFD3-39AA-4139-9054-209928A72224}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8450FFD3-39AA-4139-9054-209928A72224}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8CCE684-0FB2-4B05-8FD3-2CF0A873D66A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8CCE684-0FB2-4B05-8FD3-2CF0A873D66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8CCE684-0FB2-4B05-8FD3-2CF0A873D66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8CCE684-0FB2-4B05-8FD3-2CF0A873D66A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -132,5 +138,6 @@ Global
 		{C99AFA33-4197-4DE1-BEF4-1992E23D204E} = {B6ADCAB7-BD3A-4498-B8CD-690CFFC925B3}
 		{854D8526-8E8C-4A32-BC49-4D224EA9D2B7} = {0B1E3E3B-95AD-4427-9235-879A65DEE41F}
 		{8450FFD3-39AA-4139-9054-209928A72224} = {0B1E3E3B-95AD-4427-9235-879A65DEE41F}
+		{E8CCE684-0FB2-4B05-8FD3-2CF0A873D66A} = {0B1E3E3B-95AD-4427-9235-879A65DEE41F}
 	EndGlobalSection
 EndGlobal
