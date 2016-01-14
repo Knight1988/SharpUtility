@@ -10,10 +10,10 @@ namespace AppDomainTestRunner
 {
     public class RunnerBase<T> : MarshalByRefObject where T : ExporterBase
     {
+        private bool _autoRecompose;
         private CompositionContainer _container;
         private DirectoryCatalog _directoryCatalog;
         private FileSystemWatcher _watcher;
-        private bool _autoRecompose;
         public Dictionary<string, T> Exports { get; private set; }
 
         // watch the plugin folder and raise event if file changed
@@ -28,38 +28,12 @@ namespace AppDomainTestRunner
             }
         }
 
+        public string PluginPath { get; private set; }
+
         public void Initialize()
         {
             var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
             Initialize(pluginPath);
-        }
-
-        private void AddFileWatcher()
-        {
-            if (_watcher != null || !Directory.Exists(PluginPath)) return;
-
-            _watcher = new FileSystemWatcher(PluginPath)
-            {
-                EnableRaisingEvents = true,
-                NotifyFilter =
-                    NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName |
-                    NotifyFilters.DirectoryName
-            };
-            _watcher.Changed += WatcherOnChanged;
-            _watcher.Deleted += WatcherOnChanged;
-            _watcher.Created += WatcherOnChanged;
-            _watcher.Renamed += WatcherOnChanged;
-        }
-
-        private void RemoveFileWatcher()
-        {
-            _watcher.Dispose();
-            _watcher = null;
-        }
-
-        private void WatcherOnChanged(object sender, FileSystemEventArgs fileSystemEventArgs)
-        {
-            Recompose();
         }
 
         public void Initialize(string pluginPath)
@@ -72,7 +46,7 @@ namespace AppDomainTestRunner
             regBuilder.ForTypesDerivedFrom<T>().Export<T>();
 
             var catalog = new AggregateCatalog();
-            catalog.Catalogs.Add(new AssemblyCatalog(typeof(RunnerBase<T>).Assembly, regBuilder));
+            catalog.Catalogs.Add(new AssemblyCatalog(typeof (RunnerBase<T>).Assembly, regBuilder));
             _directoryCatalog = new DirectoryCatalog(pluginPath, regBuilder);
             catalog.Catalogs.Add(_directoryCatalog);
 
@@ -81,10 +55,7 @@ namespace AppDomainTestRunner
 
             // Get our exports available to the rest of Program.
             Exports = _container.GetExportedValues<T>().ToDictionary(p => p.Name, p => p);
-            
         }
-
-        public string PluginPath { get; private set; }
 
         public void Recompose()
         {
@@ -125,8 +96,6 @@ namespace AppDomainTestRunner
             }
         }
 
-        public event EventHandler<ExportUpdateEventArgs<T>> ExportUpdate;
-
         protected virtual void OnExportUpdate(ExportUpdateEventArgs<T> e)
         {
             var handler = ExportUpdate;
@@ -137,20 +106,50 @@ namespace AppDomainTestRunner
         {
             OnExportUpdate(new ExportUpdateEventArgs<T>(eventType, inserted, deleted));
         }
+
+        private void AddFileWatcher()
+        {
+            if (_watcher != null || !Directory.Exists(PluginPath)) return;
+
+            _watcher = new FileSystemWatcher(PluginPath)
+            {
+                EnableRaisingEvents = true,
+                NotifyFilter =
+                    NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName |
+                    NotifyFilters.DirectoryName
+            };
+            _watcher.Changed += WatcherOnChanged;
+            _watcher.Deleted += WatcherOnChanged;
+            _watcher.Created += WatcherOnChanged;
+            _watcher.Renamed += WatcherOnChanged;
+        }
+
+        private void RemoveFileWatcher()
+        {
+            _watcher.Dispose();
+            _watcher = null;
+        }
+
+        private void WatcherOnChanged(object sender, FileSystemEventArgs fileSystemEventArgs)
+        {
+            Recompose();
+        }
+
+        public event EventHandler<ExportUpdateEventArgs<T>> ExportUpdate;
     }
 
     public class ExportUpdateEventArgs<T> : EventArgs where T : ExporterBase
     {
+        public ExportUpdateEventType EventType { get; set; }
+        public T Inserted { get; set; }
+        public T Deleted { get; set; }
+
         public ExportUpdateEventArgs(ExportUpdateEventType eventType, T inserted, T deleted)
         {
             EventType = eventType;
             Inserted = inserted;
             Deleted = deleted;
         }
-
-        public ExportUpdateEventType EventType { get; set; }
-        public T Inserted { get; set; }
-        public T Deleted { get; set; }
     }
 
     public enum ExportUpdateEventType
