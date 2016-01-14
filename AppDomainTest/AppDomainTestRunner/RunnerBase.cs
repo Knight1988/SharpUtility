@@ -13,9 +13,14 @@ namespace AppDomainTestRunner
         private CompositionContainer _container;
         private DirectoryCatalog _directoryCatalog;
         public IEnumerable<T> Exports { get; private set; }
-        private static readonly string PluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
 
         public void Initialize()
+        {
+            var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
+            Initialize(pluginPath);
+        }
+
+        public void Initialize(string pluginPath)
         {
             // Use RegistrationBuilder to set up our MEF parts.
             var regBuilder = new RegistrationBuilder();
@@ -23,7 +28,7 @@ namespace AppDomainTestRunner
 
             var catalog = new AggregateCatalog();
             catalog.Catalogs.Add(new AssemblyCatalog(typeof(RunnerBase<T>).Assembly, regBuilder));
-            _directoryCatalog = new DirectoryCatalog(PluginPath, regBuilder);
+            _directoryCatalog = new DirectoryCatalog(pluginPath, regBuilder);
             catalog.Catalogs.Add(_directoryCatalog);
 
             _container = new CompositionContainer(catalog);
