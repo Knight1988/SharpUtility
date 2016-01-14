@@ -30,34 +30,16 @@ namespace AppDomainTest {
 			// This bypasses the Main method as it's not executing it.
 			domain = AppDomain.CreateDomain("Host_AppDomain", AppDomain.CurrentDomain.Evidence, setup);
 			var runner = (Runner)domain.CreateInstanceAndUnwrap(typeof(Runner).Assembly.FullName, typeof(Runner).FullName);
-
+		    runner.AutoRecompose = true;
+		    runner.ExportUpdate += (sender, args) =>
+		    {
+		        var runner1 = (Runner) sender;
+                runner1.DoSomething();
+		    };
 			Console.WriteLine("The main AppDomain is: {0}", AppDomain.CurrentDomain.FriendlyName);
 
 			// We now have access to all the methods and properties of Program.
 			runner.Initialize();
-			runner.DoSomething();
-
-			Console.WriteLine("\nHere you can remove a DLL from the Plugins folder.");
-			Console.WriteLine("Press any key when ready...");
-			Console.ReadKey();
-
-			// After removing a DLL, we can now recompose the MEF parts and see that the removed DLL is no longer accessed.
-			runner.Recompose();
-			runner.DoSomething();
-
-			Console.WriteLine("\nHere we will begin to replace Lib3 with an updated version. \nDelete the old one first DLL from the Plugins folder.");
-			Console.WriteLine("Press any key when ready...");
-			Console.ReadKey();
-
-			Console.WriteLine("Now showing that Lib3 is deleted.");
-			runner.Recompose();
-			runner.DoSomething();
-			
-			Console.WriteLine("\nNext drop the new Lib3 in the Plugins folder.");
-			Console.WriteLine("Press any key when ready...");
-			Console.ReadKey();
-
-			runner.Recompose();
 			runner.DoSomething();
 
 			Console.WriteLine("Press any key when ready...");

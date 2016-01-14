@@ -12,7 +12,21 @@ namespace AppDomainTestRunner
     {
         private CompositionContainer _container;
         private DirectoryCatalog _directoryCatalog;
+        private FileSystemWatcher _watcher;
+        private bool _autoRecompose;
         public Dictionary<string, T> Exports { get; private set; }
+
+        // watch the plugin folder and raise event if file changed
+        public bool AutoRecompose
+        {
+            get { return _autoRecompose; }
+            set
+            {
+                _autoRecompose = value;
+                if (value) AddFileWatcher();
+                else RemoveFileWatcher();
+            }
+        }
 
         public void Initialize()
         {
@@ -20,8 +34,39 @@ namespace AppDomainTestRunner
             Initialize(pluginPath);
         }
 
+        private void AddFileWatcher()
+        {
+            if (_watcher != null || !Directory.Exists(PluginPath)) return;
+
+            _watcher = new FileSystemWatcher(PluginPath)
+            {
+                EnableRaisingEvents = true,
+                NotifyFilter =
+                    NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName |
+                    NotifyFilters.DirectoryName
+            };
+            _watcher.Changed += WatcherOnChanged;
+            _watcher.Deleted += WatcherOnChanged;
+            _watcher.Created += WatcherOnChanged;
+            _watcher.Renamed += WatcherOnChanged;
+        }
+
+        private void RemoveFileWatcher()
+        {
+            _watcher.Dispose();
+            _watcher = null;
+        }
+
+        private void WatcherOnChanged(object sender, FileSystemEventArgs fileSystemEventArgs)
+        {
+            Recompose();
+        }
+
         public void Initialize(string pluginPath)
         {
+            PluginPath = pluginPath;
+            AutoRecompose = AutoRecompose;
+
             // Use RegistrationBuilder to set up our MEF parts.
             var regBuilder = new RegistrationBuilder();
             regBuilder.ForTypesDerivedFrom<T>().Export<T>();
@@ -36,8 +81,10 @@ namespace AppDomainTestRunner
 
             // Get our exports available to the rest of Program.
             Exports = _container.GetExportedValues<T>().ToDictionary(p => p.Name, p => p);
-            Console.WriteLine("{0} exports in AppDomain {1}", Exports.Count, AppDomain.CurrentDomain.FriendlyName);
+            
         }
+
+        public string PluginPath { get; private set; }
 
         public void Recompose()
         {
@@ -72,8 +119,8 @@ namespace AppDomainTestRunner
                 if (!exports.ContainsKey(pair.Value.Name))
                 {
                     // get deleted
-                    OnExportUpdate(ExportUpdateEventType.Delete, null, pair.Value);
                     Exports.Remove(pair.Value.Name);
+                    OnExportUpdate(ExportUpdateEventType.Delete, null, pair.Value);
                 }
             }
         }
