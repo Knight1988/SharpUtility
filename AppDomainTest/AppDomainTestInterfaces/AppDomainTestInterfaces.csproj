@@ -30,7 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>AssemblyKey.snk</AssemblyOriginatorKeyFile>
@@ -51,6 +51,12 @@
   <ItemGroup>
     <None Include="Assembly2.snk" />
     <None Include="AssemblyKey.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppDomainTestRunner\AppDomainTestRunner.csproj">
+      <Project>{95F718CC-8187-44F2-B64C-C9E2994E2222}</Project>
+      <Name>AppDomainTestRunner</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

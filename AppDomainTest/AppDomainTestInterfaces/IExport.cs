@@ -1,6 +1,9 @@
-﻿namespace AppDomainTestInterfaces {
+﻿using AppDomainTestRunner;
 
-	public interface IExport {
+namespace AppDomainTestInterfaces {
+
+    public interface IExport : IExporterBase
+    {
 
 		void InHere();
 	}

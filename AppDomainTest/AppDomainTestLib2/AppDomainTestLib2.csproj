@@ -30,7 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>AssemblyKey.snk</AssemblyOriginatorKeyFile>
@@ -53,6 +53,10 @@
     <ProjectReference Include="..\AppDomainTestInterfaces\AppDomainTestInterfaces.csproj">
       <Project>{8B600648-6BDC-4968-A75B-0B14023772E3}</Project>
       <Name>AppDomainTestInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AppDomainTestRunner\AppDomainTestRunner.csproj">
+      <Project>{95f718cc-8187-44f2-b64c-c9e2994e2222}</Project>
+      <Name>AppDomainTestRunner</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
