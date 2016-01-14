@@ -3,9 +3,9 @@ using AppDomainTestInterfaces;
 
 namespace AppDomainTestLib2 {
 
-    public class Import : MarshalByRefObject, IExport
+    public class Import : Export
     {
-		public void InHere() {
+		public override void InHere() {
 			Console.WriteLine("I'm Library2");
 		}
 	}

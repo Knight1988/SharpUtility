@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IExporterBase.cs" />
+    <Compile Include="ExporterBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunnerBase.cs" />
   </ItemGroup>
