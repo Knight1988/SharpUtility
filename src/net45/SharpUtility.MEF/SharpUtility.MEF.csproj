@@ -42,16 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Importer.cs" />
-    <Compile Include="ImporterBase.cs" />
+    <Compile Include="ExporterBase.cs" />
+    <Compile Include="IExporterBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Runner.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\tests\MEF\ExportInterface\ExportInterface.csproj">
-      <Project>{6A3518D7-DF73-4835-A1DC-0E96C73872AD}</Project>
-      <Name>ExportInterface</Name>
-    </ProjectReference>
+    <Compile Include="RunnerBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
