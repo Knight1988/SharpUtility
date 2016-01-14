@@ -34,10 +34,7 @@ namespace AppDomainTest {
 			Console.WriteLine("The main AppDomain is: {0}", AppDomain.CurrentDomain.FriendlyName);
 
 			// We now have access to all the methods and properties of Program.
-			var appDomainArgs = runner.AppDomainArgHandler();
-			Console.WriteLine("appDomainArgs in {0}: StringArgs = {1}", AppDomain.CurrentDomain.FriendlyName, appDomainArgs.StringArg);
 			runner.DoWorkInShadowCopiedDomain();
-			runner.AppDomainArgHandler();
 			runner.DoSomething();
 
 			Console.WriteLine("\nHere you can remove a DLL from the Plugins folder.");
@@ -47,7 +44,6 @@ namespace AppDomainTest {
 			// After removing a DLL, we can now recompose the MEF parts and see that the removed DLL is no longer accessed.
 			runner.Recompose();
 			runner.DoSomething();
-			runner.AppDomainArgHandler();
 
 			Console.WriteLine("\nHere we will begin to replace Lib3 with an updated version. \nDelete the old one first DLL from the Plugins folder.");
 			Console.WriteLine("Press any key when ready...");
@@ -63,7 +59,6 @@ namespace AppDomainTest {
 
 			runner.Recompose();
 			runner.DoSomething();
-			runner.AppDomainArgHandler();
 
 			Console.WriteLine("Press any key when ready...");
 			Console.ReadKey();

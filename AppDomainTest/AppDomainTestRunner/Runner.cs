@@ -13,7 +13,6 @@ namespace AppDomainTestRunner {
 		private CompositionContainer container;
 		private DirectoryCatalog directoryCatalog;
 		private IEnumerable<IExport> exports;
-		private AppDomainArgs appDomainArgs;
 		private static readonly string pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
 
 		public void DoWorkInShadowCopiedDomain() {
@@ -44,22 +43,8 @@ namespace AppDomainTestRunner {
 		public void DoSomething() {
 			// Tell our MEF parts to do something.
 			exports.ToList().ForEach(e => {
-				e.InHere(appDomainArgs);
-				Console.WriteLine("DoSomething args set to {0}", appDomainArgs.StringArg);
+				e.InHere();
 			});
-		}
-
-		public AppDomainArgs AppDomainArgHandler() {
-			// Initialize our AppDomainArgs. 
-			if (AppDomain.CurrentDomain.FriendlyName != "Host_AppDomain") return null;
-			if (appDomainArgs == null) {
-				Console.WriteLine("Initializing instance of appDomainArgs in in AppDomain {0}", AppDomain.CurrentDomain.FriendlyName);
-				appDomainArgs = new AppDomainArgs { StringArg = "Args initialized" };
-				return appDomainArgs;
-			}
-			appDomainArgs.StringArg = string.Format("Run through AppDomainArgHandler in AppDomain {0}", AppDomain.CurrentDomain.FriendlyName);
-			Console.WriteLine(appDomainArgs.StringArg);
-			return appDomainArgs;
 		}
 	}
 }
