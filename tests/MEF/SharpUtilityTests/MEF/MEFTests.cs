@@ -24,6 +24,7 @@ namespace SharpUtilityTests.MEF
         {
             var importer = new Importer();
             var dlls = Environment.CurrentDirectory + "\\Dlls";
+            importer.Recompose();
         }
     }
 }
