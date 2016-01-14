@@ -8,11 +8,11 @@ using System.Linq;
 
 namespace AppDomainTestRunner
 {
-    public class RunnerBase<T> : MarshalByRefObject
+    public class RunnerBase<T> : MarshalByRefObject where T : ExporterBase
     {
         private CompositionContainer _container;
         private DirectoryCatalog _directoryCatalog;
-        public IEnumerable<T> Exports { get; private set; }
+        public Dictionary<string, T> Exports { get; private set; }
 
         public void Initialize()
         {
@@ -35,8 +35,8 @@ namespace AppDomainTestRunner
             _container.ComposeExportedValue(_container);
 
             // Get our exports available to the rest of Program.
-            Exports = _container.GetExportedValues<T>();
-            Console.WriteLine("{0} exports in AppDomain {1}", Exports.Count(), AppDomain.CurrentDomain.FriendlyName);
+            Exports = _container.GetExportedValues<T>().ToDictionary(p => p.Name, p => p);
+            Console.WriteLine("{0} exports in AppDomain {1}", Exports.Count, AppDomain.CurrentDomain.FriendlyName);
         }
 
         public void Recompose()
@@ -44,7 +44,72 @@ namespace AppDomainTestRunner
             // Gimme 3 steps...
             _directoryCatalog.Refresh();
             _container.ComposeParts(_directoryCatalog.Parts);
-            Exports = _container.GetExportedValues<T>();
+            var exports = _container.GetExportedValues<T>().ToDictionary(p => p.Name, p => p);
+
+            // get insert, updated
+            foreach (var pair in exports)
+            {
+                if (!Exports.ContainsKey(pair.Value.Name))
+                {
+                    // get inserted
+                    Exports.Add(pair.Key, pair.Value);
+                    OnExportUpdate(ExportUpdateEventType.Insert, pair.Value, null);
+                }
+                else
+                {
+                    // skip if same version
+                    if (Exports[pair.Value.Name].Version == pair.Value.Version) continue;
+
+                    // update new version
+                    Exports[pair.Value.Name] = pair.Value;
+                    OnExportUpdate(ExportUpdateEventType.Update, pair.Value, Exports[pair.Value.Name]);
+                }
+            }
+
+            // get deleted
+            foreach (var pair in Exports.ToDictionary(p => p.Key, p => p.Value))
+            {
+                if (!exports.ContainsKey(pair.Value.Name))
+                {
+                    // get deleted
+                    OnExportUpdate(ExportUpdateEventType.Delete, null, pair.Value);
+                    Exports.Remove(pair.Value.Name);
+                }
+            }
         }
+
+        public event EventHandler<ExportUpdateEventArgs<T>> ExportUpdate;
+
+        protected virtual void OnExportUpdate(ExportUpdateEventArgs<T> e)
+        {
+            var handler = ExportUpdate;
+            if (handler != null) handler(this, e);
+        }
+
+        protected virtual void OnExportUpdate(ExportUpdateEventType eventType, T inserted, T deleted)
+        {
+            OnExportUpdate(new ExportUpdateEventArgs<T>(eventType, inserted, deleted));
+        }
+    }
+
+    public class ExportUpdateEventArgs<T> : EventArgs where T : ExporterBase
+    {
+        public ExportUpdateEventArgs(ExportUpdateEventType eventType, T inserted, T deleted)
+        {
+            EventType = eventType;
+            Inserted = inserted;
+            Deleted = deleted;
+        }
+
+        public ExportUpdateEventType EventType { get; set; }
+        public T Inserted { get; set; }
+        public T Deleted { get; set; }
+    }
+
+    public enum ExportUpdateEventType
+    {
+        Insert,
+        Update,
+        Delete
     }
 }

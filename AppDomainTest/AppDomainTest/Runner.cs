@@ -8,9 +8,10 @@ namespace AppDomainTest {
 	{
 		public void DoSomething() {
 			// Tell our MEF parts to do something.
-			Exports.ToList().ForEach(e => {
-				e.InHere();
-			});
+		    foreach (var pair in Exports)
+		    {
+                pair.Value.InHere();
+		    }
 		}
 	}
 }
