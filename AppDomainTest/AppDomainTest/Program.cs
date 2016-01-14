@@ -34,7 +34,7 @@ namespace AppDomainTest {
 			Console.WriteLine("The main AppDomain is: {0}", AppDomain.CurrentDomain.FriendlyName);
 
 			// We now have access to all the methods and properties of Program.
-			runner.DoWorkInShadowCopiedDomain();
+			runner.Initialize();
 			runner.DoSomething();
 
 			Console.WriteLine("\nHere you can remove a DLL from the Plugins folder.");
