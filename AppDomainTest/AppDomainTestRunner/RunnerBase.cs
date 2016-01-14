@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace AppDomainTestRunner
 {
-    public class RunnerBase<T> : MarshalByRefObject where T : ExporterBase
+    public class RunnerBase<T> : MarshalByRefObject where T : IExporterBase
     {
         private bool _autoRecompose;
         private CompositionContainer _container;
@@ -71,7 +71,7 @@ namespace AppDomainTestRunner
                 {
                     // get inserted
                     Exports.Add(pair.Key, pair.Value);
-                    OnExportUpdate(ExportUpdateEventType.Insert, pair.Value, null);
+                    OnExportUpdate(ExportUpdateEventType.Insert, pair.Value, default(T));
                 }
                 else
                 {
@@ -91,7 +91,7 @@ namespace AppDomainTestRunner
                 {
                     // get deleted
                     Exports.Remove(pair.Value.Name);
-                    OnExportUpdate(ExportUpdateEventType.Delete, null, pair.Value);
+                    OnExportUpdate(ExportUpdateEventType.Delete, default(T), pair.Value);
                 }
             }
         }
@@ -138,7 +138,7 @@ namespace AppDomainTestRunner
         public event EventHandler<ExportUpdateEventArgs<T>> ExportUpdate;
     }
 
-    public class ExportUpdateEventArgs<T> : EventArgs where T : ExporterBase
+    public class ExportUpdateEventArgs<T> : EventArgs where T : IExporterBase
     {
         public ExportUpdateEventType EventType { get; set; }
         public T Inserted { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AppDomainTestRunner
 {
-    public abstract class ExporterBase : MarshalByRefObject
+    public abstract class ExporterBase : MarshalByRefObject, IExporterBase
     {
         public string Name { get; private set; }
         public Version Version { get; set; }
