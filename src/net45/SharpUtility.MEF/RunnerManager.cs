@@ -11,7 +11,15 @@ namespace SharpUtility.MEF
     {
         private static readonly Dictionary<string, DomainRunner> _domainRunners = new Dictionary<string, DomainRunner>();
 
-        public static TRunner CreateRunner<TRunner, TExporter>(string domainName, string pluginPath, string cachePath) 
+        public static TRunner CreateRunner<TRunner, TExporter>(string domainName, string pluginPath, string cachePath)
+            where TRunner : RunnerBase<TExporter>
+            where TExporter : IExporterBase
+        {
+            var basePath = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+            return CreateRunner<TRunner, TExporter>(domainName, pluginPath, cachePath, basePath);
+        }
+
+        public static TRunner CreateRunner<TRunner, TExporter>(string domainName, string pluginPath, string cachePath, string basePath) 
             where TRunner : RunnerBase<TExporter>
             where TExporter : IExporterBase
         {
@@ -30,7 +38,8 @@ namespace SharpUtility.MEF
             {
                 CachePath = cachePath,
                 ShadowCopyFiles = "true",
-                ShadowCopyDirectories = pluginPath
+                ShadowCopyDirectories = pluginPath,
+                ApplicationBase = basePath
             };
 
             // Create a new AppDomain then create an new instance of this application in the new AppDomain.

@@ -9,7 +9,6 @@ namespace MEFInterface
 {
     public abstract class Export : ExporterBase
     {
-
         public virtual string InHere()
         {
             return string.Empty;
