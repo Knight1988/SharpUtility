@@ -6,7 +6,7 @@ using System.ComponentModel.Composition.Registration;
 using System.IO;
 using System.Linq;
 
-namespace AppDomainTestRunner
+namespace SharpUtility.MEF
 {
     public class RunnerBase<T> : MarshalByRefObject where T : IExporterBase
     {
@@ -126,6 +126,7 @@ namespace AppDomainTestRunner
 
         private void RemoveFileWatcher()
         {
+            if (_watcher == null) return;
             _watcher.Dispose();
             _watcher = null;
         }

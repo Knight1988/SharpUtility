@@ -1,38 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AppDomainTestRunner;
-using MEFInterface;
-using NUnit.Framework;
-using SharpUtility.MEF;
-using SharpUtility.MEF.Tests;
-// ReSharper disable PossibleNullReferenceException
 
-namespace AppDomainTestRunner.Tests
+namespace ShartUtility.MEF.TestConsole
 {
-    [TestFixture()]
-    public class RunnerBaseTests
+    class Program
     {
-        [Test()]
-        public void SwapDllTest()
-        {
-            var cachePath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "ShadowCopyCache");
-            var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
-            var currentDir = new DirectoryInfo(Environment.CurrentDirectory);
-            var rootPath = currentDir.Parent.Parent;
-            var runner = RunnerManager.CreateRunner<Runner, Export>("Test", pluginPath, cachePath);
-
-            var actual = runner.DoSomething();
-            var expected = string.Empty;
-
-            Assert.AreEqual(expected, actual);
-        }
-
-        [Test()]
-        public void Test()
+        static void Main(string[] args)
         {
             var cachePath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "ShadowCopyCache");
             var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
@@ -64,8 +37,6 @@ namespace AppDomainTestRunner.Tests
 
             var actual = runner.DoSomething();
             var expected = string.Empty;
-
-            Assert.AreEqual(expected, actual);
         }
     }
 }
