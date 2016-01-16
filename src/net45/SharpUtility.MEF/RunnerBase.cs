@@ -138,7 +138,7 @@ namespace SharpUtility.MEF
             _watcher = null;
         }
 
-        private void WatcherOnChanged(object sender, FileSystemEventArgs fileSystemEventArgs)
+        private void WatcherOnChanged(object sender, FileSystemEventArgs args)
         {
             PrivateRecompose();
         }

@@ -50,9 +50,9 @@ namespace AppDomainTestRunner.Tests
 
             Assert.AreEqual(expected, actual);
             // Replace lib1 with v2
-            File.Delete(lib1PluginPath);
-            runner.Recompose();
-            File.Copy(lib1V2Path, lib1PluginPath);
+            //File.Delete(lib1PluginPath);
+            //runner.Recompose();
+            File.Copy(lib1V2Path, lib1PluginPath, true);
             runner.Recompose();
             actual = runner.DoSomething();
             expected = "Lib1-v2 Lib2";

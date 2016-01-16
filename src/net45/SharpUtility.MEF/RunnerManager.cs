@@ -16,9 +16,9 @@ namespace SharpUtility.MEF
         /// </summary>
         /// <typeparam name="TRunner"></typeparam>
         /// <typeparam name="TExporter"></typeparam>
-        /// <param name="domainName"></param>
-        /// <param name="pluginPath"></param>
-        /// <param name="cachePath"></param>
+        /// <param name="domainName">must be unique</param>
+        /// <param name="pluginPath">the location of plugin folder</param>
+        /// <param name="cachePath">location to shadow copy the plugin</param>
         /// <returns></returns>
         public static TRunner CreateRunner<TRunner, TExporter>(string domainName, string pluginPath, string cachePath)
             where TRunner : RunnerBase<TExporter>
@@ -33,10 +33,10 @@ namespace SharpUtility.MEF
         /// </summary>
         /// <typeparam name="TRunner"></typeparam>
         /// <typeparam name="TExporter"></typeparam>
-        /// <param name="domainName"></param>
-        /// <param name="pluginPath"></param>
-        /// <param name="cachePath"></param>
-        /// <param name="basePath"></param>
+        /// <param name="domainName">must be unique</param>
+        /// <param name="pluginPath">the location of plugin folder</param>
+        /// <param name="cachePath">location to shadow copy the plugin</param>
+        /// <param name="basePath">location for plugin to find it's reference. Should be same as exe folder or plugin folder</param>
         /// <returns></returns>
         public static TRunner CreateRunner<TRunner, TExporter>(string domainName, string pluginPath, string cachePath, string basePath) 
             where TRunner : RunnerBase<TExporter>
