@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MEFTestLib1-v2")]
+[assembly: AssemblyTitle("MEFTestLib1")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MEFTestLib1-v2")]
+[assembly: AssemblyProduct("MEFTestLib1")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("607aa1a6-b9ac-4b24-9632-04aaabbcf98b")]
+[assembly: Guid("63a92529-c92b-4aa9-b3bb-7f877540850f")]
 
 // Version information for an assembly consists of the following four values:
 //

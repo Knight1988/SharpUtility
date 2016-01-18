@@ -7,7 +7,7 @@
     <ProjectGuid>{7B1D2D85-5046-40E7-84D2-58D7C32275E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MEFTestLib1_v2</RootNamespace>
+    <RootNamespace>MEFTestLib1</RootNamespace>
     <AssemblyName>MEFTestLib1-v2</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
