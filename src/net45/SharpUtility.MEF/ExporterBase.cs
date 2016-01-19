@@ -12,10 +12,5 @@ namespace SharpUtility.MEF
             Name = GetType().FullName;
             Version = new Version(1, 0);
         }
-
-        public virtual string InHere()
-        {
-            return string.Empty;
-        }
     }
 }
