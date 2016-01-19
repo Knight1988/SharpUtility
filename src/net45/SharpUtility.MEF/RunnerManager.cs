@@ -1,15 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SharpUtility.MEF
 {
     public static class RunnerManager
     {
         private static readonly Dictionary<string, DomainRunner> _domainRunners = new Dictionary<string, DomainRunner>();
+
+        /// <summary>
+        /// Create and initalize runner
+        /// </summary>
+        /// <typeparam name="TRunner"></typeparam>
+        /// <typeparam name="TExporter"></typeparam>
+        /// <param name="domainName">must be unique</param>
+        /// <returns></returns>
+        public static TRunner CreateRunner<TRunner, TExporter>(string domainName)
+            where TRunner : RunnerBase<TExporter>
+            where TExporter : IExporterBase
+        {
+            var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
+            return CreateRunner<TRunner, TExporter>(domainName, pluginPath);
+        }
+        /// <summary>
+        /// Create and initalize runner
+        /// </summary>
+        /// <typeparam name="TRunner"></typeparam>
+        /// <typeparam name="TExporter"></typeparam>
+        /// <param name="domainName">must be unique</param>
+        /// <param name="pluginPath">the location of plugin folder</param>
+        /// <returns></returns>
+        public static TRunner CreateRunner<TRunner, TExporter>(string domainName, string pluginPath)
+            where TRunner : RunnerBase<TExporter>
+            where TExporter : IExporterBase
+        {
+            var cachePath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "ShadowCopyCache");
+            return CreateRunner<TRunner, TExporter>(domainName, pluginPath, cachePath);
+        }
 
         /// <summary>
         /// Create and initalize runner
