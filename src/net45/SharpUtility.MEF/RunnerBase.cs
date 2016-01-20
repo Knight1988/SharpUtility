@@ -121,9 +121,6 @@ namespace SharpUtility.MEF
             _watcher = new FileSystemWatcher(PluginPath)
             {
                 EnableRaisingEvents = true,
-                NotifyFilter =
-                    NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName |
-                    NotifyFilters.DirectoryName
             };
             _watcher.Deleted += WatcherOnChanged;
             _watcher.Created += WatcherOnChanged;

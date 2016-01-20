@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code.cs" />
+    <Compile Include="CodeManager.cs" />
     <Compile Include="ConsoleExtended.cs" />
     <Compile Include="Drawing\ImageHandler.cs" />
     <Compile Include="Enum\EnumExtensions.cs" />

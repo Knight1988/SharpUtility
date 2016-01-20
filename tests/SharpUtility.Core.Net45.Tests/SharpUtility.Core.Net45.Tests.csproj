@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Caching\FileCacheTests.cs" />
     <Compile Include="FileCacheTests.cs" />
+    <Compile Include="FileWatcherTests.cs" />
     <Compile Include="IO\FileTests.cs" />
     <Compile Include="Math\MathExtensionsTests.cs" />
     <Compile Include="Net\Mail\ExtentedSmtpClientTests.cs" />
@@ -69,6 +70,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\SharpUtility.FileWatcher\SharpUtility.FileWatcher.csproj">
+      <Project>{5CC4A463-8669-4694-8569-A5A52A7E11D7}</Project>
+      <Name>SharpUtility.FileWatcher</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\net45\SharpUtility.Core\SharpUtility.Core.Net45.csproj">
       <Project>{9CFC6221-753E-4674-B0DA-B085D8DF82A5}</Project>
       <Name>SharpUtility.Core.Net45</Name>
