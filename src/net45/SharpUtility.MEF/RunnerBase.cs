@@ -5,6 +5,7 @@ using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Registration;
 using System.IO;
 using System.Linq;
+using System.Threading;
 
 namespace SharpUtility.MEF
 {
@@ -30,10 +31,17 @@ namespace SharpUtility.MEF
 
         public string PluginPath { get; private set; }
 
+        private readonly AutoResetEvent _autoResetEvent = new AutoResetEvent(false);
+
         public void Initialize()
         {
             var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
             Initialize(pluginPath);
+        }
+
+        public void WaitForUpdate()
+        {
+            _autoResetEvent.WaitOne();
         }
 
         public void Initialize(string pluginPath)
@@ -57,7 +65,7 @@ namespace SharpUtility.MEF
             Exports = _container.GetExportedValues<T>().ToDictionary(p => p.Name, p => p);
         }
 
-        private void PrivateRecompose()
+        private void PrivateRecompose(bool raiseEvent)
         {
             // Gimme 3 steps...
             _directoryCatalog.Refresh();
@@ -72,15 +80,6 @@ namespace SharpUtility.MEF
                     // get inserted
                     Exports.Add(pair.Key, pair.Value);
                     OnExportUpdate(ExportUpdateEventType.Insert, pair.Value, default(T));
-                }
-                else
-                {
-                    // skip if same version
-                    if (Exports[pair.Value.Name].Version == pair.Value.Version) continue;
-
-                    // update new version
-                    Exports[pair.Value.Name] = pair.Value;
-                    OnExportUpdate(ExportUpdateEventType.Update, pair.Value, Exports[pair.Value.Name]);
                 }
             }
 
@@ -100,11 +99,12 @@ namespace SharpUtility.MEF
         {
             if (AutoRecompose) throw new Exception("Cannot manual call Recompose while AutoRecompose is on.");
 
-            PrivateRecompose();
+            PrivateRecompose(true);
         }
 
         protected virtual void OnExportUpdate(ExportUpdateEventArgs<T> e)
         {
+            _autoResetEvent.Set();
             var handler = ExportUpdate;
             if (handler != null) handler(this, e);
         }
@@ -140,7 +140,7 @@ namespace SharpUtility.MEF
 
         private void WatcherOnChanged(object sender, FileSystemEventArgs args)
         {
-            PrivateRecompose();
+            PrivateRecompose(true);
         }
 
         public event EventHandler<ExportUpdateEventArgs<T>> ExportUpdate;
