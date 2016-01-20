@@ -65,7 +65,7 @@ namespace SharpUtility.MEF
             Exports = _container.GetExportedValues<T>().ToDictionary(p => p.Name, p => p);
         }
 
-        private void PrivateRecompose(bool raiseEvent)
+        private void PrivateRecompose()
         {
             // Gimme 3 steps...
             _directoryCatalog.Refresh();
@@ -99,7 +99,7 @@ namespace SharpUtility.MEF
         {
             if (AutoRecompose) throw new Exception("Cannot manual call Recompose while AutoRecompose is on.");
 
-            PrivateRecompose(true);
+            PrivateRecompose();
         }
 
         protected virtual void OnExportUpdate(ExportUpdateEventArgs<T> e)
@@ -125,10 +125,8 @@ namespace SharpUtility.MEF
                     NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName |
                     NotifyFilters.DirectoryName
             };
-            _watcher.Changed += WatcherOnChanged;
             _watcher.Deleted += WatcherOnChanged;
             _watcher.Created += WatcherOnChanged;
-            _watcher.Renamed += WatcherOnChanged;
         }
 
         private void RemoveFileWatcher()
@@ -140,7 +138,7 @@ namespace SharpUtility.MEF
 
         private void WatcherOnChanged(object sender, FileSystemEventArgs args)
         {
-            PrivateRecompose(true);
+            PrivateRecompose();
         }
 
         public event EventHandler<ExportUpdateEventArgs<T>> ExportUpdate;
