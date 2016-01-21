@@ -28,7 +28,7 @@ namespace AppDomainTestRunner.Tests
             // Clear plugin folder
             Directory.Delete(pluginPath, true);
 
-            var runner = RunnerManager.CreateRunner<Runner, Export>("Test", pluginPath, cachePath);
+            var runner = RunnerManager.CreateRunner<Runner, IExport>("Test", pluginPath, cachePath);
 
             var actual = runner.DoSomething();
             var expected = string.Empty;
@@ -93,7 +93,7 @@ namespace AppDomainTestRunner.Tests
             // Clear plugin folder
             Directory.Delete(pluginPath, true);
 
-            var runner = RunnerManager.CreateRunner<Runner, Export>("Test", pluginPath, cachePath);
+            var runner = RunnerManager.CreateRunner<Runner, IExport>("Test", pluginPath, cachePath);
             runner.AutoRecompose = true;
 
             var actual = runner.DoSomething();

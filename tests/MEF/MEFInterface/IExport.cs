@@ -7,11 +7,8 @@ using SharpUtility.MEF;
 
 namespace MEFInterface
 {
-    public abstract class Export : ExporterBase
+    public interface IExport : IExporterBase
     {
-        public virtual string InHere()
-        {
-            return string.Empty;
-        }
+        string InHere();
     }
 }

@@ -3,7 +3,7 @@ using MEFInterface;
 
 namespace SharpUtility.MEF.Tests
 {
-    public class Runner : RunnerBase<Export>
+    public class Runner : RunnerBase<IExport>
     {
         public string DoSomething()
         {

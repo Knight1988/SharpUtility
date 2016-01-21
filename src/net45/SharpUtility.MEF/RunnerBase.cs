@@ -62,7 +62,18 @@ namespace SharpUtility.MEF
             _container.ComposeExportedValue(_container);
 
             // Get our exports available to the rest of Program.
-            Exports = _container.GetExportedValues<T>().ToDictionary(p => p.Name, p => p);
+            Exports = GetExportedValues(_container);
+        }
+
+        private Dictionary<string, T> GetExportedValues(CompositionContainer container)
+        {
+            var values = container.GetExportedValues<T>();
+
+            return values.ToDictionary(p =>
+            {
+                if (string.IsNullOrWhiteSpace(p.Name)) p.Name = p.GetType().FullName;
+                return p.Name;
+            }, p => p);
         }
 
         private void PrivateRecompose()
@@ -70,7 +81,7 @@ namespace SharpUtility.MEF
             // Gimme 3 steps...
             _directoryCatalog.Refresh();
             _container.ComposeParts(_directoryCatalog.Parts);
-            var exports = _container.GetExportedValues<T>().ToDictionary(p => p.Name, p => p);
+            var exports = GetExportedValues(_container);
 
             // get insert, updated
             foreach (var pair in exports)

@@ -4,6 +4,6 @@ namespace SharpUtility.MEF
 {
     public interface IExporterBase
     {
-        string Name { get; }
+        string Name { get; set; }
     }
 }

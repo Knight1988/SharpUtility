@@ -8,11 +8,13 @@ using SharpUtility.MEF;
 
 namespace MEFTestLib2
 {
-    public class Import : Export
+    public class Import : IExport
     {
-        public override string InHere()
+        public string InHere()
         {
             return "Lib2";
         }
+
+        public string Name { get; set; }
     }
 }
