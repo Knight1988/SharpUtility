@@ -11,10 +11,10 @@ namespace SharpUtility.Core.Security.Cryptography
         public static string Encrypt(this RSACryptoServiceProvider rsa, string input)
         {
             // Convert the string to byte array
-            byte[] secretData = Encoding.UTF8.GetBytes(input);
+            var secretData = Encoding.UTF8.GetBytes(input);
 
             // Encrypt it using the public key
-            byte[] encrypted = rsa.Encrypt(secretData, true);
+            var encrypted = rsa.Encrypt(secretData, true);
 
             // Convert byte array to hex string
             var sb = new StringBuilder();
@@ -28,10 +28,10 @@ namespace SharpUtility.Core.Security.Cryptography
         public static string Decrypt(this RSACryptoServiceProvider rsa, string input)
         {
             // Convert the string to byte array
-            byte[] encrypted = input.HexStringToByteArray();
+            var encrypted = input.HexStringToByteArray();
 
             // Decrypt it using the private key
-            byte[] secretData = rsa.Decrypt(encrypted, true);
+            var secretData = rsa.Decrypt(encrypted, true);
 
             return Encoding.UTF8.GetString(secretData);
         }
