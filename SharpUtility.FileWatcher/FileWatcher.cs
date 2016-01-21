@@ -68,6 +68,11 @@ namespace SharpUtility
             _timer.Start();
         }
 
+        public FileWatcher(string path) : this()
+        {
+            Path = path;
+        }
+
         ~FileWatcher()
         {
             _timer.Dispose();
