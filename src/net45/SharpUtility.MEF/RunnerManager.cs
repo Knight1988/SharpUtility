@@ -79,6 +79,11 @@ namespace SharpUtility.MEF
                 Directory.CreateDirectory(pluginPath);
             }
 
+            if (!Directory.Exists(basePath))
+            {
+                Directory.CreateDirectory(basePath);
+            }
+
             // This creates a ShadowCopy of the MEF DLL's (and any other DLL's in the ShadowCopyDirectories)
             var setup = new AppDomainSetup
             {
