@@ -62,12 +62,12 @@ namespace SharpUtility.MEF
             _container.ComposeExportedValue(_container);
 
             // Get our exports available to the rest of Program.
-            Exports = GetExportedValues(_container);
+            Exports = GetExportedValues();
         }
 
-        private Dictionary<string, T> GetExportedValues(CompositionContainer container)
+        private Dictionary<string, T> GetExportedValues()
         {
-            var values = container.GetExportedValues<T>();
+            var values = _container.GetExportedValues<T>();
 
             return values.ToDictionary(p =>
             {
@@ -81,7 +81,7 @@ namespace SharpUtility.MEF
             // Gimme 3 steps...
             _directoryCatalog.Refresh();
             _container.ComposeParts(_directoryCatalog.Parts);
-            var exports = GetExportedValues(_container);
+            var exports = GetExportedValues();
 
             // get insert, updated
             foreach (var pair in exports)

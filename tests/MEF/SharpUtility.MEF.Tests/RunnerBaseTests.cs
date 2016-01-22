@@ -15,7 +15,6 @@ namespace AppDomainTestRunner.Tests
         [Test()]
         public void SwapDllTest()
         {
-            var cachePath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "ShadowCopyCache");
             var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
             var currentDir = new DirectoryInfo(Environment.CurrentDirectory);
             var rootPath = currentDir.Parent.Parent.Parent;
@@ -26,20 +25,18 @@ namespace AppDomainTestRunner.Tests
             var lib2PluginPath = Path.Combine(pluginPath, "MEFTestLib2.dll");
 
             // Clear plugin folder
-            Directory.Delete(pluginPath, true);
-
-            var runner = RunnerManager.CreateRunner<Runner, IExport>("Test", pluginPath, cachePath);
-
-            var actual = runner.DoSomething();
-            var expected = string.Empty;
-
-            Assert.AreEqual(expected, actual);
-
+            if (Directory.Exists(pluginPath))
+            {
+                Directory.Delete(pluginPath, true);
+            }
+            Directory.CreateDirectory(pluginPath);
             // Copy lib1
             File.Copy(lib1V1Path, lib1PluginPath);
-            runner.Recompose();
-            actual = runner.DoSomething();
-            expected = "Lib1";
+
+            var runner = RunnerManager.CreateRunner<Runner, IExport>("Test");
+
+            var actual = runner.DoSomething();
+            var expected = "Lib1";
 
             Assert.AreEqual(expected, actual);
 
