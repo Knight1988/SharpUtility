@@ -88,21 +88,19 @@ namespace AppDomainTestRunner.Tests
             var lib2PluginPath = Path.Combine(pluginPath, "MEFTestLib2.dll");
 
             // Clear plugin folder
-            Directory.Delete(pluginPath, true);
+            if (Directory.Exists(pluginPath))
+            {
+                Directory.Delete(pluginPath, true);
+            }
+            Directory.CreateDirectory(pluginPath);
+            // Copy lib1
+            File.Copy(lib1V1Path, lib1PluginPath);
 
             var runner = RunnerManager.CreateRunner<Runner, IExport>("Test", pluginPath, cachePath);
             runner.AutoRecompose = true;
 
             var actual = runner.DoSomething();
-            var expected = string.Empty;
-
-            Assert.AreEqual(expected, actual);
-            
-            // Copy lib1
-            File.Copy(lib1V1Path, lib1PluginPath);
-            runner.WaitForUpdate();
-            actual = runner.DoSomething();
-            expected = "Lib1";
+            var expected = "Lib1";
 
             Assert.AreEqual(expected, actual);
 
