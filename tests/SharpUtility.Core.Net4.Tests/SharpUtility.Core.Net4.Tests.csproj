@@ -66,12 +66,6 @@
     </Compile>
     <Compile Include="String\StringExtensionsTests.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\net4\SharpUtility.Core\SharpUtility.Core.Net4.csproj">
-      <Project>{78B598F4-AFA7-42C3-AE43-82CB1FD94694}</Project>
-      <Name>SharpUtility.Core.Net4</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
