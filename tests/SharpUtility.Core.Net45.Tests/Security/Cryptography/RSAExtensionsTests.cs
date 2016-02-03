@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using SharpUtility.Core.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using NUnit.Framework;
 namespace SharpUtility.Core.Security.Cryptography.Tests
 {

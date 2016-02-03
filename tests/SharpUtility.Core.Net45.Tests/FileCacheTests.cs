@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using NUnit.Framework;
 namespace SharpUtility.Runtime.Caching.Tests
 {

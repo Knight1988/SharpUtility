@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Threading;
 using MEFInterface;
 using NUnit.Framework;
 using SharpUtility.MEF;

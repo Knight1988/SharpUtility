@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SharpUtility.MEF
+﻿namespace SharpUtility.MEF
 {
     public interface IExporterBase
     {

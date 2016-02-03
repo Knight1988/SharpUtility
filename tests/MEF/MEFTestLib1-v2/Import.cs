@@ -1,5 +1,4 @@
-﻿using System;
-using MEFInterface;
+﻿using MEFInterface;
 
 namespace MEFTestLib1
 {
