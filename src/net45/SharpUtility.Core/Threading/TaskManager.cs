@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace SharpUtility.Core.Threading
 {
-    public static class TaskExtension
+    public static class TaskManager
     {
         public static void Forget(this Task task)
         {
@@ -19,8 +19,8 @@ namespace SharpUtility.Core.Threading
         /// <returns></returns>
         public static Task<T> StartSTATask<T>(Func<T> func)
         {
-            TaskCompletionSource<T> taskCompletionSource = new TaskCompletionSource<T>();
-            Thread thread = new Thread(() =>
+            var taskCompletionSource = new TaskCompletionSource<T>();
+            var thread = new Thread(() =>
             {
                 try
                 {
@@ -34,6 +34,24 @@ namespace SharpUtility.Core.Threading
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
             return taskCompletionSource.Task;
+        }
+
+        /// <summary>
+        /// Start a STA Task
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public static Task StartSTATask<T>(Action action)
+        {
+            Task task = null;
+            var thread = new Thread(() =>
+            {
+                task = Task.Run(action);
+            });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            return task;
         }
     }
 }

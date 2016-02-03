@@ -73,7 +73,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SharpUtility.FileWatcher\SharpUtility.FileWatcher.csproj">
+    <ProjectReference Include="..\..\src\net45\SharpUtility.FileWatcher\SharpUtility.FileWatcher.csproj">
       <Project>{5CC4A463-8669-4694-8569-A5A52A7E11D7}</Project>
       <Name>SharpUtility.FileWatcher</Name>
     </ProjectReference>

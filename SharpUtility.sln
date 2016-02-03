@@ -42,7 +42,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MEFTestLib1-v2", "tests\MEF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MEFInterface", "tests\MEF\MEFInterface\MEFInterface.csproj", "{2C4B62B9-9DCA-4DE7-9F9B-ED75C4C23B03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.FileWatcher", "SharpUtility.FileWatcher\SharpUtility.FileWatcher.csproj", "{5CC4A463-8669-4694-8569-A5A52A7E11D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.FileWatcher", "src\net45\SharpUtility.FileWatcher\SharpUtility.FileWatcher.csproj", "{5CC4A463-8669-4694-8569-A5A52A7E11D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
