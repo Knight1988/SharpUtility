@@ -73,7 +73,7 @@ namespace AppDomainTestRunner.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [Test]
+        [Ignore]
         public void SwapDllEventTest()
         {
             var cachePath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "ShadowCopyCache");
