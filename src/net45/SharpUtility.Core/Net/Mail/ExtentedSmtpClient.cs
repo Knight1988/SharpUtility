@@ -174,10 +174,7 @@ namespace SharpUtility.Core.Net.Mail
 
         public ExtentedSmtpClient Clone()
         {
-            return new ExtentedSmtpClient()
-            {
-                
-            };
+            return new ExtentedSmtpClient;
         }
     }
 

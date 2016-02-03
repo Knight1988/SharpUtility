@@ -1,10 +1,11 @@
 ﻿using NUnit.Framework;
+
 namespace SharpUtility.Core.Caching.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class FileCacheTests
     {
-        [Test()]
+        [Test]
         public void FileCacheTest()
         {
             

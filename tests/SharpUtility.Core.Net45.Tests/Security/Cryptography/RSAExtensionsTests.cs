@@ -1,11 +1,12 @@
 ﻿using System.Security.Cryptography;
 using NUnit.Framework;
+
 namespace SharpUtility.Core.Security.Cryptography.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class RSAExtensionsTests
     {
-        [Test()]
+        [Test]
         public void EncryptDecryptTest()
         {
             var secret = "My secret message";

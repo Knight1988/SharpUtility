@@ -4,20 +4,20 @@ using NUnit.Framework;
 
 namespace SharpUtility.Core.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class ConvertExtensionsTests
     {
-        [Test()]
+        [Test]
         public void ListTryParseTest()
         {
-            var list1 = new List<string>(){"asd"};
+            var list1 = new List<string> {"asd"};
             //var list2 = ((object)list1).TryParse(new List<string>());
             //var list2 = new List<string>() { "qwe" };
             //var actual = list1.Except(list2);
             //Assert.AreEqual(0, actual.Count());
         }
 
-        [Test()]
+        [Test]
         public void DateTimeTryParseTest()
         {
             var date1 = new DateTime(2000, 1, 1);

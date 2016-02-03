@@ -6,7 +6,7 @@ using SharpUtility.Core.Net.Mail;
 
 namespace SharpUtility.Core.Tests.Net.Mail
 {
-    [TestFixture()]
+    [TestFixture]
     public class ExtentedSmtpClientTests
     {
         [Ignore]

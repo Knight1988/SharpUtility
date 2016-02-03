@@ -131,7 +131,7 @@ namespace SharpUtility.MEF
 
             _watcher = new FileSystemWatcher(PluginPath)
             {
-                EnableRaisingEvents = true,
+                EnableRaisingEvents = true
             };
             _watcher.Deleted += WatcherOnChanged;
             _watcher.Created += WatcherOnChanged;

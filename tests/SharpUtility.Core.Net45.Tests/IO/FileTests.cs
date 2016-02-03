@@ -3,10 +3,10 @@ using SharpUtility.Core.IO;
 
 namespace SharpUtility.Core.Tests.IO
 {
-    [TestFixture()]
+    [TestFixture]
     public class FileTests
     {
-        [Test()]
+        [Test]
         public void UnlockerLocationTest()
         {
             var location = File.UnlockerLocation;

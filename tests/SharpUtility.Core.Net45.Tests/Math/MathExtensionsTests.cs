@@ -3,10 +3,10 @@ using SharpUtility.Core.Math;
 
 namespace SharpUtility.Core.Tests.Math
 {
-    [TestFixture()]
+    [TestFixture]
     public class MathExtensionsTests
     {
-        [Test()]
+        [Test]
         public void IsOddTest()
         {
             Assert.AreEqual(true, ((byte)1).IsOdd());
@@ -22,7 +22,7 @@ namespace SharpUtility.Core.Tests.Math
             Assert.AreEqual(true, ((decimal)1).IsOdd());
         }
         
-        [Test()]
+        [Test]
         public void IsEvenTest()
         {
             Assert.AreEqual(true, ((byte)2).IsEven());

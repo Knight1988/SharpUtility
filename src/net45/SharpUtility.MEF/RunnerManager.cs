@@ -91,7 +91,7 @@ namespace SharpUtility.MEF
                 ShadowCopyFiles = "true",
                 ShadowCopyDirectories = pluginPath,
                 ApplicationBase = basePath,
-                PrivateBinPath = pluginPath,
+                PrivateBinPath = pluginPath
             };
 
             // Create a new AppDomain then create an new instance of this application in the new AppDomain.

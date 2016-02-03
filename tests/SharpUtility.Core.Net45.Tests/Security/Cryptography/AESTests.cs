@@ -1,11 +1,12 @@
 ﻿using System.Text;
 using NUnit.Framework;
+
 namespace SharpUtility.Core.Security.Cryptography.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class AESTests
     {
-        [Test()]
+        [Test]
         public void AES_EncryptTest()
         {
             var aes = new AES();

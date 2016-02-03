@@ -3,10 +3,10 @@ using SharpUtility.Core.String;
 
 namespace SharpUtility.Core.Tests.String
 {
-    [TestFixture()]
+    [TestFixture]
     public class QueryStringBuilderTests
     {
-        [Test()]
+        [Test]
         public void ToStringTest()
         {
             var sb = new QueryStringBuilder

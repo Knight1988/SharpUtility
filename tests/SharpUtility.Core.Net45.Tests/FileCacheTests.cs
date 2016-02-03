@@ -1,11 +1,12 @@
 ﻿using System;
 using NUnit.Framework;
+
 namespace SharpUtility.Runtime.Caching.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class FileCacheTests
     {
-        [Test()]
+        [Test]
         public void FileCacheTest()
         {
             var fileCache = new SimpleFileCache("Test");

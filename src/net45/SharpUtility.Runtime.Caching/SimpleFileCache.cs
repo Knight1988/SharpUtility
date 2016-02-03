@@ -22,8 +22,8 @@ namespace SharpUtility.Runtime.Caching
 
         public void Add(string name, object obj, DateTime expireDate)
         {
-           var item = new SimpleFileCacheItem<object>()
-            {
+           var item = new SimpleFileCacheItem<object>
+           {
                 Content = obj,
                 ExpireDate = expireDate
             };

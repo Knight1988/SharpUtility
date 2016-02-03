@@ -4,14 +4,15 @@ using MEFInterface;
 using NUnit.Framework;
 using SharpUtility.MEF;
 using SharpUtility.MEF.Tests;
+
 // ReSharper disable PossibleNullReferenceException
 
 namespace AppDomainTestRunner.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class RunnerBaseTests
     {
-        [Test()]
+        [Test]
         public void SwapDllTest()
         {
             var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");

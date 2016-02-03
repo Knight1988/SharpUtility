@@ -3,10 +3,10 @@ using SharpUtility.Core.String;
 
 namespace SharpUtility.Core.Tests.String
 {
-    [TestFixture()]
+    [TestFixture]
     public class StringExtensionsTests
     {
-        [Test()]
+        [Test]
         public void WordCountByListedCharsTest()
         {
             string groupOfWords = @"It's a text for counting of words, with different word " +
@@ -14,7 +14,7 @@ namespace SharpUtility.Core.Tests.String
             Assert.AreEqual(20, groupOfWords.WordCountByListedChars());
         }
 
-        [Test()]
+        [Test]
         public void WordCountByAlphaNumericTest()
         {
             string groupOfWords = @"It's a text for counting of words, with different word " +

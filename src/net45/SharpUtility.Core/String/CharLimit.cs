@@ -12,6 +12,6 @@ namespace SharpUtility.Core.String
         [StringValue("0123456789")]
         Number = 4,
         [StringValue("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")]
-        Default = 8,
+        Default = 8
     }
 }
