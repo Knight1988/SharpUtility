@@ -9,7 +9,7 @@ namespace SharpUtility.Core.Tests.Net.Mail
     [TestFixture]
     public class ExtentedSmtpClientTests
     {
-        [Ignore]
+        [Ignore("Don't have smtp account")]
         public void SendBulkMailAsyncTest()
         {
             using (var client = new ExtentedSmtpClient(SmtpInfo.Instance.Host, SmtpInfo.Instance.Port))
