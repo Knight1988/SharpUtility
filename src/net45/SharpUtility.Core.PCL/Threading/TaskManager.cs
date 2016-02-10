@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -8,7 +10,30 @@ namespace SharpUtility.Core.Threading
     {
         public static void Forget(this Task task)
         {
-            
+
+        }
+
+        /// <summary>
+        /// Check if action is async
+        /// </summary>
+        /// <param name="action">action to check</param>
+        /// <returns></returns>
+        public static bool IsAsync(this Action action)
+        {
+            return action.GetMethodInfo().IsDefined(typeof(AsyncStateMachineAttribute),
+                                           false);
+        }
+
+        /// <summary>
+        /// Check if function is async
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="func">function to check</param>
+        /// <returns></returns>
+        public static bool IsAsync<T>(this Func<T> func)
+        {
+            return func.GetMethodInfo().IsDefined(typeof(AsyncStateMachineAttribute),
+                                           false);
         }
 
 #if !PCL

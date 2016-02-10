@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using SharpUtility.Core.Threading;
 
 namespace SharpUtility.Core
 {
@@ -12,20 +13,50 @@ namespace SharpUtility.Core
 
         public CodeConfiguration()
         {
-            RetryIfFail(0);
+            RetryIfFail(3);
             RunAfter(0);
-            DelayBetweenEachRetry(0);
+            DelayBetweenEachRetry(1000);
         }
 
         public CodeConfiguration DelayBetweenEachRetry(int millisecondsTimeout)
         {
-            return DelayBetweenEachRetry(new TimeSpan(0, 0, 0, millisecondsTimeout));
+            return DelayBetweenEachRetry(new TimeSpan(0, 0, 0, 0, millisecondsTimeout));
         }
 
         public CodeConfiguration DelayBetweenEachRetry(TimeSpan timeout)
         {
             RetryDelay = timeout;
             return this;
+        }
+
+        public async Task ExecuteAsync(Func<Task> func)
+        {
+            await ExecuteAsync(func, null);
+        }
+
+        public async Task ExecuteAsync(Func<Task> func, Func<Exception, Task> onError)
+        {
+            await Task.Delay(Delay);
+            var num = 0;
+
+            Retry:
+            try
+            {
+                await func();
+            }
+            catch (Exception e)
+            {
+                num++;
+                if (num >= MaxRetries)
+                {
+                    if (onError == null) throw;
+                    await onError(e);
+                    return;
+                }
+
+                await Task.Delay(RetryDelay);
+                goto Retry;
+            }
         }
 
         public async Task<T> ExecuteAsync<T>(Func<T> func)
@@ -57,6 +88,35 @@ namespace SharpUtility.Core
             }
         }
 
+        public async Task<T> ExecuteAsync<T>(Func<Task<T>> func)
+        {
+            return await ExecuteAsync(func, null);
+        }
+
+        public async Task<T> ExecuteAsync<T>(Func<Task<T>> func, Func<Exception, Task<T>> onError)
+        {
+            await Task.Delay(Delay);
+            var num = 0;
+
+            Retry:
+            try
+            {
+                return await func();
+            }
+            catch (Exception e)
+            {
+                num++;
+                if (num >= MaxRetries)
+                {
+                    if (onError == null) throw;
+                    return await onError(e);
+                }
+
+                await Task.Delay(RetryDelay);
+                goto Retry;
+            }
+        }
+
         public Task ExecuteAsync(Action action)
         {
             return ExecuteAsync(action, null);
@@ -78,6 +138,7 @@ namespace SharpUtility.Core
                 {
                     if (onError == null) throw;
                     onError(e);
+                    return;
                 }
 
                 await Task.Delay(RetryDelay);
