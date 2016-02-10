@@ -28,6 +28,11 @@ namespace SharpUtility.Core
             return this;
         }
 
+        public async Task<T> ExecuteAsync<T>(Func<T> func)
+        {
+            return await ExecuteAsync(func, null);
+        }
+
         public async Task<T> ExecuteAsync<T>(Func<T> func, Func<Exception, T> onError)
         {
             await Task.Delay(Delay);

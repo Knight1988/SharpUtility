@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.Core.Net45", "src\net45\SharpUtility.Core\SharpUtility.Core.Net45.csproj", "{9CFC6221-753E-4674-B0DA-B085D8DF82A5}"
 EndProject
@@ -49,7 +49,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{C3FBA5B3
 EndProject
 Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "SharpUtility.Core", "Nuget\SharpUtility.Core\SharpUtility.Core.nuproj", "{56E2FB0A-E053-474E-8CD0-06BF77A91614}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.PCL", "src\net45\SharpUtility.PCL\SharpUtility.PCL.csproj", "{3225F9B0-3F36-4698-9242-B8482C669534}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.Core.PCL", "src\net45\SharpUtility.Core.PCL\SharpUtility.Core.PCL.csproj", "{7988A1B1-8B54-40F3-9578-FBB46FA64DC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,10 +105,10 @@ Global
 		{56E2FB0A-E053-474E-8CD0-06BF77A91614}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56E2FB0A-E053-474E-8CD0-06BF77A91614}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56E2FB0A-E053-474E-8CD0-06BF77A91614}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3225F9B0-3F36-4698-9242-B8482C669534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3225F9B0-3F36-4698-9242-B8482C669534}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3225F9B0-3F36-4698-9242-B8482C669534}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3225F9B0-3F36-4698-9242-B8482C669534}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7988A1B1-8B54-40F3-9578-FBB46FA64DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7988A1B1-8B54-40F3-9578-FBB46FA64DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7988A1B1-8B54-40F3-9578-FBB46FA64DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7988A1B1-8B54-40F3-9578-FBB46FA64DC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,6 +129,6 @@ Global
 		{7B1D2D85-5046-40E7-84D2-58D7C32275E2} = {1D789CB1-D87D-44BE-A9AA-EADAF1816A6B}
 		{2C4B62B9-9DCA-4DE7-9F9B-ED75C4C23B03} = {1D789CB1-D87D-44BE-A9AA-EADAF1816A6B}
 		{56E2FB0A-E053-474E-8CD0-06BF77A91614} = {C3FBA5B3-9DA3-4564-9592-D140BC0CEB6D}
-		{3225F9B0-3F36-4698-9242-B8482C669534} = {0B1E3E3B-95AD-4427-9235-879A65DEE41F}
+		{7988A1B1-8B54-40F3-9578-FBB46FA64DC2} = {0B1E3E3B-95AD-4427-9235-879A65DEE41F}
 	EndGlobalSection
 EndGlobal
