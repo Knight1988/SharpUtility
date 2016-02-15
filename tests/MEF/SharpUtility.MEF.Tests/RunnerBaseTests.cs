@@ -16,11 +16,11 @@ namespace AppDomainTestRunner.Tests
         public void SwapDllTest()
         {
             var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
-            var currentDir = new DirectoryInfo(Environment.CurrentDirectory);
+            var currentDir = new DirectoryInfo(AppDomain.CurrentDomain.SetupInformation.ApplicationBase);
             var rootPath = currentDir.Parent.Parent.Parent;
-            var lib1V1Path = Path.Combine(rootPath.FullName, @"MEFTestLib1\bin\Release\MEFTestLib1.dll");
-            var lib1V2Path = Path.Combine(rootPath.FullName, @"MEFTestLib1-v2\bin\Release\MEFTestLib1-v2.dll");
-            var lib2Path = Path.Combine(rootPath.FullName, @"MEFTestLib2\bin\Release\MEFTestLib2.dll");
+            var lib1V1Path = Path.Combine(rootPath.FullName, @"bin\MEFTestLib1.dll");
+            var lib1V2Path = Path.Combine(rootPath.FullName, @"bin\MEFTestLib1-v2.dll");
+            var lib2Path = Path.Combine(rootPath.FullName, @"bin\MEFTestLib2.dll");
             var lib1PluginPath = Path.Combine(pluginPath, "MEFTestLib1.dll");
             var lib2PluginPath = Path.Combine(pluginPath, "MEFTestLib2.dll");
 

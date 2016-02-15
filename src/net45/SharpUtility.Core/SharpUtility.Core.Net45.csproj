@@ -55,6 +55,9 @@
     <Compile Include="..\SharpUtility.Core.PCL\CodeConfiguration.cs">
       <Link>CodeConfiguration.cs</Link>
     </Compile>
+    <Compile Include="..\SharpUtility.Core.PCL\Reflection\AssemblyExtensions.cs">
+      <Link>Reflection\AssemblyExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\SharpUtility.Core.PCL\Threading\TaskManager.cs">
       <Link>Threading\TaskManager.cs</Link>
     </Compile>

@@ -64,6 +64,7 @@
     <Compile Include="Math\MathExtensionsTests.cs" />
     <Compile Include="Net\Mail\ExtentedSmtpClientTests.cs" />
     <Compile Include="Net\Mail\SmtpInfo.cs" />
+    <Compile Include="Reflection\AssemblyTests.cs" />
     <Compile Include="Security\Cryptography\AESTests.cs" />
     <Compile Include="Security\Cryptography\RSAExtensionsTests.cs" />
     <Compile Include="System\ConvertExtensionsTests.cs" />
