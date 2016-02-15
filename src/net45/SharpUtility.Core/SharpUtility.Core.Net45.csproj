@@ -86,6 +86,7 @@
     <Compile Include="String\StringValue.cs" />
     <Compile Include="ConvertExtension.cs" />
     <Compile Include="AppDomainExentions.cs" />
+    <Compile Include="Threading\AsyncLazy.cs" />
     <Compile Include="Threading\TaskPause.cs" />
   </ItemGroup>
   <ItemGroup>

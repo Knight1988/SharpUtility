@@ -70,6 +70,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="String\QueryStringBuilderTests.cs" />
     <Compile Include="String\StringExtensionsTests.cs" />
+    <Compile Include="Threading\AsyncLazyTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
