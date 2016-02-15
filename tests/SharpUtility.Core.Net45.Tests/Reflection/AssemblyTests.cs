@@ -17,15 +17,36 @@ namespace SharpUtility.Core.Tests.Reflection
         [Test]
         public void GetInheritedTypesTest()
         {
+            // Arrange
             var assembly = Assembly.GetAssembly(typeof (Delivery));
 
+            // Act
             var inheriteds = assembly.GetInheritedTypes(typeof (Base));
 
-            Assert.AreEqual(typeof(Delivery), inheriteds.First());
+            // Assert
+            Assert.True(inheriteds.Contains(typeof(Delivery)));
+        }
+
+        [Test]
+        public void GetInheritedFromInterfaceTest()
+        {
+            // Arrange
+            var assembly = Assembly.GetAssembly(typeof(Delivery));
+
+            // Act
+            var inheriteds = assembly.GetInheritedTypes(typeof(IBase));
+
+            // Assert
+            Assert.True(inheriteds.Contains(typeof(Delivery)));
         }
     }
 
-    public class Base
+    public interface IBase
+    {
+        
+    }
+
+    public class Base : IBase
     {
          
     }
