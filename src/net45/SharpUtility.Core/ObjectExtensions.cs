@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Web.UI.WebControls;
+using Newtonsoft.Json;
 
 namespace SharpUtility.Core
 {
@@ -12,8 +13,17 @@ namespace SharpUtility.Core
         /// <returns></returns>
         public static T Clone<T>(T source)
         {
-            var serialized = JsonConvert.SerializeObject(source);
-            return JsonConvert.DeserializeObject<T>(serialized);
+            return JsonConvert.DeserializeObject<T>(source.ToJson());
+        }
+
+        /// <summary>
+        /// Convert an object to json
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static string ToJson(this object source)
+        {
+            return JsonConvert.SerializeObject(source);
         }
     }
 }
