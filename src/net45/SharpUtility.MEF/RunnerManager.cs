@@ -34,8 +34,8 @@ namespace SharpUtility.MEF
             where TRunner : RunnerBase<TExporter>
             where TExporter : IExporterBase
         {
-            var cachePath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "ShadowCopyCache");
-            return CreateRunner<TRunner, TExporter>(domainName, pluginPath, cachePath);
+            var basePath = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+            return CreateRunner<TRunner, TExporter>(domainName, pluginPath, basePath);
         }
 
         /// <summary>
@@ -45,14 +45,14 @@ namespace SharpUtility.MEF
         /// <typeparam name="TExporter"></typeparam>
         /// <param name="domainName">must be unique</param>
         /// <param name="pluginPath">the location of plugin folder</param>
-        /// <param name="cachePath">location to shadow copy the plugin</param>
+        /// <param name="basePath">location for plugin to find it's reference. Should be same as exe folder or plugin folder</param>
         /// <returns></returns>
-        public static TRunner CreateRunner<TRunner, TExporter>(string domainName, string pluginPath, string cachePath)
+        public static TRunner CreateRunner<TRunner, TExporter>(string domainName, string pluginPath, string basePath)
             where TRunner : RunnerBase<TExporter>
             where TExporter : IExporterBase
         {
-            var basePath = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
-            return CreateRunner<TRunner, TExporter>(domainName, pluginPath, cachePath, basePath);
+            var cachePath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "ShadowCopyCache");
+            return CreateRunner<TRunner, TExporter>(domainName, pluginPath, basePath, cachePath);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace SharpUtility.MEF
         /// <param name="cachePath">location to shadow copy the plugin</param>
         /// <param name="basePath">location for plugin to find it's reference. Should be same as exe folder or plugin folder</param>
         /// <returns></returns>
-        public static TRunner CreateRunner<TRunner, TExporter>(string domainName, string pluginPath, string cachePath, string basePath) 
+        public static TRunner CreateRunner<TRunner, TExporter>(string domainName, string pluginPath, string basePath, string cachePath) 
             where TRunner : RunnerBase<TExporter>
             where TExporter : IExporterBase
         {
