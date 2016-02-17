@@ -1,4 +1,5 @@
 ﻿using MEFInterface;
+using SharpUtility.MEF;
 
 namespace MEFTestLib1
 {
@@ -10,5 +11,6 @@ namespace MEFTestLib1
         }
 
         public string Name { get; set; }
+        public ExporterEventHandler ExporterEventHandler { get; set; }
     }
 }
