@@ -61,7 +61,6 @@
     <Compile Include="..\SharpUtility.Core.PCL\Threading\TaskManager.cs">
       <Link>Threading\TaskManager.cs</Link>
     </Compile>
-    <Compile Include="CodeManager.cs" />
     <Compile Include="ConsoleExtended.cs" />
     <Compile Include="Drawing\ImageHandler.cs" />
     <Compile Include="Enum\EnumExtensions.cs" />

@@ -35,7 +35,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CodeConfiguration.cs" />
-    <Compile Include="CodeManager.cs" />
     <Compile Include="ConvertExtension.cs" />
     <Compile Include="Enum\EnumExtensions.cs" />
     <Compile Include="IO\StreamExtensions.cs" />
