@@ -8,7 +8,7 @@
     <ProjectGuid>{7988A1B1-8B54-40F3-9578-FBB46FA64DC2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SharpUtility.Core</RootNamespace>
+    <RootNamespace>SharpUtility</RootNamespace>
     <AssemblyName>SharpUtility.Core.PCL</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>

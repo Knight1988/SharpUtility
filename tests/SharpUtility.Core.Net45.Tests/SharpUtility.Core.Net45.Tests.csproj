@@ -37,6 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.0.5813.39031, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
@@ -61,6 +64,7 @@
     <Compile Include="Enum\TestEnum.cs" />
     <Compile Include="FileCacheTests.cs" />
     <Compile Include="IO\FileTests.cs" />
+    <Compile Include="Mail\MailPingerTests.cs" />
     <Compile Include="Math\MathExtensionsTests.cs" />
     <Compile Include="Net\Mail\ExtentedSmtpClientTests.cs" />
     <Compile Include="Net\Mail\SmtpInfo.cs" />
@@ -80,6 +84,10 @@
     <ProjectReference Include="..\..\src\net45\SharpUtility.Core\SharpUtility.Core.Net45.csproj">
       <Project>{9CFC6221-753E-4674-B0DA-B085D8DF82A5}</Project>
       <Name>SharpUtility.Core.Net45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\net45\SharpUtility.Mail\SharpUtility.Mail.csproj">
+      <Project>{fcfe9441-61e0-45a4-8e5a-a2f8cd3af441}</Project>
+      <Name>SharpUtility.Mail</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\net45\SharpUtility.Runtime.Caching\SharpUtility.Runtime.Caching.csproj">
       <Project>{8450FFD3-39AA-4139-9054-209928A72224}</Project>
