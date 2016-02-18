@@ -142,10 +142,4 @@ namespace SharpUtility.MEF
             return true;
         }
     }
-
-    internal class DomainRunner
-    {
-        public AppDomain Domain { get; set; }
-        public object Runner { get; set; }
-    }
 }
