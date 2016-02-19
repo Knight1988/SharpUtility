@@ -1,9 +1,12 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using MEFInterface;
 using NUnit.Framework;
 using SharpUtility.MEF;
 using SharpUtility.MEF.Tests;
+using SharpUtility.Runtime.Remoting;
 
 // ReSharper disable PossibleNullReferenceException
 
@@ -12,6 +15,37 @@ namespace AppDomainTestRunner.Tests
     [TestFixture]
     public class RunnerBaseTests
     {
+        [Test]
+        public async Task TestSponsor()
+        {
+            var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
+            var currentDir = new DirectoryInfo(AppDomain.CurrentDomain.SetupInformation.ApplicationBase);
+            var rootPath = currentDir.Parent.Parent.Parent;
+            var lib1V1Path = Path.Combine(rootPath.FullName, @"bin\MEFTestLib1.dll");
+            var lib1PluginPath = Path.Combine(pluginPath, "MEFTestLib1.dll");
+
+            // Clear plugin folder
+            if (Directory.Exists(pluginPath))
+            {
+                Directory.Delete(pluginPath, true);
+            }
+            Directory.CreateDirectory(pluginPath);
+            // Copy lib1
+            File.Copy(lib1V1Path, lib1PluginPath);
+
+            var runner = RunnerManager.CreateRunner<Runner, IExport>("Plugins");
+
+            var actual = runner.Exports.First().Value;
+            Assert.AreEqual("MEFTestLib1.Import", actual.Name);
+
+            await Task.Delay(new TimeSpan(0, 5, 10));
+
+            actual = runner.Exports.First().Value;
+            Assert.AreEqual("MEFTestLib1.Import", actual.Name);
+
+            Assert.True(RunnerManager.RemoveRunner("Plugins"));
+        }
+
         [Test]
         public void SwapDllTest()
         {
@@ -33,7 +67,7 @@ namespace AppDomainTestRunner.Tests
             // Copy lib1
             File.Copy(lib1V1Path, lib1PluginPath);
 
-            var runner = RunnerManager.CreateRunner<Runner, IExport>("Test");
+            var runner = RunnerManager.CreateRunner<Runner, IExport>("Plugins");
 
             var actual = runner.DoSomething();
             var expected = "Lib1";
@@ -72,6 +106,7 @@ namespace AppDomainTestRunner.Tests
             expected = string.Empty;
 
             Assert.AreEqual(expected, actual);
+            Assert.True(RunnerManager.RemoveRunner("Plugins"));
         }
     }
 }

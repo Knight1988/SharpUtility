@@ -3,8 +3,6 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Microsoft.Win32;
 
-[assembly: InternalsVisibleTo("SharpUtilityTests")]
-
 namespace SharpUtility.Core.IO
 {
     /// <summary>
@@ -13,16 +11,9 @@ namespace SharpUtility.Core.IO
     /// </summary>
     public static class File
     {
-        public static string UnlockerLocation
-        {
-            get
-            {
-                return
-                    Registry.GetValue(
-                        @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Unlocker.exe",
-                        "", "").ToString();
-            }
-        }
+        public static string UnlockerLocation => Registry.GetValue(
+            @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Unlocker.exe",
+            "", "").ToString();
 
         /// <summary>
         ///     Unlock a file using Unlocker
@@ -44,7 +35,7 @@ namespace SharpUtility.Core.IO
         /// <returns></returns>
         public static Process Unlock(string path, string unlockerPath)
         {
-            var arg = string.Format("\"{0}\" /s \"{1}\"", unlockerPath, path);
+            var arg = $"\"{unlockerPath}\" /s \"{path}\"";
 
             if (System.IO.File.Exists(unlockerPath))
                 return Process.Start(path, arg);

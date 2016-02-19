@@ -6,10 +6,11 @@ using System.ComponentModel.Composition.Registration;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using SharpUtility.Runtime.Remoting;
 
 namespace SharpUtility.MEF
 {
-    public class RunnerBase<T> : MarshalByRefObject where T : IExporterBase
+    public class RunnerBase<T> : Sponsor where T : IExporterBase
     {
         private CompositionContainer _container;
         private DirectoryCatalog _directoryCatalog;

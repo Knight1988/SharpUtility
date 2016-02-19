@@ -71,6 +71,7 @@
     <Compile Include="Reflection\AssemblyTests.cs" />
     <Compile Include="Security\Cryptography\AESTests.cs" />
     <Compile Include="Security\Cryptography\RSAExtensionsTests.cs" />
+    <Compile Include="SponsorTests.cs" />
     <Compile Include="System\ConvertExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="String\QueryStringBuilderTests.cs" />

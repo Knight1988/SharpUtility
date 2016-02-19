@@ -1,8 +1,10 @@
-﻿using MEFInterface;
+﻿using System.Runtime.Remoting.Lifetime;
+using MEFInterface;
+using SharpUtility.Runtime.Remoting;
 
 namespace MEFTestLib1
 {
-    public class Import : IExport
+    public class Import : Sponsor, IExport
     {
         public string InHere()
         {
