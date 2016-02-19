@@ -16,7 +16,8 @@ namespace SharpUtility.Tests
             Called = false;
             Activator.CreateInstance(typeof (SponsorImplement));
             GC.Collect();
-
+            await Task.Delay(1000);
+            GC.Collect();
             await Task.Delay(1000);
             Assert.True(Called);
         }
