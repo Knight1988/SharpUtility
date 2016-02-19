@@ -18,13 +18,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net4", "net4", "{B6ADCAB7-B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net45", "net45", "{0B1E3E3B-95AD-4427-9235-879A65DEE41F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1436A017-18C0-4728-8FC7-188E4E55DE6C}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MEF", "MEF", "{1D789CB1-D87D-44BE-A9AA-EADAF1816A6B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.Core.Net45.Tests", "tests\SharpUtility.Core.Net45.Tests\SharpUtility.Core.Net45.Tests.csproj", "{28DAC5B1-A423-49F9-8640-BD8020953562}"
