@@ -6,7 +6,6 @@ using MEFInterface;
 using NUnit.Framework;
 using SharpUtility.MEF;
 using SharpUtility.MEF.Tests;
-using SharpUtility.Runtime.Remoting;
 
 // ReSharper disable PossibleNullReferenceException
 
