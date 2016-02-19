@@ -55,7 +55,7 @@ namespace SharpUtility.Mail
         /// <returns></returns>
         public static async Task<PingStatus> PingAsync(string address, string server)
         {
-            return await PingAsync(address, server, 5000);
+            return await PingAsync(address, server, 10000);
         }
     }
 }
