@@ -11,9 +11,16 @@ namespace SharpUtility.Core.IO
     /// </summary>
     public static class File
     {
-        public static string UnlockerLocation => Registry.GetValue(
-            @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Unlocker.exe",
-            "", "").ToString();
+        public static string UnlockerLocation
+        {
+            get
+            {
+                var value = Registry.GetValue(
+                    @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Unlocker.exe",
+                    "", "")?.ToString();
+                return value ?? string.Empty;
+            }
+        }
 
         /// <summary>
         ///     Unlock a file using Unlocker
