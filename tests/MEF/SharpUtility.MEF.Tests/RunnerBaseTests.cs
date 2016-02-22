@@ -46,6 +46,28 @@ namespace AppDomainTestRunner.Tests
         }
 
         [Test]
+        public void ChangePluginFolderTest()
+        {
+            var currentDir = new DirectoryInfo(AppDomain.CurrentDomain.SetupInformation.ApplicationBase);
+            var pluginPath = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+            var rootPath = currentDir.Parent.Parent.Parent;
+            var lib1V1Path = Path.Combine(rootPath.FullName, @"bin\MEFTestLib1.dll");
+            var lib1PluginPath = Path.Combine(pluginPath, "MEFTestLib1.dll");
+
+            // Copy lib1
+            File.Copy(lib1V1Path, lib1PluginPath);
+
+            var runner = RunnerManager.CreateRunner<Runner, IExport>("Plugins", pluginPath);
+
+            var actual = runner.DoSomething();
+            var expected = "Lib1";
+
+            Assert.AreEqual(expected, actual);
+
+            Assert.True(RunnerManager.RemoveRunner("Plugins"));
+        }
+
+        [Test]
         public void SwapDllTest()
         {
             var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
