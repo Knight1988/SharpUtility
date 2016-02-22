@@ -98,7 +98,7 @@ namespace SharpUtility.MEF
             // This bypasses the Main method as it's not executing it.
             var domain = AppDomain.CreateDomain(domainName, AppDomain.CurrentDomain.Evidence, setup);
             var runner = (TRunner)domain.CreateInstanceAndUnwrap(typeof(TRunner).Assembly.FullName, typeof(TRunner).FullName);
-            runner.Initialize();
+            runner.Initialize(pluginPath);
 
             // Add domain & runner to dictionary
             _domainRunners.Add(domainName, new DomainRunner
