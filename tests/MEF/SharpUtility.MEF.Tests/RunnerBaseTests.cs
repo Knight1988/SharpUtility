@@ -14,7 +14,25 @@ namespace AppDomainTestRunner.Tests
     [TestFixture]
     public class RunnerBaseTests
     {
-        [Test]
+        [SetUp]
+        public void Setup()
+        {
+            var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
+            // Clear plugin folder
+            if (Directory.Exists(pluginPath))
+            {
+                Directory.Delete(pluginPath, true);
+            }
+            Directory.CreateDirectory(pluginPath);
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            RunnerManager.RemoveRunner("Plugins");
+        }
+
+        [Test, Category("LongRunning")]
         public async Task TestSponsor()
         {
             var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
@@ -22,13 +40,6 @@ namespace AppDomainTestRunner.Tests
             var rootPath = currentDir.Parent.Parent.Parent;
             var lib1V1Path = Path.Combine(rootPath.FullName, @"bin\MEFTestLib1.dll");
             var lib1PluginPath = Path.Combine(pluginPath, "MEFTestLib1.dll");
-
-            // Clear plugin folder
-            if (Directory.Exists(pluginPath))
-            {
-                Directory.Delete(pluginPath, true);
-            }
-            Directory.CreateDirectory(pluginPath);
             // Copy lib1
             File.Copy(lib1V1Path, lib1PluginPath);
 
@@ -41,8 +52,33 @@ namespace AppDomainTestRunner.Tests
 
             actual = runner.Exports.First().Value;
             Assert.AreEqual("MEFTestLib1.Import", actual.Name);
+        }
 
-            Assert.True(RunnerManager.RemoveRunner("Plugins"));
+        [Test]
+        public void ExeTest()
+        {
+            var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
+            var currentDir = new DirectoryInfo(AppDomain.CurrentDomain.SetupInformation.ApplicationBase);
+            var rootPath = currentDir.Parent.Parent.Parent;
+            var lib1V1Path = Path.Combine(rootPath.FullName, @"bin\MEFTestExe1.exe");
+            var lib1PluginPath = Path.Combine(pluginPath, "MEFTestExe1.exe");
+
+            // Clear plugin folder
+            if (Directory.Exists(pluginPath))
+            {
+                Directory.Delete(pluginPath, true);
+            }
+            Directory.CreateDirectory(pluginPath);
+
+            // Copy lib1
+            File.Copy(lib1V1Path, lib1PluginPath);
+
+            var runner = RunnerManager.CreateRunner<Runner, IExport>("Plugins", pluginPath);
+
+            var actual = runner.DoSomething();
+            var expected = "Exe1";
+
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -55,7 +91,7 @@ namespace AppDomainTestRunner.Tests
             var lib1PluginPath = Path.Combine(pluginPath, "MEFTestLib1.dll");
 
             // Copy lib1
-            File.Copy(lib1V1Path, lib1PluginPath);
+            File.Copy(lib1V1Path, lib1PluginPath, true);
 
             var runner = RunnerManager.CreateRunner<Runner, IExport>("Plugins", pluginPath);
 
@@ -63,8 +99,6 @@ namespace AppDomainTestRunner.Tests
             var expected = "Lib1";
 
             Assert.AreEqual(expected, actual);
-
-            Assert.True(RunnerManager.RemoveRunner("Plugins"));
         }
 
         [Test]
@@ -127,7 +161,6 @@ namespace AppDomainTestRunner.Tests
             expected = string.Empty;
 
             Assert.AreEqual(expected, actual);
-            Assert.True(RunnerManager.RemoveRunner("Plugins"));
         }
     }
 }
