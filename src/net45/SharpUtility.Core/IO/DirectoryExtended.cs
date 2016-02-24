@@ -1,9 +1,12 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace SharpUtility.Core.IO
 {
     public class DirectoryExtended
     {
+        public static string DomainApplicationBase => AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+
         public static void Copy(string sourceDirName, string destDirName, bool copySubDirs)
         {
             // Get the subdirectories for the specified directory.
