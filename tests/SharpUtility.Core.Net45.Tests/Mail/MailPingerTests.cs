@@ -4,7 +4,7 @@ using SharpUtility.Mail;
 
 namespace SharpUtility.Core.Tests.Mail
 {
-    [TestFixture(Category = "MailPinger")]
+    [TestFixture(Category = "InternetRequired")]
     public class MailPingerTests
     {
         [Test]

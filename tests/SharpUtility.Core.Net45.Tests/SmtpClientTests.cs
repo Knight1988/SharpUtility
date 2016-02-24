@@ -6,6 +6,7 @@ using NUnit.Framework;
 namespace SharpUtility.Mail.Tests
 {
     [TestFixture]
+    [Category("InternetRequired")]
     public class SmtpClientTests
     {
         private const int Index = 0;
