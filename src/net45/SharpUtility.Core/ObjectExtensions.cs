@@ -11,7 +11,7 @@ namespace SharpUtility.Core
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static T Clone<T>(T source)
+        public static T Clone<T>(this T source)
         {
             return JsonConvert.DeserializeObject<T>(source.ToJson());
         }
