@@ -52,12 +52,19 @@
     <Compile Include="MailPinger.cs" />
     <Compile Include="PingStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SmtpClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="License.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharpUtility.Core\SharpUtility.Core.Net45.csproj">
+      <Project>{9cfc6221-753e-4674-b0da-b085d8df82a5}</Project>
+      <Name>SharpUtility.Core.Net45</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

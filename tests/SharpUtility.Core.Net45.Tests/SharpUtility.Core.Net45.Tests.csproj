@@ -70,6 +70,7 @@
     <Compile Include="Reflection\AssemblyTests.cs" />
     <Compile Include="Security\Cryptography\AESTests.cs" />
     <Compile Include="Security\Cryptography\RSAExtensionsTests.cs" />
+    <Compile Include="SmtpClientTests.cs" />
     <Compile Include="SponsorTests.cs" />
     <Compile Include="System\ConvertExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
