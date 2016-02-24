@@ -59,6 +59,21 @@ namespace SharpUtility.Mail
         /// </summary>
         public int MaxSendRate { get; set; } = 1;
 
+        // Summary:
+        //     Sends the specified message to an SMTP server for delivery as an asynchronous
+        //     operation.
+        //
+        // Parameters:
+        //   message:
+        //     A System.Net.Mail.MailMessage that contains the message to send.
+        //
+        // Returns:
+        //     Returns System.Threading.Tasks.Task.The task object representing the asynchronous
+        //     operation.
+        //
+        // Exceptions:
+        //   T:System.ArgumentNullException:
+        //     message is null.
         public async Task SendBulkMailAsync(IEnumerable<MailMessage> messages)
         {
             var mailSent = 0;
@@ -76,6 +91,34 @@ namespace SharpUtility.Mail
             }
         }
 
+        // Summary:
+        //     Sends the specified message to an SMTP server for delivery as an asynchronous
+        //     operation. . The message sender, recipients, subject, and message body are specified
+        //     using System.String objects.
+        //
+        // Parameters:
+        //   from:
+        //     A System.String that contains the address information of the message sender.
+        //
+        //   recipients:
+        //     A System.String that contains the addresses that the message is sent to.
+        //
+        //   subject:
+        //     A System.String that contains the subject line for the message.
+        //
+        //   body:
+        //     A System.String that contains the message body.
+        //
+        // Returns:
+        //     Returns System.Threading.Tasks.Task.The task object representing the asynchronous
+        //     operation.
+        //
+        // Exceptions:
+        //   T:System.ArgumentNullException:
+        //     from is null.-or-recipients is null.
+        //
+        //   T:System.ArgumentException:
+        //     from is System.String.Empty.-or-recipients is System.String.Empty.
         public async Task SendBulkMailAsync(string from, IEnumerable<string> recipients, string subject, string body)
         {
             var mailMessages = recipients.Select(p => new MailMessage(from, p, subject, body));
