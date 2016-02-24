@@ -10,7 +10,7 @@ namespace SharpUtility.Mail.Tests
     public class SmtpClientTests
     {
         private const int Index = 0;
-        private const int Count = 10;
+        private const int Count = 2;
 
         [Test]
         public async Task EventTest()
@@ -52,7 +52,7 @@ namespace SharpUtility.Mail.Tests
             var froms = new List<string>();
 
             // Act
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < Count; i++)
             {
                 froms.Add("SmtpTest@mt2015.com");
             }
