@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.MEF", "src\net
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5A530614-F36B-42AD-8C67-2F9987C95729}"
 	ProjectSection(SolutionItems) = preProject
-		AssemblyInfo.Shared.cs = AssemblyInfo.Shared.cs
+		src\AssemblyInfo.Shared.cs = src\AssemblyInfo.Shared.cs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F133496B-23D3-4A95-B516-BF981373A881}"

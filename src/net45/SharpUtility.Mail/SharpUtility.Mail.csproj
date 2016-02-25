@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\AssemblyInfo.Shared.cs">
+      <Link>Properties\AssemblyInfo.Shared.cs</Link>
+    </Compile>
     <Compile Include="MailPinger.cs" />
     <Compile Include="PingStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
