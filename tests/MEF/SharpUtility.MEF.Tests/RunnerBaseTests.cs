@@ -54,7 +54,7 @@ namespace AppDomainTestRunner.Tests
             Assert.AreEqual("MEFTestLib1.Import", actual.Name);
         }
 
-        [Ignore("Not work yet")]
+        [Test]
         public void ExeTest()
         {
             var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");

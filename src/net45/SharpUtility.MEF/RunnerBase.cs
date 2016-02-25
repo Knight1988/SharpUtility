@@ -14,6 +14,7 @@ namespace SharpUtility.MEF
     {
         private CompositionContainer _container;
         private DirectoryCatalog _directoryCatalog;
+        private DirectoryCatalog _directoryCatalog2;
         public Dictionary<string, T> Exports { get; private set; }
 
         public string PluginPath { get; private set; }
@@ -33,9 +34,11 @@ namespace SharpUtility.MEF
             regBuilder.ForTypesDerivedFrom<T>().Export<T>();
 
             var catalog = new AggregateCatalog();
-            catalog.Catalogs.Add(new AssemblyCatalog(typeof (RunnerBase<T>).Assembly, regBuilder));
+            //catalog.Catalogs.Add(new AssemblyCatalog(typeof (RunnerBase<T>).Assembly, regBuilder));
+            _directoryCatalog2 = new DirectoryCatalog(pluginPath, "*.exe",regBuilder);
             _directoryCatalog = new DirectoryCatalog(pluginPath, regBuilder);
             catalog.Catalogs.Add(_directoryCatalog);
+            catalog.Catalogs.Add(_directoryCatalog2);
 
             _container = new CompositionContainer(catalog);
             _container.ComposeExportedValue(_container);
@@ -57,9 +60,12 @@ namespace SharpUtility.MEF
 
         public void Recompose()
         {
-            // Gimme 3 steps...
             _directoryCatalog.Refresh();
             _container.ComposeParts(_directoryCatalog.Parts);
+
+            _directoryCatalog2.Refresh();
+            _container.ComposeParts(_directoryCatalog2.Parts);
+
             Exports = GetExportedValues();
         }
     }
