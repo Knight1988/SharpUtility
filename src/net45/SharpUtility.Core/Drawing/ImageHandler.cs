@@ -6,10 +6,15 @@ using System.IO;
 namespace SharpUtility.Core.Drawing
 {
     /// <summary>
-    ///     Class contaning method to resize an image and save in JPEG format
+    ///     Class contaning method to resize an image
     /// </summary>
     public static class ImageHandler
     {
+        /// <summary>
+        /// Create Oval image
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
         public static Image OvalImage(this Image img)
         {
             var bmp = new Bitmap(img.Width, img.Height);
@@ -25,6 +30,13 @@ namespace SharpUtility.Core.Drawing
             return bmp;
         }
 
+        /// <summary>
+        /// Resize image and crop
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
         public static Bitmap ResizeCrop(this Bitmap image, int width, int height)
         {
             var ratio = image.Width > image.Height ? height/(double) image.Height : width/(double) image.Width;
@@ -50,6 +62,13 @@ namespace SharpUtility.Core.Drawing
             return newImage;
         }
 
+        /// <summary>
+        /// Resize image and crop
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
         public static Image ResizeCrop(this Image image, int width, int height)
         {
             var ratio = image.Width > image.Height ? height/(double) image.Height : width/(double) image.Width;
@@ -75,6 +94,14 @@ namespace SharpUtility.Core.Drawing
             return newImage;
         }
 
+        /// <summary>
+        /// Resize and fill blank with color
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="fillColor"></param>
+        /// <returns></returns>
         public static Bitmap ResizeFill(this Bitmap image, int width, int height, Brush fillColor)
         {
             var resiziedImage = image.ResizeKeepAspectRatio(width, height);
@@ -96,6 +123,14 @@ namespace SharpUtility.Core.Drawing
             return newImage;
         }
 
+        /// <summary>
+        /// Resize and fill blank with color
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="fillColor"></param>
+        /// <returns></returns>
         public static Image ResizeFill(this Image image, int width, int height, Brush fillColor)
         {
             var resiziedImage = image.ResizeKeepAspectRatio(width, height);
@@ -117,6 +152,13 @@ namespace SharpUtility.Core.Drawing
             return newImage;
         }
 
+        /// <summary>
+        /// Resize but keep apect ratio
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="maxWidth"></param>
+        /// <param name="maxHeight"></param>
+        /// <returns></returns>
         public static Bitmap ResizeKeepAspectRatio(this Bitmap image, int maxWidth, int maxHeight)
         {
             // Get the image's original width and height
@@ -135,6 +177,13 @@ namespace SharpUtility.Core.Drawing
             return new Bitmap(image, newWidth, newHeight);
         }
 
+        /// <summary>
+        /// Resize but keep apect ratio
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="maxWidth"></param>
+        /// <param name="maxHeight"></param>
+        /// <returns></returns>
         public static Image ResizeKeepAspectRatio(this Image image, int maxWidth, int maxHeight)
         {
             // Get the image's original width and height
@@ -178,6 +227,12 @@ namespace SharpUtility.Core.Drawing
             return roundedImage;
         }
 
+        /// <summary>
+        /// Convert image to byte array
+        /// </summary>
+        /// <param name="imageIn"></param>
+        /// <param name="imageFormat"></param>
+        /// <returns></returns>
         public static byte[] ToByteArray(this Image imageIn, ImageFormat imageFormat)
         {
             var ms = new MemoryStream();
@@ -185,6 +240,11 @@ namespace SharpUtility.Core.Drawing
             return ms.ToArray();
         }
 
+        /// <summary>
+        /// Convert byte array to image
+        /// </summary>
+        /// <param name="byteArrayIn"></param>
+        /// <returns></returns>
         public static Image ToImage(this byte[] byteArrayIn)
         {
             var ms = new MemoryStream(byteArrayIn);
