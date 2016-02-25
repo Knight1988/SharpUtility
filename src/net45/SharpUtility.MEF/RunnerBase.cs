@@ -13,8 +13,7 @@ namespace SharpUtility.MEF
     public class RunnerBase<T> : Sponsor where T : IExporterBase
     {
         private CompositionContainer _container;
-        private DirectoryCatalog _directoryCatalog;
-        private DirectoryCatalog _directoryCatalog2;
+        private readonly List<DirectoryCatalog> _directoryCatalogs = new List<DirectoryCatalog>();
         public Dictionary<string, T> Exports { get; private set; }
 
         public string PluginPath { get; private set; }
@@ -22,10 +21,10 @@ namespace SharpUtility.MEF
         public void Initialize()
         {
             var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
-            Initialize(pluginPath);
+            Initialize(pluginPath, "*.dll", "*.exe");
         }
 
-        public void Initialize(string pluginPath)
+        public void Initialize(string pluginPath, params string[] searchPatterns)
         {
             PluginPath = pluginPath;
 
@@ -35,10 +34,12 @@ namespace SharpUtility.MEF
 
             var catalog = new AggregateCatalog();
             //catalog.Catalogs.Add(new AssemblyCatalog(typeof (RunnerBase<T>).Assembly, regBuilder));
-            _directoryCatalog2 = new DirectoryCatalog(pluginPath, "*.exe",regBuilder);
-            _directoryCatalog = new DirectoryCatalog(pluginPath, regBuilder);
-            catalog.Catalogs.Add(_directoryCatalog);
-            catalog.Catalogs.Add(_directoryCatalog2);
+            foreach (var searchPattern in searchPatterns)
+            {
+                var directoryCatalog = new DirectoryCatalog(pluginPath, searchPattern, regBuilder);
+                catalog.Catalogs.Add(directoryCatalog);
+                _directoryCatalogs.Add(directoryCatalog);
+            }
 
             _container = new CompositionContainer(catalog);
             _container.ComposeExportedValue(_container);
@@ -60,12 +61,11 @@ namespace SharpUtility.MEF
 
         public void Recompose()
         {
-            _directoryCatalog.Refresh();
-            _container.ComposeParts(_directoryCatalog.Parts);
-
-            _directoryCatalog2.Refresh();
-            _container.ComposeParts(_directoryCatalog2.Parts);
-
+            foreach (var directoryCatalog in _directoryCatalogs)
+            {
+                directoryCatalog.Refresh();
+                _container.ComposeParts(directoryCatalog.Parts);
+            }
             Exports = GetExportedValues();
         }
     }
