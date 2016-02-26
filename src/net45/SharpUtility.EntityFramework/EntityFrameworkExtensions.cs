@@ -1,17 +1,22 @@
 ﻿using System.Data.Entity.Core.EntityClient;
-using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.SqlClient;
-using System.Reflection;
 
 namespace SharpUtility.EntityFramework
 {
     public static class EntityFrameworkExtensions
     {
-        public static EntityConnection ToEntityConnection(this SqlConnection sqlConnection)
+        public static string ToEntityFrameworkConnectionString(this string sqlConnectionString, string metaData)
         {
-            var workspace = new MetadataWorkspace(new[] {"res://*/"}, new[] {Assembly.GetExecutingAssembly()});
+            const string providerName = "System.Data.SqlClient";
 
-            return new EntityConnection(workspace, sqlConnection);
+            var efBuilder = new EntityConnectionStringBuilder
+            {
+                Metadata = metaData,
+                Provider = providerName,
+                ProviderConnectionString = sqlConnectionString
+            };
+
+            return efBuilder.ConnectionString;
         }
     }
 }
