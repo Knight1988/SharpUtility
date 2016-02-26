@@ -24,6 +24,11 @@ namespace SharpUtility.MEF
             Initialize(pluginPath, "*.dll", "*.exe");
         }
 
+        public void Initialize(string pluginPath)
+        {
+            Initialize(pluginPath, "*.dll", "*.exe");
+        }
+
         public void Initialize(string pluginPath, params string[] searchPatterns)
         {
             PluginPath = pluginPath;
