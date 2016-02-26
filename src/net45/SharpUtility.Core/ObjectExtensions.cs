@@ -19,11 +19,22 @@ namespace SharpUtility.Core
         /// <summary>
         /// Convert an object to json
         /// </summary>
-        /// <param name="source"></param>
+        /// <param name="source">object to convert</param>
         /// <returns></returns>
         public static string ToJson(this object source)
         {
             return JsonConvert.SerializeObject(source);
+        }
+
+        /// <summary>
+        /// Convert an object to json
+        /// </summary>
+        /// <param name="source">object to convert</param>
+        /// <param name="formatting">formatting option</param>
+        /// <returns></returns>
+        public static string ToJson(this object source, Formatting formatting)
+        {
+            return JsonConvert.SerializeObject(source, formatting);
         }
     }
 }
