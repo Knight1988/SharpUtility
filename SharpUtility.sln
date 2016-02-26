@@ -44,6 +44,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.Mail", "src\ne
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MEFTestExe1", "tests\MEF\MEFTestExe1\MEFTestExe1.csproj", "{F8A061C2-2B60-4237-B479-C33702172BBA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.EntityFramework", "src\net45\SharpUtility.EntityFramework\SharpUtility.EntityFramework.csproj", "{0EA5D35C-28C7-4FAA-BE73-FC0F471C49E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -106,6 +108,10 @@ Global
 		{F8A061C2-2B60-4237-B479-C33702172BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8A061C2-2B60-4237-B479-C33702172BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8A061C2-2B60-4237-B479-C33702172BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EA5D35C-28C7-4FAA-BE73-FC0F471C49E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EA5D35C-28C7-4FAA-BE73-FC0F471C49E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EA5D35C-28C7-4FAA-BE73-FC0F471C49E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EA5D35C-28C7-4FAA-BE73-FC0F471C49E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -128,5 +134,6 @@ Global
 		{7988A1B1-8B54-40F3-9578-FBB46FA64DC2} = {0B1E3E3B-95AD-4427-9235-879A65DEE41F}
 		{FCFE9441-61E0-45A4-8E5A-A2F8CD3AF441} = {0B1E3E3B-95AD-4427-9235-879A65DEE41F}
 		{F8A061C2-2B60-4237-B479-C33702172BBA} = {1D789CB1-D87D-44BE-A9AA-EADAF1816A6B}
+		{0EA5D35C-28C7-4FAA-BE73-FC0F471C49E3} = {0B1E3E3B-95AD-4427-9235-879A65DEE41F}
 	EndGlobalSection
 EndGlobal
