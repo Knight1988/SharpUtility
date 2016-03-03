@@ -45,6 +45,7 @@
     </Compile>
     <Compile Include="DesignTimeHelper.cs" />
     <Compile Include="FolderSelectDialog.cs" />
+    <Compile Include="FormExtensions.cs" />
     <Compile Include="Hotkeys\Hotkey.cs" />
     <Compile Include="Hotkeys\HotkeyInfo.cs" />
     <Compile Include="Hotkeys\KeyboardHook.cs" />
