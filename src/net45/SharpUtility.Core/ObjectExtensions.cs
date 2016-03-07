@@ -13,7 +13,10 @@ namespace SharpUtility.Core
         /// <returns></returns>
         public static T Clone<T>(this T source)
         {
-            return JsonConvert.DeserializeObject<T>(source.ToJson());
+            return JsonConvert.DeserializeObject<T>(source.ToJson(Formatting.None, new JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            }));
         }
 
         /// <summary>
@@ -35,6 +38,18 @@ namespace SharpUtility.Core
         public static string ToJson(this object source, Formatting formatting)
         {
             return JsonConvert.SerializeObject(source, formatting);
+        }
+
+        /// <summary>
+        /// Convert an object to json
+        /// </summary>
+        /// <param name="source">object to convert</param>
+        /// <param name="formatting">formatting option</param>
+        /// <param name="settings">setting for serialized object</param>
+        /// <returns></returns>
+        public static string ToJson(this object source, Formatting formatting, JsonSerializerSettings settings)
+        {
+            return JsonConvert.SerializeObject(source, formatting, settings);
         }
     }
 }
