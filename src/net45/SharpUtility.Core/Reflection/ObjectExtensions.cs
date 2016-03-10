@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace SharpUtility.Core.Reflection
+namespace SharpUtility.Reflection
 {
     public static class ObjectExtensions
     {

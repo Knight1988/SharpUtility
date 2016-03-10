@@ -2,7 +2,7 @@ using System;
 using System.Net;
 using System.Text;
 
-namespace SharpUtility.Core.Net
+namespace SharpUtility.Net
 {
     public class UTF8WebClient : WebClient
     {

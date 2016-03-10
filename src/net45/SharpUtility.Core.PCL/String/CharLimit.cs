@@ -1,6 +1,6 @@
 using System;
 
-namespace SharpUtility.Core.String
+namespace SharpUtility.String
 {
     [Flags]
     public enum CharLimit

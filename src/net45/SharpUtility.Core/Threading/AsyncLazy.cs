@@ -2,13 +2,14 @@
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+
 #if NONATIVETASKS
 using Microsoft.Runtime.CompilerServices;
 #else
 
 #endif
 
-namespace SharpUtility.Core.Threading
+namespace SharpUtility.Threading
 {
     /// <summary>
     /// Provides support for asynchronous lazy initialization. This type is fully threadsafe.

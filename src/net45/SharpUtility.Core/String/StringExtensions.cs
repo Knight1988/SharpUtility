@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace SharpUtility.Core.String
+namespace SharpUtility.String
 {
     public static class StringExtensions
     {

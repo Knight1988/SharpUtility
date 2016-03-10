@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Net;
 
-namespace SharpUtility.Core.Net
+namespace SharpUtility.Net
 {
     public class FormData : Dictionary<string, string>
     {

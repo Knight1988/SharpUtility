@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SharpUtility.Core.Linq
+namespace SharpUtility.Linq
 {
     /// <summary>
     /// Original: http://www.codeproject.com/Articles/488643/LinQ-Extended-Joins

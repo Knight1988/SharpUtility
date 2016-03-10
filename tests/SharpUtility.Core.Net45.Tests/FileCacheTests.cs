@@ -1,7 +1,8 @@
 ﻿using System;
 using NUnit.Framework;
+using SharpUtility.Runtime.Caching;
 
-namespace SharpUtility.Runtime.Caching.Tests
+namespace SharpUtility.Core.Tests
 {
     [TestFixture]
     public class FileCacheTests

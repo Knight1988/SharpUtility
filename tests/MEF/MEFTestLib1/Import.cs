@@ -1,5 +1,4 @@
-﻿using System.Runtime.Remoting.Lifetime;
-using MEFInterface;
+﻿using MEFInterface;
 using SharpUtility.Runtime.Remoting;
 
 namespace MEFTestLib1

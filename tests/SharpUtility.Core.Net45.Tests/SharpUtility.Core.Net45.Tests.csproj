@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Caching\FileCacheTests.cs" />
     <Compile Include="CodeConfigurationTests.cs" />
+    <Compile Include="CodeConfigurationAsyncTests.cs" />
     <Compile Include="Enum\EnumTest.cs" />
     <Compile Include="Enum\TestEnum.cs" />
     <Compile Include="FileCacheTests.cs" />

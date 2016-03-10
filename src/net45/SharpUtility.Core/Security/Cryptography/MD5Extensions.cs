@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace SharpUtility.Core.Security.Cryptography
+namespace SharpUtility.Security.Cryptography
 {
     public static class MD5Extensions
     {

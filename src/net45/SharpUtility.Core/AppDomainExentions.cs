@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace SharpUtility.Core
+namespace SharpUtility
 {
     public static class AppDomainExentions
     {

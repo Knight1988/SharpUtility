@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using SharpUtility.Core.Threading;
+using SharpUtility.Threading;
 
 namespace SharpUtility.Core.Tests.Threading
 {

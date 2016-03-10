@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace SharpUtility.Core.String
+namespace SharpUtility.String
 {
     public static class StringInjectExtension
     {

@@ -2,8 +2,9 @@
 using System.Net;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using SharpUtility.Mail;
 
-namespace SharpUtility.Mail.Tests
+namespace SharpUtility.Core.Tests
 {
     [TestFixture]
     [Category("InternetRequired")]

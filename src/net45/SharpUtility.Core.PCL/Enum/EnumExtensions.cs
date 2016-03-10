@@ -1,8 +1,7 @@
-﻿using System;
-using System.Reflection;
-using SharpUtility.Core.String;
+﻿using System.Reflection;
+using SharpUtility.String;
 
-namespace SharpUtility.Core.Enum
+namespace SharpUtility.Enum
 {
     public static  class EnumExtensions
     {

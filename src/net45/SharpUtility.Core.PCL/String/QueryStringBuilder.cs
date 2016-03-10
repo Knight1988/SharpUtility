@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Net;
 
-namespace SharpUtility.Core.String
+namespace SharpUtility.String
 {
     public class QueryStringBuilder : Dictionary<string, object>
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-using SharpUtility.Core.Enum;
+using SharpUtility.Enum;
 
-namespace SharpUtility.Core.String
+namespace SharpUtility.String
 {
     public class RandomString
     {

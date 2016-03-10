@@ -1,7 +1,8 @@
 ﻿using System.Text;
 using NUnit.Framework;
+using SharpUtility.Security.Cryptography;
 
-namespace SharpUtility.Core.Security.Cryptography.Tests
+namespace SharpUtility.Core.Tests.Security.Cryptography
 {
     [TestFixture]
     public class AESTests

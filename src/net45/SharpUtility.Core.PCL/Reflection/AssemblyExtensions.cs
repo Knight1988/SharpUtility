@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace SharpUtility.Core.Reflection
+namespace SharpUtility.Reflection
 {
     public static class AssemblyExtensions
     {

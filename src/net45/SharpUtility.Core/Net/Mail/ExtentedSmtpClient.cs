@@ -4,9 +4,9 @@ using System.Linq;
 using System.Net.Mail;
 using System.Threading;
 using System.Threading.Tasks;
-using SharpUtility.Core.Threading;
+using SharpUtility.Threading;
 
-namespace SharpUtility.Core.Net.Mail
+namespace SharpUtility.Net.Mail
 {
     public class ExtentedSmtpClient : SmtpClient
     {

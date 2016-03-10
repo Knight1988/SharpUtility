@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace SharpUtility.Core.Caching.Tests
+namespace SharpUtility.Core.Tests.Caching
 {
     [TestFixture]
     public class FileCacheTests

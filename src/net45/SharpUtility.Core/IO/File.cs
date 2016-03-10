@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using Microsoft.Win32;
 
-namespace SharpUtility.Core.IO
+namespace SharpUtility.IO
 {
     /// <summary>
     /// Unlock and move files,

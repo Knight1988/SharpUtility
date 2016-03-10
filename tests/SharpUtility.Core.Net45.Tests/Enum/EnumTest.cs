@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using SharpUtility.Core.Enum;
+﻿using NUnit.Framework;
+using SharpUtility.Enum;
 
 namespace SharpUtility.Core.Tests.Enum
 {

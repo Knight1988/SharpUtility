@@ -1,9 +1,9 @@
 ﻿using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using SharpUtility.Core.String;
+using SharpUtility.String;
 
-namespace SharpUtility.Core.Security.Cryptography
+namespace SharpUtility.Security.Cryptography
 {
     public class AES
     {

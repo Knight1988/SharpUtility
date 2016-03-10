@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using SharpUtility.Core.Threading;
 
-namespace SharpUtility.Core
+namespace SharpUtility
 {
     public class CodeConfiguration
     {
@@ -15,7 +14,24 @@ namespace SharpUtility.Core
         {
             RetryIfFail(3);
             RunAfter(0);
-            DelayBetweenEachRetry(1000);
+            DelayBetweenEachRetry(0);
+        }
+
+        public CodeConfiguration RetryIfFail(int maxRetries)
+        {
+            MaxRetries = maxRetries;
+            return this;
+        }
+
+        public CodeConfiguration RunAfter(int millisecondsTimeout)
+        {
+            return RunAfter(new TimeSpan(0, 0, 0, 0, millisecondsTimeout));
+        }
+
+        public CodeConfiguration RunAfter(TimeSpan timeout)
+        {
+            Delay = timeout;
+            return this;
         }
 
         public CodeConfiguration DelayBetweenEachRetry(int millisecondsTimeout)
@@ -29,11 +45,24 @@ namespace SharpUtility.Core
             return this;
         }
 
+        #region ExecuteAsync
+
+        /// <summary>
+        ///     Execute a async function
+        /// </summary>
+        /// <param name="func">func to run</param>
+        /// <returns></returns>
         public async Task ExecuteAsync(Func<Task> func)
         {
             await ExecuteAsync(func, null);
         }
 
+        /// <summary>
+        ///     Execute a async function
+        /// </summary>
+        /// <param name="func">func to run</param>
+        /// <param name="onError">call this function on exception</param>
+        /// <returns></returns>
         public async Task ExecuteAsync(Func<Task> func, Func<Exception, Task> onError)
         {
             await Task.Delay(Delay);
@@ -59,11 +88,24 @@ namespace SharpUtility.Core
             }
         }
 
+        /// <summary>
+        ///     Execute a function then retun value
+        /// </summary>
+        /// <typeparam name="T">value type</typeparam>
+        /// <param name="func">func to run</param>
+        /// <returns></returns>
         public async Task<T> ExecuteAsync<T>(Func<T> func)
         {
             return await ExecuteAsync(func, null);
         }
 
+        /// <summary>
+        ///     Execute a function then retun value
+        /// </summary>
+        /// <typeparam name="T">value type</typeparam>
+        /// <param name="func">func to run</param>
+        /// <param name="onError">return this function value on exception</param>
+        /// <returns></returns>
         public async Task<T> ExecuteAsync<T>(Func<T> func, Func<Exception, T> onError)
         {
             await Task.Delay(Delay);
@@ -88,11 +130,24 @@ namespace SharpUtility.Core
             }
         }
 
+        /// <summary>
+        ///     Execute a async function
+        /// </summary>
+        /// <typeparam name="T">value type</typeparam>
+        /// <param name="func">function to run</param>
+        /// <returns></returns>
         public async Task<T> ExecuteAsync<T>(Func<Task<T>> func)
         {
             return await ExecuteAsync(func, null);
         }
 
+        /// <summary>
+        ///     Execute a async function
+        /// </summary>
+        /// <typeparam name="T">value type</typeparam>
+        /// <param name="func">function to run</param>
+        /// <param name="onError">run then return this func value on exception</param>
+        /// <returns></returns>
         public async Task<T> ExecuteAsync<T>(Func<Task<T>> func, Func<Exception, Task<T>> onError)
         {
             await Task.Delay(Delay);
@@ -117,11 +172,22 @@ namespace SharpUtility.Core
             }
         }
 
+        /// <summary>
+        ///     Run an action
+        /// </summary>
+        /// <param name="action">action to run</param>
+        /// <returns></returns>
         public Task ExecuteAsync(Action action)
         {
             return ExecuteAsync(action, null);
         }
 
+        /// <summary>
+        ///     Run an action
+        /// </summary>
+        /// <param name="action">action to run</param>
+        /// <param name="onError">call this action on exception</param>
+        /// <returns></returns>
         public async Task ExecuteAsync(Action action, Action<Exception> onError)
         {
             await Task.Delay(Delay);
@@ -146,21 +212,92 @@ namespace SharpUtility.Core
             }
         }
 
-        public CodeConfiguration RetryIfFail(int maxRetries)
+        #endregion
+
+#if !PCL
+#region Execute
+
+        /// <summary>
+        /// Execute an action
+        /// </summary>
+        /// <param name="action">action to run</param>
+        public void Execute(Action action)
         {
-            MaxRetries = maxRetries;
-            return this;
+            Execute(action, null);
         }
 
-        public CodeConfiguration RunAfter(int millisecondsTimeout)
+        /// <summary>
+        /// Execute an action
+        /// </summary>
+        /// <param name="action">action to run</param>
+        /// <param name="onError">run this action on exception</param>
+        public void Execute(Action action, Action<Exception> onError)
         {
-            return RunAfter(new TimeSpan(0, 0, 0, 0, millisecondsTimeout));
+            Thread.Sleep(Delay);
+            var num = 0;
+
+            Retry:
+            try
+            {
+                action();
+            }
+            catch (Exception e)
+            {
+                num++;
+                if (num >= MaxRetries)
+                {
+                    if (onError == null) throw;
+                    onError(e);
+                    return;
+                }
+
+                Thread.Sleep(RetryDelay);
+                goto Retry;
+            }
         }
 
-        public CodeConfiguration RunAfter(TimeSpan timeout)
+        /// <summary>
+        /// Execute a function then return value
+        /// </summary>
+        /// <typeparam name="T">value type</typeparam>
+        /// <param name="func">func to run</param>
+        /// <returns></returns>
+        public T Execute<T>(Func<T> func)
         {
-            Delay = timeout;
-            return this;
+            return Execute(func, null);
         }
+
+        /// <summary>
+        /// Execute a function then return value
+        /// </summary>
+        /// <typeparam name="T">value type</typeparam>
+        /// <param name="func">func to run</param>
+        /// <param name="onError">return value of this function on exception</param>
+        /// <returns></returns>
+        public T Execute<T>(Func<T> func, Func<Exception, T> onError)
+        {
+            Thread.Sleep(Delay);
+            var num = 0;
+
+            Retry:
+            try
+            {
+                return func();
+            }
+            catch (Exception e)
+            {
+                num++;
+                if (num >= MaxRetries)
+                {
+                    if (onError == null) throw;
+                    return onError(e);
+                }
+
+                Thread.Sleep(RetryDelay);
+                goto Retry;
+            }
+        }
+#endregion
+#endif
     }
 }

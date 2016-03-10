@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using SharpUtility.Core.Math;
+using SharpUtility.Math;
 
 namespace SharpUtility.Core.Tests.Math
 {

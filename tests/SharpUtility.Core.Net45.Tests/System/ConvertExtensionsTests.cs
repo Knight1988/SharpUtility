@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace SharpUtility.Core.Tests
+namespace SharpUtility.Core.Tests.System
 {
     [TestFixture]
     public class ConvertExtensionsTests

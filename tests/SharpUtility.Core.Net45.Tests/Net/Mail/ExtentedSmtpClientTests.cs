@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Mail;
 using NUnit.Framework;
-using SharpUtility.Core.Net.Mail;
+using SharpUtility.Net.Mail;
 
 namespace SharpUtility.Core.Tests.Net.Mail
 {

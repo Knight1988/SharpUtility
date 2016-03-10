@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.Remoting;
-using System.Runtime.Remoting.Lifetime;
 
 namespace SharpUtility.Runtime.Remoting
 {

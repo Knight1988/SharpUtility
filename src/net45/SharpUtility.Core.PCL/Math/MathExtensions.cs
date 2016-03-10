@@ -1,4 +1,4 @@
-﻿namespace SharpUtility.Core.Math
+﻿namespace SharpUtility.Math
 {
     public static class MathExtensions
     {

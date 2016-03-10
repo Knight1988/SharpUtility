@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace SharpUtility.Core.Threading
+namespace SharpUtility.Threading
 {
     /// <summary>
     /// Original: http://blogs.msdn.com/b/pfxteam/archive/2013/01/13/cooperatively-pausing-async-methods.aspx

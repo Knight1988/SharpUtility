@@ -4,12 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using MEFInterface;
 using NUnit.Framework;
-using SharpUtility.MEF;
-using SharpUtility.MEF.Tests;
 
 // ReSharper disable PossibleNullReferenceException
 
-namespace AppDomainTestRunner.Tests
+namespace SharpUtility.MEF.Tests
 {
     [TestFixture]
     public class RunnerBaseTests

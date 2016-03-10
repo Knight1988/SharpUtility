@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using SharpUtility.Core.IO;
+using SharpUtility.IO;
 
 namespace SharpUtility.Core.Tests.IO
 {

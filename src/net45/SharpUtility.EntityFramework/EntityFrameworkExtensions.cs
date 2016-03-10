@@ -1,5 +1,4 @@
 ﻿using System.Data.Entity.Core.EntityClient;
-using System.Data.SqlClient;
 
 namespace SharpUtility.EntityFramework
 {

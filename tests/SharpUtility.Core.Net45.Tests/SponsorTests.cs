@@ -1,9 +1,9 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using NUnit.Framework;
 using SharpUtility.Runtime.Remoting;
 
-namespace SharpUtility.Tests
+namespace SharpUtility.Core.Tests
 {
     [TestFixture()]
     public class SponsorTests : MarshalByRefObject

@@ -1,7 +1,6 @@
-﻿using System.Web.UI.WebControls;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace SharpUtility.Core
+namespace SharpUtility
 {
     public static class ObjectExtensions
     {

@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SharpUtility.Core.Threading
+namespace SharpUtility.Threading
 {
     public static class TaskManager
     {

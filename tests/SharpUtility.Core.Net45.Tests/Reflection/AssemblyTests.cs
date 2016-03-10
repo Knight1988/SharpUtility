@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Reflection;
 using NUnit.Framework;
-using SharpUtility.Core.Reflection;
+using SharpUtility.Reflection;
 
 namespace SharpUtility.Core.Tests.Reflection
 {

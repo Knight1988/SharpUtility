@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
 using Newtonsoft.Json;
-using SharpUtility.Core.Security.Cryptography;
+using SharpUtility.Security.Cryptography;
 
 namespace SharpUtility.Runtime.Caching
 {
