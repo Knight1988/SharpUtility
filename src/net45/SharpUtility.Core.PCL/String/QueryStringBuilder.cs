@@ -9,7 +9,7 @@ namespace SharpUtility.String
         public override string ToString()
         {
             var array = from p in this
-                        select string.Format("{0}={1}", WebUtility.UrlEncode(p.Key), WebUtility.UrlEncode(p.Value.ToString()));
+                        select $"{WebUtility.UrlEncode(p.Key)}={WebUtility.UrlEncode(p.Value.ToString())}";
             return "?" + string.Join("&", array);
         }
     }

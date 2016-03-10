@@ -14,7 +14,7 @@ namespace SharpUtility
         {
             lock (_lock)
             {
-                var output = string.Format("{0:P}    ", value);
+                var output = $"{value:P}    ";
                 Console.Write(output);
                 Console.SetCursorPosition(Console.CursorLeft - output.Length, Console.CursorTop);
             }
