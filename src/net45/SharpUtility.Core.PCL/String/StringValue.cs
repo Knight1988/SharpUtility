@@ -6,10 +6,7 @@ namespace SharpUtility.String
     {
         private readonly string _value;
 
-        public string Value
-        {
-            get { return _value; }
-        }
+        public string Value => _value;
 
         public StringValue(string value)
         {

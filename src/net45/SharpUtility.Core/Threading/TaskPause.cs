@@ -37,10 +37,7 @@ namespace SharpUtility.Threading
             }
         }
 
-        public PauseToken Token
-        {
-            get { return new PauseToken(this); }
-        }
+        public PauseToken Token => new PauseToken(this);
 
         public void Pause()
         {
@@ -68,10 +65,7 @@ namespace SharpUtility.Threading
             _source = source;
         }
 
-        public bool IsPaused
-        {
-            get { return _source != null && _source.IsPaused; }
-        }
+        public bool IsPaused => _source != null && _source.IsPaused;
 
         public Task WaitWhilePausedAsync()
         {

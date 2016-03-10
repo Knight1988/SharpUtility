@@ -8,15 +8,9 @@ namespace SharpUtility.WinForm.Hotkeys
         private readonly Keys _key;
         private readonly ModifierKeys _modifier;
 
-        public Keys Key
-        {
-            get { return _key; }
-        }
+        public Keys Key => _key;
 
-        public ModifierKeys Modifier
-        {
-            get { return _modifier; }
-        }
+        public ModifierKeys Modifier => _modifier;
 
         internal KeyPressedEventArgs(ModifierKeys modifier, Keys key)
         {

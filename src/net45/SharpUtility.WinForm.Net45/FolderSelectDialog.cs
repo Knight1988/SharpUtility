@@ -57,10 +57,7 @@ namespace SharpUtility.WinForm
         /// <summary>
         ///     Gets the selected folder
         /// </summary>
-        public string FileName
-        {
-            get { return _ofd.FileName; }
-        }
+        public string FileName => _ofd.FileName;
 
         #endregion
 
