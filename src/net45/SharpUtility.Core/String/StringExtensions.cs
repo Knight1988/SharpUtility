@@ -20,7 +20,7 @@ namespace SharpUtility.String
         }
 
         /// <summary>
-        /// Count number of words by listed char
+        /// Count number of words by listed char (It's = 1)
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -31,7 +31,7 @@ namespace SharpUtility.String
         }
 
         /// <summary>
-        /// Count number of words by alpha numberic
+        /// Count number of words by alpha numberic (It's = 2)
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -80,6 +80,18 @@ namespace SharpUtility.String
             sb.Append(str.Substring(previousIndex));
 
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Containt with comparison type
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="value"></param>
+        /// <param name="comparisonType"></param>
+        /// <returns></returns>
+        public static bool Contains(this string s, string value, StringComparison comparisonType)
+        {
+            return s.IndexOf(value, comparisonType) > -1;
         }
     }
 }
