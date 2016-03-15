@@ -1,3 +1,4 @@
+using SharpUtility.Enum;
 using SharpUtility.String;
 
 namespace SharpUtility.Core.Tests.Enum
