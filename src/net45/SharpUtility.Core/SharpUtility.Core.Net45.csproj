@@ -70,6 +70,7 @@
     <Compile Include="ConsoleExtended.cs" />
     <Compile Include="Drawing\ImageHandler.cs" />
     <Compile Include="Enum\EnumExtensions.cs" />
+    <Compile Include="Enum\StringValue.cs" />
     <Compile Include="IO\DirectoryExtended.cs" />
     <Compile Include="IO\File.cs" />
     <Compile Include="IO\StreamExtensions.cs" />
@@ -94,7 +95,6 @@
     <Compile Include="String\RandomString.cs" />
     <Compile Include="String\StringExtensions.cs" />
     <Compile Include="String\StringInjectExtensions.cs" />
-    <Compile Include="String\StringValue.cs" />
     <Compile Include="ConvertExtension.cs" />
     <Compile Include="AppDomainExentions.cs" />
     <Compile Include="Threading\AsyncLazy.cs" />
