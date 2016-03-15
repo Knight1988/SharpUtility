@@ -42,6 +42,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
@@ -86,6 +87,7 @@
     <Compile Include="Security\Cryptography\AES.cs" />
     <Compile Include="Security\Cryptography\MD5Extensions.cs" />
     <Compile Include="Security\Cryptography\RSAExtensions.cs" />
+    <Compile Include="Security\Cryptography\SHA1Extensions.cs" />
     <Compile Include="String\Base64.cs" />
     <Compile Include="String\CharLimit.cs" />
     <Compile Include="String\QueryStringBuilder.cs" />

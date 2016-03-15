@@ -1,16 +1,16 @@
-﻿using System.Security.Cryptography;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace SharpUtility.Security.Cryptography
 {
     // ReSharper disable once InconsistentNaming
-    public static class MD5Extensions
+    public static class SHA1Extensions
     {
-        public static string ComputeHash(this MD5 md5, string input, Encoding encoding)
+        public static string ComputeHash(this SHA1 sha1, string input, Encoding encoding)
         {
-            // step 1, calculate MD5 hash from input
+            // step 1, calculate SHA1 hash from input
             var inputBytes = encoding.GetBytes(input);
-            var hash = md5.ComputeHash(inputBytes);
+            var hash = sha1.ComputeHash(inputBytes);
 
             // step 2, convert byte array to hex string
             var sb = new StringBuilder();
@@ -21,9 +21,9 @@ namespace SharpUtility.Security.Cryptography
             return sb.ToString();
         }
 
-        public static string ComputeHash(this MD5 md5, string input)
+        public static string ComputeHash(this SHA1 sha1, string input)
         {
-            return ComputeHash(md5, input, Encoding.UTF8);
+            return ComputeHash(sha1, input, Encoding.UTF8);
         }
     }
 }
