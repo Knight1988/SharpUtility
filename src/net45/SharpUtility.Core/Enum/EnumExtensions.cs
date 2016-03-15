@@ -1,6 +1,4 @@
-﻿using System;
-using System.Reflection;
-using SharpUtility.String;
+﻿using SharpUtility.String;
 
 namespace SharpUtility.Enum
 {
@@ -14,7 +12,7 @@ namespace SharpUtility.Enum
         public static string GetStringValue(this System.Enum value)
         {
             string output = null;
-            Type type = value.GetType();
+            var type = value.GetType();
 
             //Check first in our cached results...
 
@@ -22,8 +20,8 @@ namespace SharpUtility.Enum
 
             //in the field's custom attributes
 
-            FieldInfo fi = type.GetField(value.ToString());
-            StringValue[] attrs =
+            var fi = type.GetField(value.ToString());
+            var attrs =
                fi.GetCustomAttributes(typeof(StringValue),
                                        false) as StringValue[];
             if (attrs != null && attrs.Length > 0)
