@@ -74,6 +74,7 @@
     <Compile Include="IO\DirectoryExtended.cs" />
     <Compile Include="IO\File.cs" />
     <Compile Include="IO\StreamExtensions.cs" />
+    <Compile Include="JobCounter.cs" />
     <Compile Include="Linq\JoinExtensions.cs" />
     <Compile Include="Math\MathExtensions.cs" />
     <Compile Include="Net\FormData.cs" />
