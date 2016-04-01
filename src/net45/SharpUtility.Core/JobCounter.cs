@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace SharpUtility
 {
     public class JobCounter
     {
-        private string _lastOutput;
+        public string LastOutput { get; private set; } = string.Empty;
 
         public long MaxValue { get; set; }
 
@@ -24,15 +25,15 @@ namespace SharpUtility
         {
             var value = Value/MaxValue;
             var output = $"{value:P}";
-            Console.SetCursorPosition(Console.CursorLeft - _lastOutput.Length, Console.CursorTop);
+            Console.SetCursorPosition(Console.CursorLeft - LastOutput.Length, Console.CursorTop);
             Console.Write(output);
-            _lastOutput = output;
+            LastOutput = output;
             return this;
         }
 
-        public JobCounter IncreaseValue()
+        public JobCounter IncreaseValue(long increment = 1)
         {
-            Value++;
+            Value = Value + increment;
             return this;
         }
     }
