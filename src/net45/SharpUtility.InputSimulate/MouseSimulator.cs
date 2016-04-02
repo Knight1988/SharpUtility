@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using SharpUtility.Win32API;
 
 namespace SharpUtility.InputSimulate
 {

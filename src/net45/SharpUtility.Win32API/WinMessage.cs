@@ -1,6 +1,6 @@
 namespace SharpUtility.InputSimulate
 {
-    internal enum WinMessage
+    public enum WinMessage
     {
         /// <summary>
         ///     Command message is sent when the user selects a command item from a menu,

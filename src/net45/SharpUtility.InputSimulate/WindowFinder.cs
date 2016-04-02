@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SharpUtility.Win32API;
 
 namespace SharpUtility.InputSimulate
 {
@@ -10,7 +11,7 @@ namespace SharpUtility.InputSimulate
     {
         public static int FindWindow(string className, string windowName)
         {
-            Win32.GetWindowRect()
+            return Win32.FindWindow(className, windowName);
         }
     }
 }
