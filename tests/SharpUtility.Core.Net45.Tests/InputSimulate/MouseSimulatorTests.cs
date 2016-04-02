@@ -21,5 +21,25 @@ namespace SharpUtility.Core.Tests.InputSimulate
             /* Atc */
             await MouseSimulator.ClickAsync(handle, MouseButton.Left, 50, 50);
         }
+
+        [Test]
+        public async Task MouseClickDownDelayTests()
+        {
+            /* Arrange */
+            var handle = WindowFinder.FindWindow(null, "Genymotion for personal use - Google Galaxy Nexus - 4.2.2 - API 17 - 720x1280 v2.6 (720x1280, 320dpi) - 192.168.56.101");
+
+            /* Atc */
+            await MouseSimulator.ClickAsync(handle, MouseButton.Left, 50, 50, 1, 10, 1000);
+        }
+
+        [Test]
+        public async Task MouseClickRepeatClickTests()
+        {
+            /* Arrange */
+            var handle = WindowFinder.FindWindow(null, "Genymotion for personal use - Google Galaxy Nexus - 4.2.2 - API 17 - 720x1280 v2.6 (720x1280, 320dpi) - 192.168.56.101");
+
+            /* Atc */
+            await MouseSimulator.ClickAsync(handle, MouseButton.Left, 50, 500, 1, 10);
+        }
     }
 }
