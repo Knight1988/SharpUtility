@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using Telerik.JustMock;
 
 namespace SharpUtility.Core.Tests
 {
@@ -14,13 +15,20 @@ namespace SharpUtility.Core.Tests
         public void TestJob()
         {
             /* Arrange */
-            var jobCoutner = new JobCounter(100);
+            var jobCoutner = Mock.Create<JobCounter>(Behavior.CallOriginal, 100);
+            string lastOutput = null;
+            Mock.Arrange(() => jobCoutner.DisplayToConsole()).DoInstead(() =>
+            {
+                var value = jobCoutner.Value / jobCoutner.MaxValue;
+                var output = $"{value:P}";
+                lastOutput = output;
+            });
 
             /* Act */
             jobCoutner.IncreaseValue().DisplayToConsole();
 
             /* Assert */
-            Assert.AreEqual("1.00%", jobCoutner.LastOutput);
+            Assert.AreEqual("1.00 %", lastOutput);
         }
     }
 }

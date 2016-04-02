@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SharpUtility.Core.Net;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-namespace SharpUtility.Core.Net.Tests
+﻿using NUnit.Framework;
+using SharpUtility.Net;
+
+namespace SharpUtility.Core.Tests.Net
 {
-    [TestClass()]
+    [TestFixture()]
     public class FormDataTests
     {
-        [TestMethod()]
+        [Test]
         public void ToStringTest()
         {
             var formData = new FormData
