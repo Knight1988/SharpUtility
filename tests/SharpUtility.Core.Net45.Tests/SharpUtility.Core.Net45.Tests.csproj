@@ -69,6 +69,7 @@
     <Compile Include="Enum\EnumTest.cs" />
     <Compile Include="Enum\TestEnum.cs" />
     <Compile Include="FileCacheTests.cs" />
+    <Compile Include="InputSimulate\MouseSimulatorTests.cs" />
     <Compile Include="IO\FileTests.cs" />
     <Compile Include="JobCounterTests.cs" />
     <Compile Include="Mail\MailPingerTests.cs" />
@@ -94,6 +95,10 @@
     <ProjectReference Include="..\..\src\net45\SharpUtility.Core\SharpUtility.Core.Net45.csproj">
       <Project>{9CFC6221-753E-4674-B0DA-B085D8DF82A5}</Project>
       <Name>SharpUtility.Core.Net45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\net45\SharpUtility.InputSimulate\SharpUtility.InputSimulate.csproj">
+      <Project>{EF11049F-2394-4DCE-AD1E-C1A3CDDE7622}</Project>
+      <Name>SharpUtility.InputSimulate</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\net45\SharpUtility.Mail\SharpUtility.Mail.csproj">
       <Project>{fcfe9441-61e0-45a4-8e5a-a2f8cd3af441}</Project>
