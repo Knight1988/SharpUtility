@@ -17,7 +17,7 @@ namespace SharpUtility.Win32API
         /// <param name="windowName"></param>
         /// <returns></returns>
         [DllImport("User32.dll")]
-        public static extern int FindWindow(string className, string windowName);
+        public static extern IntPtr FindWindow(string className, string windowName);
 
         /// <summary>
         /// The FindWindowEx function retrieves a handle to a window whose class name 
