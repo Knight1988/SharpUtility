@@ -42,6 +42,7 @@ namespace SharpUtility.InputSimulate
         /// <param name="x">The x position to click within the control. Default is center.</param>
         /// <param name="y">The y position to click within the control. Default is center.</param>
         /// <param name="clicks">The number of times to click the mouse. Default is 1.</param>
+        /// <param name="clickDelay"></param>
         public static async Task ClickAsync(IntPtr windowHandle, MouseButton mouseButton, int x, int y, int clicks,
             int clickDelay)
         {
@@ -82,7 +83,7 @@ namespace SharpUtility.InputSimulate
         /// <param name="y">The y position to click within the control. Default is center.</param>
         private static void Down(IntPtr windowHandle, MouseButton mouseButton, int x, int y)
         {
-            Win32.PostMessage(windowHandle, (int) mouseButton, (IntPtr) 0x00000001,
+            Win32.PostMessage(windowHandle, (IntPtr) mouseButton, (IntPtr) 0x00000001,
                 Win32.CreateLParam(x, y));
         }
 
@@ -95,7 +96,7 @@ namespace SharpUtility.InputSimulate
         /// <param name="y">The y position to click within the control. Default is center.</param>
         private static void Up(IntPtr windowHandle, MouseButton mouseButton, int x, int y)
         {
-            Win32.PostMessage(windowHandle, (int) mouseButton, (IntPtr) 0x00000000,
+            Win32.PostMessage(windowHandle, (IntPtr) mouseButton, (IntPtr) 0x00000000,
                 Win32.CreateLParam(x, y));
         }
     }
