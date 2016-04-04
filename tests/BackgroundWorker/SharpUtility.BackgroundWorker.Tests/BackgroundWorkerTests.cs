@@ -48,19 +48,31 @@ namespace SharpUtility.Threading.Tests
         }
 
         [Test]
-        public void TestCancel()
+        public void CancelTest()
         {
             var tokenSource = new CancellationTokenSource();
             /* Arrange */
             var worker = BackgroundWorker.Create();
 
             /* Act */
-            var task = worker.RunWorkerAsync(() => DoWork(), tokenSource.Token);
+            var task = worker.RunWorkerAsync(DoWorkAsync, tokenSource.Token);
             tokenSource.Cancel();
 
             /* Assert */
             // ReSharper disable once MethodSupportsCancellation
             Assert.That(() => task.Wait(), Throws.TypeOf<AggregateException>().And.InnerException.AssignableFrom<TaskCanceledException>());
+        }
+
+        [Test]
+        public async Task PclTest()
+        {
+            /* Arrange */
+
+            /* Act */
+            await CounterWorker.RunWorkerAsync(DoWorkAsync);
+
+            /* Assert */
+            Assert.AreEqual(10, i);
         }
     }
 }

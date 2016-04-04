@@ -4,13 +4,13 @@ namespace SharpUtility.Threading
 {
     public class ProgressChangedEventArgs : EventArgs
     {
-        public ProgressChangedEventArgs(long progressPercentage, object userState)
+        public ProgressChangedEventArgs(double progressPercentage, object userState)
         {
             ProgressPercentage = progressPercentage;
             UserState = userState;
         }
 
-        public long ProgressPercentage { get; }
+        public double ProgressPercentage { get; }
 
         public object UserState { get; }
     }

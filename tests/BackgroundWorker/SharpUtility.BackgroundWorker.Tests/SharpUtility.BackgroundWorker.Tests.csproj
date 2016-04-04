@@ -34,12 +34,8 @@
       <HintPath>..\..\packages\Newtonsoft.Json.3.5.8\lib\35\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.0.5813.39031, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SharpUtility.Core, Version=1.2.5877.27670, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SharpUtility.Core.1.2.5877.27670\lib\net45\SharpUtility.Core.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.2.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NUnit.3.2.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -53,9 +49,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\net45\SharpUtility.PCLBackgroundWorker\SharpUtility.BackgroundWorker\SharpUtility.BackgroundWorker.Core\SharpUtility.BackgroundWorker.Core.csproj">
+      <Project>{E45E0E9A-F9E6-4FC2-A374-FAA1E972CA26}</Project>
+      <Name>SharpUtility.BackgroundWorker.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\src\net45\SharpUtility.PCLBackgroundWorker\SharpUtility.BackgroundWorker\SharpUtility.BackgroundWorker.csproj">
       <Project>{3bded817-ff89-4bdb-a353-e4f4acf5de30}</Project>
       <Name>SharpUtility.BackgroundWorker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpUtility.BackgroundWorker.PCL\SharpUtility.BackgroundWorker.PCL.csproj">
+      <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
+      <Name>SharpUtility.BackgroundWorker.PCL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

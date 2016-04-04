@@ -46,7 +46,12 @@ namespace SharpUtility.Threading
 
         public static IBackgroundWorker Create()
         {
-            return new BackgroundWorker();
+            return Create<BackgroundWorker>();
+        }
+
+        public static IBackgroundWorker Create<T>() where T : IBackgroundWorker, new()
+        {
+            return new T();
         }
 
         protected virtual void OnCompleted(CompleteEventArgs e)

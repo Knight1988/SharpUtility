@@ -46,18 +46,6 @@
     <Compile Include="..\SharpUtility.BackgroundWorker\BackgroundWorker.cs">
       <Link>BackgroundWorker.cs</Link>
     </Compile>
-    <Compile Include="..\SharpUtility.BackgroundWorker\CompleteEventArgs.cs">
-      <Link>CompleteEventArgs.cs</Link>
-    </Compile>
-    <Compile Include="..\SharpUtility.BackgroundWorker\DoWorkEventArgs.cs">
-      <Link>DoWorkEventArgs.cs</Link>
-    </Compile>
-    <Compile Include="..\SharpUtility.BackgroundWorker\IBackgroundWorker.cs">
-      <Link>IBackgroundWorker.cs</Link>
-    </Compile>
-    <Compile Include="..\SharpUtility.BackgroundWorker\ProgressChangedEventArgs.cs">
-      <Link>ProgressChangedEventArgs.cs</Link>
-    </Compile>
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,6 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharpUtility.BackgroundWorker\SharpUtility.BackgroundWorker.Core\SharpUtility.BackgroundWorker.Core.csproj">
+      <Project>{E45E0E9A-F9E6-4FC2-A374-FAA1E972CA26}</Project>
+      <Name>SharpUtility.BackgroundWorker.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
