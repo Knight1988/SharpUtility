@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7988A1B1-8B54-40F3-9578-FBB46FA64DC2}</ProjectGuid>
+    <ProjectGuid>{3BDED817-FF89-4BDB-A353-E4F4ACF5DE30}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SharpUtility</RootNamespace>
-    <AssemblyName>SharpUtility.Core.PCL</AssemblyName>
+    <RootNamespace>SharpUtility.Threading</RootNamespace>
+    <AssemblyName>SharpUtility.BackgroundWorker</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -20,52 +20,29 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\bin\net45\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;PCL</DefineConstants>
+    <OutputPath>..\..\..\..\bin\net45\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\bin\net45\Release\</OutputPath>
-    <DefineConstants>TRACE;PCL</DefineConstants>
+    <OutputPath>..\..\..\..\bin\net45\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\AssemblyInfo.Shared.cs">
-      <Link>Properties\AssemblyInfo.Shared.cs</Link>
-    </Compile>
-    <Compile Include="CodeConfiguration.cs" />
-    <Compile Include="ConvertExtension.cs" />
-    <Compile Include="Enum\EnumExtensions.cs" />
-    <Compile Include="IO\StreamExtensions.cs" />
-    <Compile Include="Linq\JoinExtensions.cs" />
-    <Compile Include="Math\MathExtensions.cs" />
-    <Compile Include="Net\FormData.cs" />
-    <Compile Include="ObjectExtensions.cs" />
+    <!-- A reference to the entire .NET Framework is automatically included -->
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BackgroundWorker.cs" />
+    <Compile Include="CompleteEventArgs.cs" />
+    <Compile Include="DoWorkEventArgs.cs" />
+    <Compile Include="IBackgroundWorker.cs" />
+    <Compile Include="ProgressChangedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reflection\AssemblyExtensions.cs" />
-    <Compile Include="String\Base64.cs" />
-    <Compile Include="String\CharLimit.cs" />
-    <Compile Include="String\QueryStringBuilder.cs" />
-    <Compile Include="String\RandomString.cs" />
-    <Compile Include="String\StringExtensions.cs" />
-    <Compile Include="String\StringInjectExtensions.cs" />
-    <Compile Include="String\StringValue.cs" />
-    <Compile Include="TaskBackgroundWorker.cs" />
-    <Compile Include="Threading\TaskManager.cs" />
-    <Compile Include="Threading\TaskPause.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
