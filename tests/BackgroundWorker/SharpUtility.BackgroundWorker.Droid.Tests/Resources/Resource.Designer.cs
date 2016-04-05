@@ -28,8 +28,6 @@ namespace SharpUtility.Threading.Tests
 		{
 			global::Nunit.Runner.Resource.String.ApplicationName = global::SharpUtility.Threading.Tests.Resource.String.ApplicationName;
 			global::Nunit.Runner.Resource.String.Hello = global::SharpUtility.Threading.Tests.Resource.String.Hello;
-			global::SharpUtility.Threading.Resource.String.ApplicationName = global::SharpUtility.Threading.Tests.Resource.String.ApplicationName;
-			global::SharpUtility.Threading.Resource.String.Hello = global::SharpUtility.Threading.Tests.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_in = global::SharpUtility.Threading.Tests.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_out = global::SharpUtility.Threading.Tests.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_grow_fade_in_from_bottom = global::SharpUtility.Threading.Tests.Resource.Animation.abc_grow_fade_in_from_bottom;

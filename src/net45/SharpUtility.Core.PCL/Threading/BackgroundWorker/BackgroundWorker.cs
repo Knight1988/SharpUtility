@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace SharpUtility.Threading
 {
-    public class BackgroundWorker : IBackgroundWorker
+    public class BackgroundWorker
     {
         public event EventHandler<CompleteEventArgs> Completed;
 
@@ -42,16 +42,6 @@ namespace SharpUtility.Threading
         public Task RunWorkerAsync(Action action)
         {
             return Task.Run(action);
-        }
-
-        public static IBackgroundWorker Create()
-        {
-            return Create<BackgroundWorker>();
-        }
-
-        public static IBackgroundWorker Create<T>() where T : IBackgroundWorker, new()
-        {
-            return new T();
         }
 
         protected virtual void OnCompleted(CompleteEventArgs e)

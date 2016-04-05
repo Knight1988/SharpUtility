@@ -126,16 +126,9 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MainActivity.cs.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\src\net45\SharpUtility.PCLBackgroundWorker\SharpUtility.BackgroundWorker.Droid\SharpUtility.BackgroundWorker.Droid.csproj">
-      <Project>{f0ae97da-c4fa-4ddc-b901-367c2461a66c}</Project>
-      <Name>SharpUtility.BackgroundWorker.Droid</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\src\net45\SharpUtility.PCLBackgroundWorker\SharpUtility.BackgroundWorker\SharpUtility.BackgroundWorker.Core\SharpUtility.BackgroundWorker.Core.csproj">
-      <Project>{E45E0E9A-F9E6-4FC2-A374-FAA1E972CA26}</Project>
-      <Name>SharpUtility.BackgroundWorker.Core</Name>
+    <ProjectReference Include="..\..\..\src\net45\SharpUtility.PCLBackgroundWorker\SharpUtility.BackgroundWorker\SharpUtility.BackgroundWorker.csproj">
+      <Project>{3bded817-ff89-4bdb-a353-e4f4acf5de30}</Project>
+      <Name>SharpUtility.BackgroundWorker</Name>
     </ProjectReference>
     <ProjectReference Include="..\SharpUtility.BackgroundWorker.PCL\SharpUtility.BackgroundWorker.PCL.csproj">
       <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>

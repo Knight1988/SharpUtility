@@ -56,10 +56,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\net45\SharpUtility.PCLBackgroundWorker\SharpUtility.BackgroundWorker\SharpUtility.BackgroundWorker.Core\SharpUtility.BackgroundWorker.Core.csproj">
-      <Project>{e45e0e9a-f9e6-4fc2-a374-faa1e972ca26}</Project>
-      <Name>SharpUtility.BackgroundWorker.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\src\net45\SharpUtility.PCLBackgroundWorker\SharpUtility.BackgroundWorker\SharpUtility.BackgroundWorker.csproj">
       <Project>{3BDED817-FF89-4BDB-A353-E4F4ACF5DE30}</Project>
       <Name>SharpUtility.BackgroundWorker</Name>

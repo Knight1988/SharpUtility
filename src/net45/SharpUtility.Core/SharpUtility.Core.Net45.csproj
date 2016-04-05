@@ -64,6 +64,18 @@
     <Compile Include="..\SharpUtility.Core.PCL\Reflection\AssemblyExtensions.cs">
       <Link>Reflection\AssemblyExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\SharpUtility.Core.PCL\Threading\BackgroundWorker\BackgroundWorker.cs">
+      <Link>BackgroundWorker\BackgroundWorker.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpUtility.Core.PCL\Threading\BackgroundWorker\CompleteEventArgs.cs">
+      <Link>BackgroundWorker\CompleteEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpUtility.Core.PCL\Threading\BackgroundWorker\DoWorkEventArgs.cs">
+      <Link>BackgroundWorker\DoWorkEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpUtility.Core.PCL\Threading\BackgroundWorker\ProgressChangedEventArgs.cs">
+      <Link>BackgroundWorker\ProgressChangedEventArgs.cs</Link>
+    </Compile>
     <Compile Include="..\SharpUtility.Core.PCL\Threading\TaskManager.cs">
       <Link>Threading\TaskManager.cs</Link>
     </Compile>
