@@ -6,6 +6,17 @@ namespace SharpUtility.Security.Cryptography
 {
     public static class RSAExtensions
     {
+        public static string Decrypt(this RSACryptoServiceProvider rsa, string input)
+        {
+            // Convert the string to byte array
+            var encrypted = input.HexStringToByteArray();
+
+            // Decrypt it using the private key
+            var secretData = rsa.Decrypt(encrypted, true);
+
+            return Encoding.UTF8.GetString(secretData);
+        }
+
         public static string Encrypt(this RSACryptoServiceProvider rsa, string input)
         {
             // Convert the string to byte array
@@ -21,17 +32,6 @@ namespace SharpUtility.Security.Cryptography
                 sb.Append(t.ToString("X2"));
             }
             return sb.ToString();
-        }
-
-        public static string Decrypt(this RSACryptoServiceProvider rsa, string input)
-        {
-            // Convert the string to byte array
-            var encrypted = input.HexStringToByteArray();
-
-            // Decrypt it using the private key
-            var secretData = rsa.Decrypt(encrypted, true);
-
-            return Encoding.UTF8.GetString(secretData);
         }
     }
 }

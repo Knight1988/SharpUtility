@@ -6,19 +6,15 @@ namespace SharpUtility.Net
 {
     public class UTF8WebClient : WebClient
     {
-        private int _timeout = 30000;
         private readonly CookieContainer _cookieContainer = new CookieContainer();
+
         /// <summary>
-        /// Request header only, useful for check url valid without download whole content.
-        /// work only with DownloadString method.
+        ///     Request header only, useful for check url valid without download whole content.
+        ///     work only with DownloadString method.
         /// </summary>
         public bool HeadOnly { get; set; }
 
-        public int Timeout
-        {
-            get { return _timeout; }
-            set { _timeout = value; }
-        }
+        public int Timeout { get; set; } = 30000;
 
         public UTF8WebClient()
         {
@@ -29,7 +25,7 @@ namespace SharpUtility.Net
 
         protected override WebRequest GetWebRequest(Uri uri)
         {
-            WebRequest webRequest = base.GetWebRequest(uri);
+            var webRequest = base.GetWebRequest(uri);
             if (webRequest is HttpWebRequest)
             {
                 var request = webRequest as HttpWebRequest;
@@ -44,7 +40,7 @@ namespace SharpUtility.Net
 
                 request.CookieContainer = _cookieContainer;
             }
-            
+
             return webRequest;
         }
     }

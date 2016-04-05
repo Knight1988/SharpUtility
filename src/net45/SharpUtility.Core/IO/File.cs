@@ -5,8 +5,8 @@ using Microsoft.Win32;
 namespace SharpUtility.IO
 {
     /// <summary>
-    /// Unlock and move files,
-    /// Unlocker is required
+    ///     Unlock and move files,
+    ///     Unlocker is required
     /// </summary>
     public static class File
     {
@@ -45,7 +45,7 @@ namespace SharpUtility.IO
 
             if (System.IO.File.Exists(unlockerPath))
                 return Process.Start(path, arg);
-            
+
             throw new Exception("Incorrect unlocker path");
         }
 

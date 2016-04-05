@@ -6,10 +6,6 @@ namespace SharpUtility.Threading
 {
     public class BackgroundWorker
     {
-        public event EventHandler<CompleteEventArgs> Completed;
-
-        public event EventHandler<ProgressChangedEventArgs> ProgressChanged;
-
         public long ProgressPercentage { get; private set; }
 
         public void ReportProgress(long progressPercentage)
@@ -53,5 +49,9 @@ namespace SharpUtility.Threading
         {
             ProgressChanged?.Invoke(this, e);
         }
+
+        public event EventHandler<CompleteEventArgs> Completed;
+
+        public event EventHandler<ProgressChangedEventArgs> ProgressChanged;
     }
 }

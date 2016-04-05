@@ -11,7 +11,7 @@ namespace SharpUtility.Drawing
     public static class ImageHandler
     {
         /// <summary>
-        /// Create Oval image
+        ///     Create Oval image
         /// </summary>
         /// <param name="img"></param>
         /// <returns></returns>
@@ -31,7 +31,7 @@ namespace SharpUtility.Drawing
         }
 
         /// <summary>
-        /// Resize image and crop
+        ///     Resize image and crop
         /// </summary>
         /// <param name="image"></param>
         /// <param name="width"></param>
@@ -63,7 +63,7 @@ namespace SharpUtility.Drawing
         }
 
         /// <summary>
-        /// Resize image and crop
+        ///     Resize image and crop
         /// </summary>
         /// <param name="image"></param>
         /// <param name="width"></param>
@@ -95,7 +95,7 @@ namespace SharpUtility.Drawing
         }
 
         /// <summary>
-        /// Resize and fill blank with color
+        ///     Resize and fill blank with color
         /// </summary>
         /// <param name="image"></param>
         /// <param name="width"></param>
@@ -124,7 +124,7 @@ namespace SharpUtility.Drawing
         }
 
         /// <summary>
-        /// Resize and fill blank with color
+        ///     Resize and fill blank with color
         /// </summary>
         /// <param name="image"></param>
         /// <param name="width"></param>
@@ -153,7 +153,7 @@ namespace SharpUtility.Drawing
         }
 
         /// <summary>
-        /// Resize but keep apect ratio
+        ///     Resize but keep apect ratio
         /// </summary>
         /// <param name="image"></param>
         /// <param name="maxWidth"></param>
@@ -178,7 +178,7 @@ namespace SharpUtility.Drawing
         }
 
         /// <summary>
-        /// Resize but keep apect ratio
+        ///     Resize but keep apect ratio
         /// </summary>
         /// <param name="image"></param>
         /// <param name="maxWidth"></param>
@@ -228,7 +228,7 @@ namespace SharpUtility.Drawing
         }
 
         /// <summary>
-        /// Convert image to byte array
+        ///     Convert image to byte array
         /// </summary>
         /// <param name="imageIn"></param>
         /// <param name="imageFormat"></param>
@@ -241,7 +241,7 @@ namespace SharpUtility.Drawing
         }
 
         /// <summary>
-        /// Convert byte array to image
+        ///     Convert byte array to image
         /// </summary>
         /// <param name="byteArrayIn"></param>
         /// <returns></returns>

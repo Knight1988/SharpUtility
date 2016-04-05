@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -12,15 +13,15 @@ using Microsoft.Runtime.CompilerServices;
 namespace SharpUtility.Threading
 {
     /// <summary>
-    /// Provides support for asynchronous lazy initialization. This type is fully threadsafe.
+    ///     Provides support for asynchronous lazy initialization. This type is fully threadsafe.
     /// </summary>
     /// <typeparam name="T">The type of object that is being asynchronously initialized.</typeparam>
     [DebuggerDisplay("State = {GetStateForDebugger}")]
-    [DebuggerTypeProxy(typeof(AsyncLazy<>.DebugView))]
+    [DebuggerTypeProxy(typeof (AsyncLazy<A>.DebugView))]
     public sealed class AsyncLazy<T>
     {
         /// <summary>
-        /// The underlying lazy task.
+        ///     The underlying lazy task.
         /// </summary>
         private readonly Lazy<Task<T>> _instance;
 
@@ -38,9 +39,18 @@ namespace SharpUtility.Threading
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AsyncLazy&lt;T&gt;"/> class.
+        ///     Whether the asynchronous factory method has started. This is initially <c>false</c> and becomes <c>true</c> when
+        ///     this instance is awaited or after <see cref="Start" /> is called.
         /// </summary>
-        /// <param name="factory">The delegate that is invoked on a background thread to produce the value when it is needed. May not be <c>null</c>.</param>
+        public bool IsStarted => _instance.IsValueCreated;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AsyncLazy&lt;T&gt;" /> class.
+        /// </summary>
+        /// <param name="factory">
+        ///     The delegate that is invoked on a background thread to produce the value when it is needed. May
+        ///     not be <c>null</c>.
+        /// </param>
         public AsyncLazy(Func<T> factory)
         {
             _instance = new Lazy<Task<T>>(() =>
@@ -52,9 +62,12 @@ namespace SharpUtility.Threading
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AsyncLazy&lt;T&gt;"/> class.
+        ///     Initializes a new instance of the <see cref="AsyncLazy&lt;T&gt;" /> class.
         /// </summary>
-        /// <param name="factory">The asynchronous delegate that is invoked on a background thread to produce the value when it is needed. May not be <c>null</c>.</param>
+        /// <param name="factory">
+        ///     The asynchronous delegate that is invoked on a background thread to produce the value when it is
+        ///     needed. May not be <c>null</c>.
+        /// </param>
         public AsyncLazy(Func<Task<T>> factory)
         {
             _instance = new Lazy<Task<T>>(() =>
@@ -66,21 +79,17 @@ namespace SharpUtility.Threading
         }
 
         /// <summary>
-        /// Whether the asynchronous factory method has started. This is initially <c>false</c> and becomes <c>true</c> when this instance is awaited or after <see cref="Start"/> is called.
+        ///     Asynchronous infrastructure support. This method permits instances of <see cref="AsyncLazy&lt;T&gt;" /> to be
+        ///     await'ed.
         /// </summary>
-        public bool IsStarted => _instance.IsValueCreated;
-
-        /// <summary>
-        /// Asynchronous infrastructure support. This method permits instances of <see cref="AsyncLazy&lt;T&gt;"/> to be await'ed.
-        /// </summary>
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public TaskAwaiter<T> GetAwaiter()
         {
             return _instance.Value.GetAwaiter();
         }
 
         /// <summary>
-        /// Starts the asynchronous initialization, if it has not already started.
+        ///     Starts the asynchronous initialization, if it has not already started.
         /// </summary>
         public void Start()
         {
@@ -100,11 +109,6 @@ namespace SharpUtility.Threading
         internal sealed class DebugView
         {
             private readonly AsyncLazy<T> _lazy;
-
-            public DebugView(AsyncLazy<T> lazy)
-            {
-                _lazy = lazy;
-            }
 
             public LazyState State => _lazy.GetStateForDebugger;
 
@@ -126,6 +130,11 @@ namespace SharpUtility.Threading
                         throw new InvalidOperationException("Not yet created.");
                     return _lazy._instance.Value.Result;
                 }
+            }
+
+            public DebugView(AsyncLazy<T> lazy)
+            {
+                _lazy = lazy;
             }
         }
     }

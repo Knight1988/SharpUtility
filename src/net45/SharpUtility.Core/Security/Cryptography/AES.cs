@@ -7,6 +7,48 @@ namespace SharpUtility.Security.Cryptography
 {
     public class AES
     {
+        public string Decrypt(string input, string password, string salt)
+        {
+            // Convert the string to byte array
+            var encrypted = input.HexStringToByteArray();
+            var passwordBytes = Encoding.UTF8.GetBytes(password);
+            var saltBytes = Encoding.UTF8.GetBytes(salt);
+
+            // Decrypt it using the private key
+            var secretData = Decrypt(encrypted, passwordBytes, saltBytes);
+
+            return Encoding.UTF8.GetString(secretData);
+        }
+
+        public byte[] Decrypt(byte[] bytesToBeDecrypted, byte[] passwordBytes, byte[] saltBytes)
+        {
+            byte[] decryptedBytes;
+
+            using (var ms = new MemoryStream())
+            {
+                using (var AES = new RijndaelManaged())
+                {
+                    AES.KeySize = 256;
+                    AES.BlockSize = 128;
+
+                    var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
+                    AES.Key = key.GetBytes(AES.KeySize/8);
+                    AES.IV = key.GetBytes(AES.BlockSize/8);
+
+                    AES.Mode = CipherMode.CBC;
+
+                    using (var cs = new CryptoStream(ms, AES.CreateDecryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(bytesToBeDecrypted, 0, bytesToBeDecrypted.Length);
+                        cs.Close();
+                    }
+                    decryptedBytes = ms.ToArray();
+                }
+            }
+
+            return decryptedBytes;
+        }
+
         public string Encrypt(string input, string password, string salt)
         {
             // Convert the string to byte array
@@ -30,16 +72,16 @@ namespace SharpUtility.Security.Cryptography
         {
             byte[] encryptedBytes;
 
-            using (MemoryStream ms = new MemoryStream())
+            using (var ms = new MemoryStream())
             {
-                using (RijndaelManaged AES = new RijndaelManaged())
+                using (var AES = new RijndaelManaged())
                 {
                     AES.KeySize = 256;
                     AES.BlockSize = 128;
 
                     var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
-                    AES.Key = key.GetBytes(AES.KeySize / 8);
-                    AES.IV = key.GetBytes(AES.BlockSize / 8);
+                    AES.Key = key.GetBytes(AES.KeySize/8);
+                    AES.IV = key.GetBytes(AES.BlockSize/8);
 
                     AES.Mode = CipherMode.CBC;
 
@@ -53,48 +95,6 @@ namespace SharpUtility.Security.Cryptography
             }
 
             return encryptedBytes;
-        }
-
-        public string Decrypt(string input, string password, string salt)
-        {
-            // Convert the string to byte array
-            var encrypted = input.HexStringToByteArray();
-            var passwordBytes = Encoding.UTF8.GetBytes(password);
-            var saltBytes = Encoding.UTF8.GetBytes(salt);
-
-            // Decrypt it using the private key
-            var secretData = Decrypt(encrypted, passwordBytes, saltBytes);
-
-            return Encoding.UTF8.GetString(secretData);
-        }
-
-        public byte[] Decrypt(byte[] bytesToBeDecrypted, byte[] passwordBytes, byte[] saltBytes)
-        {
-            byte[] decryptedBytes;
-
-            using (MemoryStream ms = new MemoryStream())
-            {
-                using (RijndaelManaged AES = new RijndaelManaged())
-                {
-                    AES.KeySize = 256;
-                    AES.BlockSize = 128;
-
-                    var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
-                    AES.Key = key.GetBytes(AES.KeySize / 8);
-                    AES.IV = key.GetBytes(AES.BlockSize / 8);
-
-                    AES.Mode = CipherMode.CBC;
-
-                    using (var cs = new CryptoStream(ms, AES.CreateDecryptor(), CryptoStreamMode.Write))
-                    {
-                        cs.Write(bytesToBeDecrypted, 0, bytesToBeDecrypted.Length);
-                        cs.Close();
-                    }
-                    decryptedBytes = ms.ToArray();
-                }
-            }
-
-            return decryptedBytes;
         }
     }
 }

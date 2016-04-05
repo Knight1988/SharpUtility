@@ -1,11 +1,9 @@
-﻿using SharpUtility.String;
-
-namespace SharpUtility.Enum
+﻿namespace SharpUtility.Enum
 {
-    public static  class EnumExtensions
+    public static class EnumExtensions
     {
         /// <summary>
-        /// Get string value from enum
+        ///     Get string value from enum
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -22,8 +20,8 @@ namespace SharpUtility.Enum
 
             var fi = type.GetField(value.ToString());
             var attrs =
-               fi.GetCustomAttributes(typeof(StringValue),
-                                       false) as StringValue[];
+                fi.GetCustomAttributes(typeof (StringValue),
+                    false) as StringValue[];
             if (attrs != null && attrs.Length > 0)
             {
                 output = attrs[0].Value;

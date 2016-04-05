@@ -25,6 +25,15 @@ namespace SharpUtility.Net.Mail
         /// </summary>
         private PauseTokenSource _pauseTokenSource;
 
+        /// <summary>
+        ///     Max send rate, default 40
+        /// </summary>
+        public decimal MaxSendRate
+        {
+            get { return _maxSendRate; }
+            set { _maxSendRate = value; }
+        }
+
         // Summary:
         //     Initializes a new instance of the System.Net.Mail.SmtpClient class by using
         //     configuration file settings.
@@ -65,13 +74,9 @@ namespace SharpUtility.Net.Mail
         {
         }
 
-        /// <summary>
-        ///     Max send rate, default 40
-        /// </summary>
-        public decimal MaxSendRate
+        public ExtentedSmtpClient Clone()
         {
-            get { return _maxSendRate; }
-            set { _maxSendRate = value; }
+            return new ExtentedSmtpClient();
         }
 
         /// <summary>
@@ -171,11 +176,6 @@ namespace SharpUtility.Net.Mail
         ///     Report send mail progress event
         /// </summary>
         public event EventHandler<EmailSenderArgs> SendBulkMailProgress;
-
-        public ExtentedSmtpClient Clone()
-        {
-            return new ExtentedSmtpClient();
-        }
     }
 
     public class EmailSenderArgs : EventArgs

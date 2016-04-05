@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace SharpUtility.Threading
 {
     /// <summary>
-    /// Original: http://blogs.msdn.com/b/pfxteam/archive/2013/01/13/cooperatively-pausing-async-methods.aspx
+    ///     Original: http://blogs.msdn.com/b/pfxteam/archive/2013/01/13/cooperatively-pausing-async-methods.aspx
     /// </summary>
     public class PauseTokenSource
     {

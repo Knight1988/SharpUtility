@@ -37,14 +37,14 @@
     <Compile Include="..\..\AssemblyInfo.Shared.cs">
       <Link>Properties\AssemblyInfo.Shared.cs</Link>
     </Compile>
-    <Compile Include="CodeConfiguration.cs" />
-    <Compile Include="ConvertExtension.cs" />
+    <Compile Include="Common\CodeConfiguration.cs" />
+    <Compile Include="Common\ConvertExtension.cs" />
     <Compile Include="Enum\EnumExtensions.cs" />
     <Compile Include="IO\StreamExtensions.cs" />
     <Compile Include="Linq\JoinExtensions.cs" />
     <Compile Include="Math\MathExtensions.cs" />
     <Compile Include="Net\FormData.cs" />
-    <Compile Include="ObjectExtensions.cs" />
+    <Compile Include="Reflection\ObjectExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\AssemblyExtensions.cs" />
     <Compile Include="String\Base64.cs" />
@@ -53,7 +53,7 @@
     <Compile Include="String\RandomString.cs" />
     <Compile Include="String\StringExtensions.cs" />
     <Compile Include="String\StringInjectExtensions.cs" />
-    <Compile Include="String\StringValue.cs" />
+    <Compile Include="Enum\StringValue.cs" />
     <Compile Include="Threading\BackgroundWorker\BackgroundWorker.cs" />
     <Compile Include="Threading\BackgroundWorker\CompleteEventArgs.cs" />
     <Compile Include="Threading\BackgroundWorker\DoWorkEventArgs.cs" />
