@@ -7,17 +7,17 @@ namespace SharpUtility
     {
         public string LastOutput { get; private set; } = string.Empty;
 
-        public long MaxValue { get; set; }
+        public double MaxValue { get; set; }
 
-        public long Value { get; set; }
+        public double Value { get; set; }
 
-        public JobCounter(long value, long maxValue)
+        public JobCounter(double value, double maxValue)
         {
             Value = value;
             MaxValue = maxValue;
         }
 
-        public JobCounter(long maxValue) : this(0, maxValue)
+        public JobCounter(double maxValue) : this(0, maxValue)
         {
         }
 

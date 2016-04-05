@@ -17,7 +17,7 @@ namespace SharpUtility.Win32API
         /// <param name="windowName"></param>
         /// <returns></returns>
         [DllImport("User32.dll")]
-        public static extern int FindWindow(string className, string windowName);
+        public static extern IntPtr FindWindow(string className, string windowName);
 
         /// <summary>
         /// The FindWindowEx function retrieves a handle to a window whose class name 
@@ -30,7 +30,7 @@ namespace SharpUtility.Win32API
         /// <param name="windowName"></param>
         /// <returns></returns>
         [DllImport("User32.dll")]
-        public static extern int FindWindowEx(int hwndParent, int hwndChildAfter, string className,
+        public static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string className,
             string windowName);
 
         /// <summary>
@@ -43,32 +43,8 @@ namespace SharpUtility.Win32API
         /// <param name="lParam">second message parameter</param>
         /// <returns></returns>
         [DllImport("User32.dll")]
-        public static extern int PostMessage(int hWnd, int msg, int wParam, [MarshalAs(UnmanagedType.LPStr)] string lParam);
-
-        /// <summary>
-        /// The PostMessage function sends the specified message to a 
-        /// window or windows. It calls the window procedure for the specified window.
-        /// </summary>
-        /// <param name="hWnd">handle to destination window</param>
-        /// <param name="msg">message</param>
-        /// <param name="wParam">first message parameter</param>
-        /// <param name="lParam">second message parameter</param>
-        /// <returns></returns>
-        [DllImport("User32.dll")]
-        public static extern int PostMessage(int hWnd, int msg, IntPtr wParam, IntPtr lParam);
-
-        /// <summary>
-        /// The PostMessage function sends the specified message to a 
-        /// window or windows. It calls the window procedure for the specified window.
-        /// </summary>
-        /// <param name="hWnd">handle to destination window</param>
-        /// <param name="msg">message</param>
-        /// <param name="wParam">first message parameter</param>
-        /// <param name="lParam">second message parameter</param>
-        /// <returns></returns>
-        [DllImport("User32.dll")]
-        public static extern int PostMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
-
+        public static extern int PostMessage(IntPtr hWnd, IntPtr msg, IntPtr wParam, IntPtr lParam);
+        
         /// <summary>
         /// Retrieves the dimensions of the bounding rectangle of the specified window. 
         /// The dimensions are given in screen coordinates that are relative to the upper-left corner of the screen.

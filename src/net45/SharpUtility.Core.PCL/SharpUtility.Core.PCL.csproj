@@ -54,6 +54,10 @@
     <Compile Include="String\StringExtensions.cs" />
     <Compile Include="String\StringInjectExtensions.cs" />
     <Compile Include="String\StringValue.cs" />
+    <Compile Include="Threading\BackgroundWorker\BackgroundWorker.cs" />
+    <Compile Include="Threading\BackgroundWorker\CompleteEventArgs.cs" />
+    <Compile Include="Threading\BackgroundWorker\DoWorkEventArgs.cs" />
+    <Compile Include="Threading\BackgroundWorker\ProgressChangedEventArgs.cs" />
     <Compile Include="Threading\TaskManager.cs" />
     <Compile Include="Threading\TaskPause.cs" />
   </ItemGroup>

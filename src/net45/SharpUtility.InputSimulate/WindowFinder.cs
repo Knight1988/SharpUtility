@@ -9,7 +9,7 @@ namespace SharpUtility.InputSimulate
 {
     public static class WindowFinder
     {
-        public static int FindWindow(string className, string windowName)
+        public static IntPtr FindWindow(string className, string windowName)
         {
             return Win32.FindWindow(className, windowName);
         }
