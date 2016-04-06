@@ -6,6 +6,19 @@ namespace SharpUtility.Threading
 {
     public class BackgroundWorker
     {
+        private readonly Func<Task> _actionTask;
+        private readonly Action _action;
+
+        public BackgroundWorker(Func<Task> action)
+        {
+            _actionTask = action;
+        }
+
+        public BackgroundWorker(Action action)
+        {
+            _action = action;
+        }
+
         public long ProgressPercentage { get; private set; }
 
         public void ReportProgress(long progressPercentage)
@@ -20,24 +33,34 @@ namespace SharpUtility.Threading
             OnProgressChanged(new ProgressChangedEventArgs(progressPercentage, userState));
         }
 
-        public Task RunWorkerAsync(Func<Task> action, CancellationToken token)
+        public Task RunWorkerAsync(CancellationToken token)
         {
-            return Task.Run(action, token);
+            if (_action != null)
+            {
+                return Task.Run(_action, token);
+            }
+
+            if (_actionTask != null)
+            {
+                return Task.Run(_actionTask, token);
+            }
+
+            return Task.FromResult(true);
         }
 
-        public Task RunWorkerAsync(Action action, CancellationToken token)
+        public Task RunWorkerAsync()
         {
-            return Task.Run(action, token);
-        }
+            if (_action != null)
+            {
+                return Task.Run(_action);
+            }
 
-        public Task RunWorkerAsync(Func<Task> action)
-        {
-            return Task.Run(action);
-        }
+            if (_actionTask != null)
+            {
+                return Task.Run(_actionTask);
+            }
 
-        public Task RunWorkerAsync(Action action)
-        {
-            return Task.Run(action);
+            return Task.FromResult(true);
         }
 
         protected virtual void OnCompleted(CompleteEventArgs e)
