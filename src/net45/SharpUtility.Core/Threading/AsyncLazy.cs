@@ -17,7 +17,7 @@ namespace SharpUtility.Threading
     /// </summary>
     /// <typeparam name="T">The type of object that is being asynchronously initialized.</typeparam>
     [DebuggerDisplay("State = {GetStateForDebugger}")]
-    [DebuggerTypeProxy(typeof (AsyncLazy<A>.DebugView))]
+    [DebuggerTypeProxy(typeof (AsyncLazy<>.DebugView))]
     public sealed class AsyncLazy<T>
     {
         /// <summary>
