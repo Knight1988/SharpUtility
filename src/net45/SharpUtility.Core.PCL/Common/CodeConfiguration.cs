@@ -1,4 +1,8 @@
 ﻿using System;
+#if !PCL
+using System.Threading;
+#endif
+
 using System.Threading.Tasks;
 
 namespace SharpUtility.Common
