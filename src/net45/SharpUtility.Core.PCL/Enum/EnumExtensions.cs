@@ -1,9 +1,12 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using SharpUtility.String;
 
 namespace SharpUtility.Enum
 {
-    public static  class EnumExtensions
+    public static class EnumExtensions
     {
         /// <summary>
         /// Get string value from enum
@@ -12,25 +15,22 @@ namespace SharpUtility.Enum
         /// <returns></returns>
         public static string GetStringValue(this System.Enum value)
         {
-            string output = null;
+            var attrs = value.GetCustomAttributes<StringValue>().FirstOrDefault();
+            return attrs?.Value;
+        }
+
+        /// <summary>
+        /// Get enum attributes
+        /// </summary>
+        /// <param name="value">enum value</param>
+        /// <returns></returns>
+        public static IEnumerable<TAttribute> GetCustomAttributes<TAttribute>(this System.Enum value)
+        {
             var type = value.GetType();
-
-            //Check first in our cached results...
-
-            //Look for our 'StringValueAttribute' 
-
-            //in the field's custom attributes
-
             var fi = type.GetRuntimeField(value.ToString());
-            var attrs =
-               fi.GetCustomAttributes(typeof(StringValue),
-                                       false) as StringValue[];
-            if (attrs != null && attrs.Length > 0)
-            {
-                output = attrs[0].Value;
-            }
+            var attrs = fi.GetCustomAttributes(typeof(TAttribute), false).Cast<TAttribute>();
 
-            return output;
+            return attrs;
         }
     }
 }
