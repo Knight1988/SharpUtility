@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace SharpUtility
+namespace SharpUtility.Reflection
 {
     public static class ObjectExtensions
     {

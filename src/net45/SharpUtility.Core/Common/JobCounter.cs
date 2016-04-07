@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 
-namespace SharpUtility
+namespace SharpUtility.Common
 {
     public class JobCounter
     {

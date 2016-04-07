@@ -1,4 +1,5 @@
 using System;
+using SharpUtility.Enum;
 
 namespace SharpUtility.String
 {

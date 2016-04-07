@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace SharpUtility
+namespace SharpUtility.Common
 {
     public class CodeConfiguration
     {

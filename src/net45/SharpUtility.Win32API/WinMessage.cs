@@ -1,4 +1,4 @@
-namespace SharpUtility.InputSimulate
+namespace SharpUtility.Win32API
 {
     public enum WinMessage
     {

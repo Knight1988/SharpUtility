@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SharpUtility.String
+namespace SharpUtility.Enum
 {
     public class StringValue : Attribute
     {

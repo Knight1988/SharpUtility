@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SharpUtility
+namespace SharpUtility.Common
 {
     public static class ConvertExtensions
     {
