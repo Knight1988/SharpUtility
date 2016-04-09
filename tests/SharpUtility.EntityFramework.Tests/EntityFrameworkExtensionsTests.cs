@@ -1,5 +1,8 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using System.Configuration;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 
 namespace SharpUtility.EntityFramework.Tests
@@ -12,8 +15,19 @@ namespace SharpUtility.EntityFramework.Tests
         [SetUp]
         public void Setup()
         {
-            var sql =
-                @"RESTORE DATABASE [AdventureWorks2008R2] FROM  DISK = N'E:\SQL\BACKUP\AdventureWorks2008R2-Full Database Backup.bak' WITH  FILE = 1,  MOVE N'AdventureWorks2008R2_Data' TO N'E:\SQL\DATA\AdventureWorks2008R2.mdf',  MOVE N'AdventureWorks2008R2_Log' TO N'E:\SQL\DATA\AdventureWorks2008R2_1.LDF',  NOUNLOAD,  REPLACE,  STATS = 10";
+            var dataFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+            var backupFile = Path.Combine(dataFolder, "AdventureWorks2008R2-Full Database Backup.bak");
+            var dataFile = Path.Combine(dataFolder, "AdventureWorks2008R2.mdf");
+            var logFile = Path.Combine(dataFolder, "AdventureWorks2008R2.ldf");
+            var sql = $@"RESTORE DATABASE [AdventureWorks2008R2] FROM  DISK = N'{backupFile}' WITH  FILE = 1,  MOVE N'AdventureWorks2008R2_Data' TO N'{dataFile}',  MOVE N'AdventureWorks2008R2_Log' TO N'{logFile}',  NOUNLOAD,  REPLACE,  STATS = 10";
+
+            using (var cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["AdventureWorkConnection"].ConnectionString))
+            {
+                var cmd = new SqlCommand(sql, cnn);
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                cnn.Close();
+            }
         }
 
         [Test()]

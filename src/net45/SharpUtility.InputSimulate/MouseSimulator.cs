@@ -81,7 +81,7 @@ namespace SharpUtility.InputSimulate
         /// <param name="mouseButton">The button to click, "left", "right". Default is the left button.</param>
         /// <param name="x">The x position to click within the control. Default is center.</param>
         /// <param name="y">The y position to click within the control. Default is center.</param>
-        private static void Down(IntPtr windowHandle, MouseButton mouseButton, int x, int y)
+        public static void Down(IntPtr windowHandle, MouseButton mouseButton, int x, int y)
         {
             Win32.PostMessage(windowHandle, (IntPtr) mouseButton, (IntPtr) 0x00000001,
                 Win32.CreateLParam(x, y));
@@ -94,7 +94,7 @@ namespace SharpUtility.InputSimulate
         /// <param name="mouseButton">The button to click, "left", "right". Default is the left button.</param>
         /// <param name="x">The x position to click within the control. Default is center.</param>
         /// <param name="y">The y position to click within the control. Default is center.</param>
-        private static void Up(IntPtr windowHandle, MouseButton mouseButton, int x, int y)
+        public static void Up(IntPtr windowHandle, MouseButton mouseButton, int x, int y)
         {
             Win32.PostMessage(windowHandle, (IntPtr) mouseButton, (IntPtr) 0x00000000,
                 Win32.CreateLParam(x, y));
