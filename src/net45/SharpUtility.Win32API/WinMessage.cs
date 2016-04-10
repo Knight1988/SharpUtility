@@ -10,6 +10,11 @@ namespace SharpUtility.Win32API
         Command = 0x111,
 
         /// <summary>
+        ///     Mouse move
+        /// </summary>
+        MouseMove = 0x200,
+
+        /// <summary>
         ///     Left button down
         /// </summary>
         LeftButtonDown = 0x201,

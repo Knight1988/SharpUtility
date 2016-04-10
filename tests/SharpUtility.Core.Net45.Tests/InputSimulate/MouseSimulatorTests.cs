@@ -12,21 +12,24 @@ namespace SharpUtility.Core.Tests.InputSimulate
     [TestFixture]
     class MouseSimulatorTests
     {
+        private string _windowTitle =
+            "Genymotion for personal use - Google Nexus 5 - 6.0.0 - API 23 - 1080x1920 (1080x1920, 480dpi) - 192.168.56.101";
+
         [Test]
         public async Task MouseClickTests()
         {
             /* Arrange */
-            var handle = WindowFinder.FindWindow(null, "Genymotion for personal use - Google Galaxy Nexus - 4.2.2 - API 17 - 720x1280 v2.6 (720x1280, 320dpi) - 192.168.56.101");
+            var handle = WindowFinder.FindWindow(null, _windowTitle);
 
             /* Atc */
-            await MouseSimulator.ClickAsync(handle, MouseButton.Left, 50, 50);
+            await MouseSimulator.ClickAsync(handle, MouseButton.Left, 190, 400, 1, 250);
         }
 
         [Test]
         public async Task MouseClickDownDelayTests()
         {
             /* Arrange */
-            var handle = WindowFinder.FindWindow(null, "Genymotion for personal use - Google Galaxy Nexus - 4.2.2 - API 17 - 720x1280 v2.6 (720x1280, 320dpi) - 192.168.56.101");
+            var handle = WindowFinder.FindWindow(null, _windowTitle);
 
             /* Atc */
             await MouseSimulator.ClickAsync(handle, MouseButton.Left, 50, 50, 1, 10, 1000);
@@ -36,7 +39,7 @@ namespace SharpUtility.Core.Tests.InputSimulate
         public async Task MouseClickRepeatClickTests()
         {
             /* Arrange */
-            var handle = WindowFinder.FindWindow(null, "Genymotion for personal use - Google Galaxy Nexus - 4.2.2 - API 17 - 720x1280 v2.6 (720x1280, 320dpi) - 192.168.56.101");
+            var handle = WindowFinder.FindWindow(null, _windowTitle);
 
             /* Atc */
             await MouseSimulator.ClickAsync(handle, MouseButton.Left, 50, 500, 1, 10);

@@ -83,7 +83,18 @@ namespace SharpUtility.InputSimulate
         /// <param name="y">The y position to click within the control. Default is center.</param>
         public static void Down(IntPtr windowHandle, MouseButton mouseButton, int x, int y)
         {
-            Win32.PostMessage(windowHandle, (IntPtr) mouseButton, (IntPtr) 0x00000001,
+            WinMessage msg;
+            switch (mouseButton)
+            {
+                    case MouseButton.Right:
+                    msg = WinMessage.RightButtonDown;
+                    break;
+                default:
+                    msg = WinMessage.LeftButtonDown;
+                    break;
+
+            }
+            Win32.PostMessage(windowHandle, (IntPtr)msg, (IntPtr) 0x00000001,
                 Win32.CreateLParam(x, y));
         }
 
@@ -96,7 +107,18 @@ namespace SharpUtility.InputSimulate
         /// <param name="y">The y position to click within the control. Default is center.</param>
         public static void Up(IntPtr windowHandle, MouseButton mouseButton, int x, int y)
         {
-            Win32.PostMessage(windowHandle, (IntPtr) mouseButton, (IntPtr) 0x00000000,
+            WinMessage msg;
+            switch (mouseButton)
+            {
+                case MouseButton.Right:
+                    msg = WinMessage.RightButtonUp;
+                    break;
+                default:
+                    msg = WinMessage.LeftButtonUp;
+                    break;
+
+            }
+            Win32.PostMessage(windowHandle, (IntPtr)msg, (IntPtr)0x00000001,
                 Win32.CreateLParam(x, y));
         }
     }
