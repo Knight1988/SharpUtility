@@ -79,7 +79,9 @@
     <Compile Include="..\SharpUtility.Core.PCL\Threading\TaskManager.cs">
       <Link>Threading\TaskManager.cs</Link>
     </Compile>
-    <Compile Include="Common\ConsoleExtended.cs" />
+    <Compile Include="..\SharpUtility.Core.PCL\Time\RemainingTimer.cs">
+      <Link>Time\RemainingTimer.cs</Link>
+    </Compile>
     <Compile Include="Drawing\ImageHandler.cs" />
     <Compile Include="Enum\EnumExtensions.cs" />
     <Compile Include="Enum\StringValue.cs" />

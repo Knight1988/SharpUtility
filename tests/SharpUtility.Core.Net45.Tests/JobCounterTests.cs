@@ -17,16 +17,17 @@ namespace SharpUtility.Core.Tests
         {
             /* Arrange */
             var jobCoutner = Mock.Create<JobCounter>(Behavior.CallOriginal, 100);
+            jobCoutner.DisplayRemainingTime = false;
             string lastOutput = null;
-            Mock.Arrange(() => jobCoutner.DisplayToConsole()).DoInstead(() =>
+            Mock.Arrange(() => jobCoutner.WriteToConsole()).DoInstead(() =>
             {
-                var value = jobCoutner.Value / jobCoutner.MaxValue;
-                var output = $"{value:P}";
+                var output = jobCoutner.ToString();
+                lastOutput = lastOutput?.Remove(0, jobCoutner.LastOutput.Length);
                 lastOutput = output;
             });
 
             /* Act */
-            jobCoutner.IncreaseValue().DisplayToConsole();
+            jobCoutner.IncreaseValue().WriteToConsole();
 
             /* Assert */
             Assert.AreEqual("1.00 %", lastOutput);

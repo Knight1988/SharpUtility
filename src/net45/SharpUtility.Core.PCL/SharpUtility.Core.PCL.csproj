@@ -60,6 +60,7 @@
     <Compile Include="Threading\BackgroundWorker\ProgressChangedEventArgs.cs" />
     <Compile Include="Threading\TaskManager.cs" />
     <Compile Include="Threading\TaskPause.cs" />
+    <Compile Include="Time\RemainingTimer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
