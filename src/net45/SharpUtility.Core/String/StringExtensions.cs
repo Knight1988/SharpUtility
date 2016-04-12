@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using SharpUtility.Linq;
 
 namespace SharpUtility.String
 {
@@ -95,5 +97,85 @@ namespace SharpUtility.String
             var matchesByListedChars = regex.Matches(s);
             return matchesByListedChars.Count;
         }
+
+        /// <summary>
+        ///     Trim string, double space, convert space-like to space.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string TrimSpaces(this string s)
+        {
+            var sb = new StringBuilder(s);
+            var charCodes = new[]
+            {
+                " ",    // alt + 255
+                " ",    // atl + 0160
+            };
+            sb.Replace(charCodes, " ");
+            s = sb.ToString().Trim();
+            s = Regex.Replace(s, @"\s+", " ");
+            return s;
+        }
+
+        /// <summary>
+        /// Replace all character array to new value
+        /// </summary>
+        /// <param name="sb">string builder to replace</param>
+        /// <param name="chars">character array</param>
+        /// <param name="newValue">new value to replace</param>
+        /// <returns></returns>
+        public static StringBuilder Replace(this StringBuilder sb, IEnumerable<char> chars, char newValue)
+        {
+            foreach (var c in chars)
+            {
+                sb.Replace(c, newValue);
+            }
+            return sb;
+        }
+
+        /// <summary>
+        /// Replace all character array to new value
+        /// </summary>
+        /// <param name="sb">string builder to replace</param>
+        /// <param name="strings">string array</param>
+        /// <param name="newValue">new value to replace</param>
+        /// <returns></returns>
+        public static StringBuilder Replace(this StringBuilder sb, IEnumerable<string> strings, string newValue)
+        {
+            foreach (var s in strings)
+            {
+                sb.Replace(s, newValue);
+            }
+            return sb;
+        }
+
+        /// <summary>
+        /// Trim string
+        /// </summary>
+        /// <param name="s">string to trim</param>
+        /// <param name="trimStart">trim start</param>
+        /// <param name="trimEnd">trim end</param>
+        /// <param name="stringComparison">string comparion method</param>
+        /// <returns>trimmed string</returns>
+        public static string Trim(this string s, string trimStart, string trimEnd, StringComparison stringComparison)
+        {
+            s = s.TrimSpaces();
+            if (s.StartsWith(trimStart, stringComparison)) s = s.Remove(0, trimStart.Length);
+            if (s.EndsWith(trimEnd, stringComparison)) s = s.Remove(s.Length - trimEnd.Length, trimEnd.Length);
+
+            return s;
+        }
+
+        /// <summary>
+        /// Trim string
+        /// </summary>
+        /// <param name="s">string to trim</param>
+        /// <param name="trimStart">trim start</param>
+        /// <param name="trimEnd">trim end</param>
+        /// <returns>trimmed string</returns>
+        public static string Trim(this string s, string trimStart, string trimEnd)
+        {
+            return s.Trim(trimStart, trimEnd, StringComparison.Ordinal);
+        }    
     }
 }

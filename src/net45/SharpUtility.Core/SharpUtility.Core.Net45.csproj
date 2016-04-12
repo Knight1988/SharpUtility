@@ -61,6 +61,9 @@
     <Compile Include="..\SharpUtility.Core.PCL\Common\CodeConfiguration.cs">
       <Link>Common\CodeConfiguration.cs</Link>
     </Compile>
+    <Compile Include="..\SharpUtility.Core.PCL\Linq\EnumerableExtensions.cs">
+      <Link>Linq\EnumerableExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\SharpUtility.Core.PCL\Reflection\AssemblyExtensions.cs">
       <Link>Reflection\AssemblyExtensions.cs</Link>
     </Compile>
@@ -90,7 +93,6 @@
     <Compile Include="IO\StreamExtensions.cs" />
     <Compile Include="Common\JobCounter.cs" />
     <Compile Include="Linq\JoinExtensions.cs" />
-    <Compile Include="Linq\LinqExtensions.cs" />
     <Compile Include="Math\MathExtensions.cs" />
     <Compile Include="Net\FormData.cs" />
     <Compile Include="Net\Mail\ExtentedSmtpClient.cs" />

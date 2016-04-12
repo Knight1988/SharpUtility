@@ -41,6 +41,7 @@
     <Compile Include="Common\ConvertExtension.cs" />
     <Compile Include="Enum\EnumExtensions.cs" />
     <Compile Include="IO\StreamExtensions.cs" />
+    <Compile Include="Linq\EnumerableExtensions.cs" />
     <Compile Include="Linq\JoinExtensions.cs" />
     <Compile Include="Math\MathExtensions.cs" />
     <Compile Include="Net\FormData.cs" />

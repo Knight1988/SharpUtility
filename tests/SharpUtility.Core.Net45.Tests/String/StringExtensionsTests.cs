@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using NUnit.Framework;
 using SharpUtility.String;
 
@@ -29,6 +30,18 @@ namespace SharpUtility.Core.Tests.String
         {
             var s = "Hello there";
             Assert.True(s.Contains("THERE", StringComparison.OrdinalIgnoreCase));
+        }
+
+        [Test]
+        public void TrimSpacesTest()
+        {
+            // Arrange
+            var s = "   Hello     there      ";
+            // Act
+            s = s.TrimSpaces();
+
+            // Assert
+            Assert.AreEqual("Hello there", s);
         }
     }
 }
