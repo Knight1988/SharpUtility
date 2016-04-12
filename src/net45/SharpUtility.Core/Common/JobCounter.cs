@@ -13,6 +13,11 @@ namespace SharpUtility.Common
         private readonly RemainingTimer _remainingTimer = new RemainingTimer();
 
         /// <summary>
+        /// Refresh rate on run silent
+        /// </summary>
+        public int RefreshRate { get; set; } = 1000;
+
+        /// <summary>
         ///     LastOutput of the console
         /// </summary>
         public string LastOutput { get; private set; } = string.Empty;
@@ -101,7 +106,7 @@ namespace SharpUtility.Common
             {
                 if (DisplayRemainingTime) _remainingTimer.Mark(Value);
                 if (DisplayToConsole) WriteToConsole();
-                await Task.Delay(250);
+                await Task.Delay(RefreshRate);
             }
 
             // write last value on finish
