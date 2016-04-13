@@ -1,5 +1,12 @@
 version: 1.0.{build}
 image: Visual Studio 2015
+services: mssql2008r2sp2
+xamarin:
+  email: Dark_Knight645@yahoo.com
+  password:
+    secure: 9TEx5TmhJzQutxGt4AwHoA==
+  android: true
+  ios: true
 before_build:
 - cmd: nuget restore
 build:
