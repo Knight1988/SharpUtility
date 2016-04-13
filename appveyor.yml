@@ -1,3 +1,6 @@
 # enable service required for build/tests
 services:
   - mssql2008r2sp2
+  
+before_build:
+  - nuget restore
