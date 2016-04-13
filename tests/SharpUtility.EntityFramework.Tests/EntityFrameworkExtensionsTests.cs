@@ -36,7 +36,7 @@ namespace SharpUtility.EntityFramework.Tests
                 }
             }
 
-            using (var cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["AdventureWorkConnection"].ConnectionString))
+            using (var cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["MasterConnection"].ConnectionString))
             {
                 var cmd = new SqlCommand(sql, cnn);
                 cnn.Open();
