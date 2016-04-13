@@ -87,7 +87,9 @@
       <DependentUpon>AdventureWorksModel.edmx</DependentUpon>
     </None>
     <None Include="App.config" />
-    <None Include="Data\AdventureWorks2008R2-Full Database Backup.zip" />
+    <None Include="Data\AdventureWorks2008R2-Full Database Backup.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

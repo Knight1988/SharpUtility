@@ -12,7 +12,7 @@ namespace SharpUtility.Core.Tests
     [TestFixture]
     class JobCounterTests
     {
-        [Test, Ignore("JustMock required.")]
+        [Test, Category("CloundIgnore")]
         public void TestJob()
         {
             /* Arrange */
