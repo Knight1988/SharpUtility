@@ -4,7 +4,7 @@ services: mssql2008r2sp2
 xamarin:
   email: Dark_Knight645@yahoo.com
   password:
-    secure: 9TEx5TmhJzQutxGt4AwHoA==
+    secure: b5+E3TNFnGWOkSNdxM7Tdw==
   android: true
   ios: true
 before_build:
