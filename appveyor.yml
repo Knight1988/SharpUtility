@@ -1,6 +1,12 @@
-# enable service required for build/tests
-services:
-  - mssql2008r2sp2
-  
+version: 1.0.{build}
+image: Visual Studio 2015
 before_build:
-  - nuget restore
+- cmd: nuget restore
+build:
+  parallel: true
+  verbosity: minimal
+test:
+  categories:
+    except:
+    - InternetRequired
+    - CloundIgnore
