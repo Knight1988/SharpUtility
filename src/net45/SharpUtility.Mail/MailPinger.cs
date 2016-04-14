@@ -16,20 +16,28 @@ namespace SharpUtility.Mail
         /// <returns></returns>
         public static async Task<PingStatus> PingAsync(string address, string server, TimeSpan timeout)
         {
-            using (var client = new Client(server, 25, new CancellationToken()))
+            try
             {
-                if (!client.IsConnected) return PingStatus.NotConnected;
-                await client.WriteLine("HELO here.com");
-                var s = await client.TerminatedReadAsync(">", timeout);
-                if (!s.Contains("250")) return PingStatus.NotConnected;
-                await client.WriteLine("MAIL FROM:<me@here.com>");
-                s = await client.TerminatedReadAsync(">", timeout);
-                if (!s.Contains("250")) return PingStatus.NotConnected;
-                await client.WriteLine($"RCPT TO:<{address}>");
-                s = await client.TerminatedReadAsync(">", timeout);
-                if (!s.Contains("250")) return PingStatus.Invalid;
+                using (var client = new Client(server, 25, new CancellationToken()))
+                {
+                    if (!client.IsConnected) return PingStatus.NotConnected;
+                    await client.WriteLine("HELO here.com");
+                    var s = await client.TerminatedReadAsync(">", timeout);
+                    if (!s.Contains("250")) return PingStatus.NotConnected;
+                    await client.WriteLine("MAIL FROM:<me@here.com>");
+                    s = await client.TerminatedReadAsync(">", timeout);
+                    if (!s.Contains("250")) return PingStatus.NotConnected;
+                    await client.WriteLine($"RCPT TO:<{address}>");
+                    s = await client.TerminatedReadAsync(">", timeout);
+                    if (!s.Contains("250")) return PingStatus.Invalid;
+                }
+                return PingStatus.Valid;
             }
-            return PingStatus.Valid;
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return PingStatus.NotConnected;
+            }
         }
 
         /// <summary>
