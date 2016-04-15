@@ -6,8 +6,8 @@ namespace SharpUtility.Threading
 {
     public class BackgroundWorker
     {
-        private readonly Action _action;
-        private readonly Func<Task> _actionTask;
+        protected Action Action;
+        protected Func<Task> ActionTask;
 
         /// <summary>
         /// Current progressPercentage
@@ -15,12 +15,20 @@ namespace SharpUtility.Threading
         public long ProgressPercentage { get; private set; }
 
         /// <summary>
+        /// Create backgroundWorker without a task. 
+        /// Task must be set in delivery class.
+        /// </summary>
+        protected BackgroundWorker()
+        {
+        }
+
+        /// <summary>
         /// Create backgroundWorker run an async task
         /// </summary>
         /// <param name="action"></param>
         public BackgroundWorker(Func<Task> action)
         {
-            _actionTask = action;
+            ActionTask = action;
         }
 
         /// <summary>
@@ -29,7 +37,7 @@ namespace SharpUtility.Threading
         /// <param name="action"></param>
         public BackgroundWorker(Action action)
         {
-            _action = action;
+            Action = action;
         }
 
         /// <summary>
@@ -58,19 +66,17 @@ namespace SharpUtility.Threading
         /// </summary>
         /// <param name="token"></param>
         /// <returns></returns>
-        public Task RunWorkerAsync(CancellationToken token)
+        public async Task RunWorkerAsync(CancellationToken token)
         {
-            if (_action != null)
+            if (Action != null)
             {
-                return Task.Run(_action, token);
+                await Task.Run(Action, token);
             }
 
-            if (_actionTask != null)
+            if (ActionTask != null)
             {
-                return Task.Run(_actionTask, token);
+                await Task.Run(ActionTask, token);
             }
-
-            return Task.FromResult(true);
         }
 
         /// <summary>
@@ -79,14 +85,14 @@ namespace SharpUtility.Threading
         /// <returns></returns>
         public Task RunWorkerAsync()
         {
-            if (_action != null)
+            if (Action != null)
             {
-                return Task.Run(_action);
+                return Task.Run(Action);
             }
 
-            if (_actionTask != null)
+            if (ActionTask != null)
             {
-                return Task.Run(_actionTask);
+                return Task.Run(ActionTask);
             }
 
             return Task.FromResult(true);
@@ -96,7 +102,7 @@ namespace SharpUtility.Threading
         /// Raise complete event
         /// </summary>
         /// <param name="e"></param>
-        protected virtual void OnCompleted(CompleteEventArgs e)
+        public virtual void OnCompleted(CompleteEventArgs e)
         {
             Completed?.Invoke(this, e);
         }
