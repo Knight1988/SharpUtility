@@ -12,6 +12,8 @@ namespace SharpUtility.Common
         /// </summary>
         private readonly RemainingTimer _remainingTimer = new RemainingTimer();
 
+        private double _value;
+
         /// <summary>
         /// Refresh rate on run silent
         /// </summary>
@@ -30,7 +32,15 @@ namespace SharpUtility.Common
         /// <summary>
         ///     Current value
         /// </summary>
-        public double Value { get; set; }
+        public double Value
+        {
+            get { return _value; }
+            set
+            {
+                _value = value;
+                OnValueUpdated();
+            }
+        }
 
         /// <summary>
         ///     Allow display to console in silent mode
@@ -137,6 +147,13 @@ namespace SharpUtility.Common
                 return $"{value:P} - {_remainingTimer}";
             }
             return $"{value:P}";
+        }
+
+        public event EventHandler ValueUpdated;
+
+        protected virtual void OnValueUpdated()
+        {
+            ValueUpdated?.Invoke(this, EventArgs.Empty);
         }
     }
 }

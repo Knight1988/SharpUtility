@@ -6,42 +6,28 @@ namespace SharpUtility.WinForm
     public static class FormExtensions
     {
         /// <summary>
-        ///     invoke a action if required
+        /// Thread safe update a control
         /// </summary>
-        /// <param name="form">form</param>
-        /// <param name="action">action to run</param>
-        public static void InvokeIfRequired(this Form form, Action action)
+        /// <typeparam name="TControl">Control type</typeparam>
+        /// <param name="control">Control to update</param>
+        /// <param name="action">update action</param>
+        public static void InvokeIfRequired<TControl>(this TControl control, Action<TControl> action) where TControl : Control
         {
-            if (!form.InvokeRequired)
+            if (!control.InvokeRequired)
             {
-                action();
+                action(control);
                 return;
             }
-            form.Invoke(action);
+            control.Invoke(action, control);
         }
 
         /// <summary>
-        ///     Invoke a function if required
+        /// Thread safe update a control
         /// </summary>
-        /// <typeparam name="T">return type</typeparam>
-        /// <param name="form">form</param>
-        /// <param name="action">action to run</param>
-        /// <returns>return value</returns>
-        public static T InvokeIfRequired<T>(this Form form, Func<T> action)
-        {
-            if (!form.InvokeRequired)
-            {
-                return action();
-            }
-            return (T) form.Invoke(action);
-        }
-
-        /// <summary>
-        ///     invoke a action if required
-        /// </summary>
-        /// <param name="control"></param>
-        /// <param name="action"></param>
-        public static void InvokeIfRequired(this Control control, Action action)
+        /// <typeparam name="TControl">Control type</typeparam>
+        /// <param name="control">Control to update</param>
+        /// <param name="action">update action</param>
+        public static void InvokeIfRequired<TControl>(this TControl control, Action action) where TControl : Control
         {
             if (!control.InvokeRequired)
             {
@@ -52,61 +38,35 @@ namespace SharpUtility.WinForm
         }
 
         /// <summary>
-        ///     Invoke a function if required
+        /// Thread safe update a control
         /// </summary>
-        /// <typeparam name="T">return type</typeparam>
-        /// <param name="control"></param>
-        /// <param name="action"></param>
-        /// <returns>return value</returns>
-        public static T InvokeIfRequired<T>(this Control control, Func<T> action)
+        /// <typeparam name="TControl">Control type</typeparam>
+        /// <typeparam name="TReturn">Return type</typeparam>
+        /// <param name="control">Control to update</param>
+        /// <param name="action">update action</param>
+        public static TReturn InvokeIfRequired<TControl, TReturn>(this TControl control, Func<TReturn> action) where TControl : Control
         {
             if (!control.InvokeRequired)
             {
                 return action();
             }
-            return (T) control.Invoke(action);
-        }
-
-        /// <summary>
-        ///     Invoke a function if required
-        /// </summary>
-        /// <param name="uc"></param>
-        /// <param name="action"></param>
-        public static void InvokeIfRequired(this UserControl uc, Action action)
-        {
-            if (!uc.InvokeRequired)
-            {
-                action();
-                return;
-            }
-            uc.Invoke(action);
-        }
-
-        /// <summary>
-        ///     Invoke a function if required
-        /// </summary>
-        /// <typeparam name="T">return type</typeparam>
-        /// <param name="uc"></param>
-        /// <param name="action"></param>
-        /// <returns></returns>
-        public static T InvokeIfRequired<T>(this UserControl uc, Func<T> action)
-        {
-            if (!uc.InvokeRequired)
-            {
-                return action();
-            }
-            return (T) uc.Invoke(action);
+            return (TReturn) control.Invoke(action);
         }
 
         /// <summary>
         /// Thread safe update a control
         /// </summary>
-        /// <typeparam name="T">Control type</typeparam>
+        /// <typeparam name="TControl">Control type</typeparam>
+        /// <typeparam name="TReturn">Return type</typeparam>
         /// <param name="control">Control to update</param>
         /// <param name="action">update action</param>
-        public static void InvokeIfRequired<T>(this T control, Action<T> action) where T : Control
+        public static TReturn InvokeIfRequired<TControl, TReturn>(this TControl control, Func<TControl, TReturn> action) where TControl : Control
         {
-            control.InvokeIfRequired(() => { action(control); });
+            if (!control.InvokeRequired)
+            {
+                return action(control);
+            }
+            return (TReturn) control.Invoke(action, control);
         }
     }
 }
