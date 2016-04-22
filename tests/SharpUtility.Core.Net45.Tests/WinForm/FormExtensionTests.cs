@@ -25,19 +25,6 @@ namespace SharpUtility.Core.Tests.WinForm
         }
 
         [Test]
-        public async Task InvokeIfRequiredThread()
-        {
-            /* Arrange */
-            var form = new FormTest();
-
-            /* Act */
-            var text = await Task.Run(() => form.InvokeIfRequired(p => p.txtTextBox.Text));
-
-            /* Assert */
-            Assert.AreEqual("Test OK", text);
-        }
-
-        [Test]
         public async Task InvokeIfRequiredAsync()
         {
             /* Arrange */
