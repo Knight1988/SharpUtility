@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SharpUtility.WinForm
@@ -67,6 +68,38 @@ namespace SharpUtility.WinForm
                 return action(control);
             }
             return (TReturn) control.Invoke(action, control);
+        }
+
+
+        /// <summary>
+        /// Thread safe update a control
+        /// </summary>
+        /// <typeparam name="TControl">Control type</typeparam>
+        /// <param name="control">Control to update</param>
+        /// <param name="action">update action</param>
+        public static async Task InvokeIfRequired<TControl>(this TControl control, Func<Task> action) where TControl : Control
+        {
+            if (!control.InvokeRequired)
+            {
+                await action();
+            }
+            await (Task) control.Invoke(action);
+        }
+
+        /// <summary>
+        /// Thread safe update a control
+        /// </summary>
+        /// <typeparam name="TControl">Control type</typeparam>
+        /// <typeparam name="TReturn">Return type</typeparam>
+        /// <param name="control">Control to update</param>
+        /// <param name="action">update action</param>
+        public static async Task<TReturn> InvokeIfRequired<TControl, TReturn>(this TControl control, Func<TControl, Task<TReturn>> action) where TControl : Control
+        {
+            if (!control.InvokeRequired)
+            {
+                return await action(control);
+            }
+            return await (Task<TReturn>) control.Invoke(action, control);
         }
     }
 }

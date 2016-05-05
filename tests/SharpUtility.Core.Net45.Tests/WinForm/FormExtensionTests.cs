@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using SharpUtility.WinForm;
 
@@ -11,14 +12,19 @@ namespace SharpUtility.Core.Tests.WinForm
     [TestFixture]
     public class FormExtensionTests
     {
+        private FormTest _form;
+
+        [SetUp]
+        public void Setup()
+        {
+            _form = new FormTest();
+        }
+
         [Test]
         public void InvokeIfRequiredTest()
         {
-            /* Arrange */
-            var form = new FormTest();
-
             /* Act */
-            var text = form.InvokeIfRequired(p => p.txtTextBox.Text);
+            var text = GetText();
 
             /* Assert */
             Assert.AreEqual("Test OK", text);
@@ -27,20 +33,22 @@ namespace SharpUtility.Core.Tests.WinForm
         [Test]
         public async Task InvokeIfRequiredAsync()
         {
-            /* Arrange */
-            var form = new FormTest();
-
             /* Act */
-            var text = await form.InvokeIfRequired(GetTextBox);
+            var text = await GetTextAsync();
 
             /* Assert */
             Assert.AreEqual("Test OK", text);
         }
 
-        private async Task<string> GetTextBox(FormTest formTest)
+        private async Task<string> GetTextAsync()
         {
-            await Task.Yield();
-            return formTest.txtTextBox.Text;
+            await Task.FromResult(true);
+            return _form.InvokeIfRequired(p => p.txtTextBox.Text);
+        }
+
+        private string GetText()
+        {
+            return _form.InvokeIfRequired(p => p.txtTextBox.Text);
         }
     }
 }
