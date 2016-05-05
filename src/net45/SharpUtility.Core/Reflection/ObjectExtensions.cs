@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using Newtonsoft.Json;
 
@@ -137,6 +138,16 @@ namespace SharpUtility.Reflection
         public static string ToJson(this object source, Formatting formatting, JsonSerializerSettings settings)
         {
             return JsonConvert.SerializeObject(source, formatting, settings);
+        }
+
+        public static Dictionary<Type, Attribute> GetPropertyAttributes(this object obj, string name, bool inherit = true)
+        {
+            return obj.GetType().GetPropertyAttributes(name, inherit);
+        }
+
+        public static Dictionary<Type, Attribute> GetFieldAttributes(this object obj, string name, bool inherit = true)
+        {
+            return obj.GetType().GetFieldAttributes(name, inherit);
         }
     }
 }

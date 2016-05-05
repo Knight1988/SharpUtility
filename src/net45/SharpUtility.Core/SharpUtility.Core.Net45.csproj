@@ -67,6 +67,9 @@
     <Compile Include="..\SharpUtility.Core.PCL\Reflection\AssemblyExtensions.cs">
       <Link>Reflection\AssemblyExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\SharpUtility.Core.PCL\Reflection\TypeExtensions.cs">
+      <Link>Reflection\TypeExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\SharpUtility.Core.PCL\Threading\BackgroundWorker\BackgroundWorker.cs">
       <Link>Threading\BackgroundWorker\BackgroundWorker.cs</Link>
     </Compile>

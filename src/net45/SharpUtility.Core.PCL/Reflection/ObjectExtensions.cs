@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace SharpUtility.Reflection
 {
@@ -14,6 +16,16 @@ namespace SharpUtility.Reflection
         {
             var serialized = JsonConvert.SerializeObject(source);
             return JsonConvert.DeserializeObject<T>(serialized);
+        }
+
+        public static Dictionary<Type, Attribute> GetPropertyAttributes(this object obj, string name, bool inherit = true)
+        {
+            return obj.GetType().GetPropertyAttributes(name, inherit);
+        }
+
+        public static Dictionary<Type, Attribute> GetFieldAttributes(this object obj, string name, bool inherit = true)
+        {
+            return obj.GetType().GetFieldAttributes(name, inherit);
         }
     }
 }
