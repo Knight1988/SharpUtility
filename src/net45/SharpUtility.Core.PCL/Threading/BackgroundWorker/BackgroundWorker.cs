@@ -12,7 +12,7 @@ namespace SharpUtility.Threading
         /// <summary>
         /// Current progressPercentage
         /// </summary>
-        public long ProgressPercentage { get; private set; }
+        public double ProgressPercentage { get; private set; }
 
         /// <summary>
         /// Create backgroundWorker without a task. 
@@ -44,7 +44,7 @@ namespace SharpUtility.Threading
         /// Report progress
         /// </summary>
         /// <param name="progressPercentage"></param>
-        public void ReportProgress(long progressPercentage)
+        public void ReportProgress(double progressPercentage)
         {
             ProgressPercentage = progressPercentage;
             OnProgressChanged(new ProgressChangedEventArgs(progressPercentage, null));
@@ -55,7 +55,7 @@ namespace SharpUtility.Threading
         /// </summary>
         /// <param name="progressPercentage"></param>
         /// <param name="userState"></param>
-        public void ReportProgress(long progressPercentage, object userState)
+        public void ReportProgress(double progressPercentage, object userState)
         {
             ProgressPercentage = progressPercentage;
             OnProgressChanged(new ProgressChangedEventArgs(progressPercentage, userState));

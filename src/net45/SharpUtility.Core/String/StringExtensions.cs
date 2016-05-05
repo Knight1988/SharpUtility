@@ -109,7 +109,8 @@ namespace SharpUtility.String
             var charCodes = new[]
             {
                 " ",    // alt + 255
-                " ",    // atl + 0160
+                " ",    // atl + 0160,
+                "​",     // CharCode: 8203
             };
             sb.Replace(charCodes, " ");
             s = sb.ToString().Trim();
