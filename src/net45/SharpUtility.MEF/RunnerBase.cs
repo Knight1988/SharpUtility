@@ -37,7 +37,6 @@ namespace SharpUtility.MEF
             regBuilder.ForTypesDerivedFrom<T>().Export<T>();
 
             var catalog = new AggregateCatalog();
-            //catalog.Catalogs.Add(new AssemblyCatalog(typeof (RunnerBase<T>).Assembly, regBuilder));
             foreach (var searchPattern in searchPatterns)
             {
                 var directoryCatalog = new DirectoryCatalog(pluginPath, searchPattern, regBuilder);

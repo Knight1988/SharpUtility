@@ -6,7 +6,7 @@ namespace SharpUtility.MEF
 {
     public static class RunnerManager
     {
-        private static readonly Dictionary<string, DomainRunner> _domainRunners = new Dictionary<string, DomainRunner>();
+        private static readonly Dictionary<string, DomainRunner> DomainRunners = new Dictionary<string, DomainRunner>();
 
         /// <summary>
         /// Create and initalize runner
@@ -101,7 +101,7 @@ namespace SharpUtility.MEF
             runner.Initialize(pluginPath);
 
             // Add domain & runner to dictionary
-            _domainRunners.Add(domainName, new DomainRunner
+            DomainRunners.Add(domainName, new DomainRunner
             {
                 Domain = domain,
                 Runner = runner
@@ -121,9 +121,9 @@ namespace SharpUtility.MEF
             where TRunner : RunnerBase<TExporter>
             where TExporter : IExporterBase
         {
-            if (!_domainRunners.ContainsKey(domainName)) return default(TRunner);
+            if (!DomainRunners.ContainsKey(domainName)) return default(TRunner);
 
-            return _domainRunners[domainName].Runner as TRunner;
+            return DomainRunners[domainName].Runner as TRunner;
         }
 
         /// <summary>
@@ -133,12 +133,12 @@ namespace SharpUtility.MEF
         /// <returns></returns>
         public static bool RemoveRunner(string domainName)
         {
-            if (!_domainRunners.ContainsKey(domainName)) return false;
+            if (!DomainRunners.ContainsKey(domainName)) return false;
 
             // Unload then remove domain from list.
-            var domainRunner = _domainRunners[domainName];
+            var domainRunner = DomainRunners[domainName];
             AppDomain.Unload(domainRunner.Domain);
-            _domainRunners.Remove(domainName);
+            DomainRunners.Remove(domainName);
             return true;
         }
     }

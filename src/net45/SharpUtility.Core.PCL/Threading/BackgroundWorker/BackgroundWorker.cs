@@ -90,12 +90,7 @@ namespace SharpUtility.Threading
                 return Task.Run(Action);
             }
 
-            if (ActionTask != null)
-            {
-                return Task.Run(ActionTask);
-            }
-
-            return Task.FromResult(true);
+            return ActionTask != null ? Task.Run(ActionTask) : Task.FromResult(true);
         }
 
         /// <summary>
