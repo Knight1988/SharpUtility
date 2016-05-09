@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace SharpUtility.Reflection
 {
-    public static class ObjectExtensions
+    public static partial class ObjectExtensions
     {
         /// <summary>
         ///     Returns a private Property Value from a given Object. Uses Reflection.
@@ -92,62 +92,6 @@ namespace SharpUtility.Reflection
             t.InvokeMember(propName,
                 BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.SetProperty | BindingFlags.Instance, null,
                 obj, new object[] {val});
-        }
-        /// <summary>
-        ///     Clone an object
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        public static T Clone<T>(this T source)
-        {
-            return JsonConvert.DeserializeObject<T>(source.ToJson(Formatting.None, new JsonSerializerSettings()
-            {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            }));
-        }
-
-        /// <summary>
-        /// Convert an object to json
-        /// </summary>
-        /// <param name="source">object to convert</param>
-        /// <returns></returns>
-        public static string ToJson(this object source)
-        {
-            return JsonConvert.SerializeObject(source);
-        }
-
-        /// <summary>
-        /// Convert an object to json
-        /// </summary>
-        /// <param name="source">object to convert</param>
-        /// <param name="formatting">formatting option</param>
-        /// <returns></returns>
-        public static string ToJson(this object source, Formatting formatting)
-        {
-            return JsonConvert.SerializeObject(source, formatting);
-        }
-
-        /// <summary>
-        /// Convert an object to json
-        /// </summary>
-        /// <param name="source">object to convert</param>
-        /// <param name="formatting">formatting option</param>
-        /// <param name="settings">setting for serialized object</param>
-        /// <returns></returns>
-        public static string ToJson(this object source, Formatting formatting, JsonSerializerSettings settings)
-        {
-            return JsonConvert.SerializeObject(source, formatting, settings);
-        }
-
-        public static Dictionary<Type, Attribute> GetPropertyAttributes(this object obj, string name, bool inherit = true)
-        {
-            return obj.GetType().GetPropertyAttributes(name, inherit);
-        }
-
-        public static Dictionary<Type, Attribute> GetFieldAttributes(this object obj, string name, bool inherit = true)
-        {
-            return obj.GetType().GetFieldAttributes(name, inherit);
         }
     }
 }
