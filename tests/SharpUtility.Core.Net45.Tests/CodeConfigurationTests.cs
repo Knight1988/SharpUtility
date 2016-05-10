@@ -8,71 +8,61 @@ namespace SharpUtility.Core.Tests
     class CodeConfigurationTests
     {
         [Test]
-        public void ExecuteActionTest()
+        public void ExecuteFunctionTest()
         {
-            // Arrange
-            var config = new CodeConfiguration();
-            var num = 0;
-
             // Act
-            config.Execute(() => { num++; });
+            var num = CodeConfiguration.Try(() => 1, 0).Execute();
 
             // Assert
             Assert.AreEqual(1, num);
         }
 
         [Test]
-        public void ExecuteActionRetryTest()
+        public void ExecuteFunctionThrowTest()
         {
-            // Arrange
-            var config = new CodeConfiguration();
-            var num = 0;
             // Act
-            config.Execute(() =>
+            var num = CodeConfiguration.Try(() =>
             {
-                num++;
-                throw new Exception();
-            }, e =>
-            {
-                num++;
-            });
+                throw new Exception("Test");
+#pragma warning disable 162
+                return 1;
+#pragma warning restore 162
+            }, 0)
+            .Catch<Exception>(e => 2, 2).Execute();
 
             // Assert
-            Assert.AreEqual(4, num);
+            Assert.AreEqual(2, num);
         }
 
         [Test]
-        public void ExecuteFuncRetryTest()
+        public void ExecuteActionTest()
         {
             // Arrange
-            var config = new CodeConfiguration();
             var num = 0;
+
             // Act
-            var actual = config.Execute(() =>
-            {
-                num++;
-                throw new Exception();
-            }, e =>
-            {
-                num++;
-                return num;
-            });
+            CodeConfiguration.Try(() => { num++; }).Execute();
 
             // Assert
-            Assert.AreEqual(4, actual);
+            Assert.AreEqual(1, num);
         }
 
         [Test]
-        public void ExecuteFuncTest()
+        public void ExecuteActionThrowTest()
         {
             // Arrange
-            var config = new CodeConfiguration();
+            var num = 0;
 
             // Act
-            var result = config.Execute(() => true);
+            CodeConfiguration.Try(() =>
+            {
+                num++;
+                throw new Exception("Test");
+            }).Catch<Exception>(e =>{}, 2)
+            .Execute();
 
             // Assert
-            Assert.True(result);
+            Assert.AreEqual(3, num);
         }
     }
 }

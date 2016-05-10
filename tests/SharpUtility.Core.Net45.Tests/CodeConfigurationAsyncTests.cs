@@ -9,32 +9,44 @@ namespace SharpUtility.Core.Tests
     class CodeConfigurationAsyncTests
     {
         [Test]
-        public async Task ExecuteActionTest()
+        public async Task ExecuteFunctionTest()
         {
-            // Arrange
-            var config = new CodeConfiguration();
-            var num = 0;
-
             // Act
-            await config.ExecuteAsync(() => { num++; });
+            var num = await CodeConfiguration.Try(async () => await Task.FromResult(1), 0, 0).ExecuteAsync();
 
             // Assert
             Assert.AreEqual(1, num);
         }
 
         [Test]
+        public async Task ExecuteFunctionThrowTest()
+        {
+            // Act
+            var num = await CodeConfiguration.Try(async () =>
+            {
+                throw new Exception("Test");
+#pragma warning disable 162
+                return await Task.FromResult(1);
+#pragma warning restore 162
+            }, 0, 0)
+            .Catch<Exception>(async e => await Task.FromResult(2), 2).ExecuteAsync();
+
+            // Assert
+            Assert.AreEqual(2, num);
+        }
+
+        [Test]
         public async Task ExecuteActionAsyncTest()
         {
             // Arrange
-            var config = new CodeConfiguration();
             var num = 0;
 
             // Act
-            await config.ExecuteAsync(async () =>
+            await CodeConfiguration.Try(async () =>
             {
                 await Task.Yield();
                 num++;
-            });
+            }, 0, 0).ExecuteAsync();
 
             // Assert
             Assert.AreEqual(1, num);
@@ -44,116 +56,20 @@ namespace SharpUtility.Core.Tests
         public async Task ExecuteActionRetryTest()
         {
             // Arrange
-            var config = new CodeConfiguration();
             var num = 0;
-            // Act
-            await config.ExecuteAsync(() =>
-            {
-                num++;
-                throw new Exception();
-            }, e =>
-            {
-                num++;
-            });
-
-            // Assert
-            Assert.AreEqual(4, num);
-        }
-
-        [Test]
-        public async Task ExecuteActionAsyncRetryTest()
-        {
-            // Arrange
-            var config = new CodeConfiguration();
-            var num = 0;
-            // Act
-            await config.ExecuteAsync(async () =>
+                // Act
+            await CodeConfiguration.Try(async () =>
             {
                 await Task.Yield();
                 num++;
-                throw new Exception();
-            }, async e =>
+                throw new Exception("Test");
+            }, 0, 0).Catch<Exception>(async e =>
             {
                 await Task.Yield();
-                num++;
-            });
+            }, 2).ExecuteAsync();
 
             // Assert
-            Assert.AreEqual(4, num);
-        }
-
-        [Test]
-        public async Task ExecuteFuncRetryTest()
-        {
-            // Arrange
-            var config = new CodeConfiguration();
-            var num = 0;
-            // Act
-            var actual = await config.ExecuteAsync(() =>
-            {
-                num++;
-                throw new Exception();
-            }, e =>
-            {
-                num++;
-                return num;
-            });
-
-            // Assert
-            Assert.AreEqual(4, actual);
-        }
-
-        [Test]
-        public async Task ExecuteFuncAsyncRetryTest()
-        {
-            // Arrange
-            var config = new CodeConfiguration();
-            var num = 0;
-            // Act
-            var actual = await config.ExecuteAsync(async () =>
-            {
-                await Task.Yield();
-                num++;
-                throw new Exception();
-            }, async e =>
-            {
-                await Task.Yield();
-                num++;
-                return num;
-            });
-
-            // Assert
-            Assert.AreEqual(4, actual);
-        }
-
-        [Test]
-        public async Task ExecuteFuncTest()
-        {
-            // Arrange
-            var config = new CodeConfiguration();
-
-            // Act
-            var result = await config.ExecuteAsync(() => true);
-
-            // Assert
-            Assert.True(result);
-        }
-
-        [Test]
-        public async Task ExecuteFuncAsyncTest()
-        {
-            // Arrange
-            var config = new CodeConfiguration();
-
-            // Act
-            var result = await config.ExecuteAsync(async () =>
-            {
-                await Task.Yield();
-                return true;
-            });
-
-            // Assert
-            Assert.True(result);
+            Assert.AreEqual(3, num);
         }
     }
 }

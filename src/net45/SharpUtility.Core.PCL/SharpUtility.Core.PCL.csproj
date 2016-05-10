@@ -37,7 +37,12 @@
     <Compile Include="..\..\AssemblyInfo.Shared.cs">
       <Link>Properties\AssemblyInfo.Shared.cs</Link>
     </Compile>
-    <Compile Include="Common\CodeConfiguration.cs" />
+    <Compile Include="Common\CodeConfiguration\CodeConfiguration.cs" />
+    <Compile Include="Common\CodeConfiguration\CodeConfigurationAction.cs" />
+    <Compile Include="Common\CodeConfiguration\CodeConfigurationActionAsync.cs" />
+    <Compile Include="Common\CodeConfiguration\CodeConfigurationFunction.cs" />
+    <Compile Include="Common\CodeConfiguration\CodeConfigurationFunctionAsync.cs" />
+    <Compile Include="Common\CodeConfiguration\ExceptionHandlerAction.cs" />
     <Compile Include="Common\ConvertExtension.cs" />
     <Compile Include="Enum\EnumExtensions.cs" />
     <Compile Include="IO\StreamExtensions.cs" />

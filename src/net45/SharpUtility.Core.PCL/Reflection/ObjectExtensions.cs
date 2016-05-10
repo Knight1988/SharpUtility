@@ -61,5 +61,102 @@ namespace SharpUtility.Reflection
         {
             return JsonConvert.SerializeObject(source, formatting, settings);
         }
+
+        /// <summary>
+        ///     Returns a private Property Value from a given Object. Uses Reflection.
+        ///     Throws a ArgumentOutOfRangeException if the Property is not found.
+        /// </summary>
+        /// <typeparam name="T">Type of the Property</typeparam>
+        /// <param name="obj">Object from where the Property Value is returned</param>
+        /// <param name="propName">Propertyname as string.</param>
+        /// <returns>PropertyValue</returns>
+        public static T GetPrivateFieldValue<T>(this object obj, string propName)
+        {
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            var t = obj.GetType().GetTypeInfo();
+            FieldInfo fi = null;
+            while (fi == null && t != null)
+            {
+                fi = t.GetDeclaredField(propName);
+                t = t.BaseType.GetTypeInfo();
+            }
+            if (fi == null)
+                throw new ArgumentOutOfRangeException(nameof(propName),
+                    $"Field {propName} was not found in Type {obj.GetType().FullName}");
+            return (T)fi.GetValue(obj);
+        }
+
+        /// <summary>
+        ///     Returns a _private_ Property Value from a given Object. Uses Reflection.
+        ///     Throws a ArgumentOutOfRangeException if the Property is not found.
+        /// </summary>
+        /// <typeparam name="T">Type of the Property</typeparam>
+        /// <param name="obj">Object from where the Property Value is returned</param>
+        /// <param name="propName">Propertyname as string.</param>
+        /// <returns>PropertyValue</returns>
+        public static T GetPrivatePropertyValue<T>(this object obj, string propName)
+        {
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            var t = obj.GetType().GetTypeInfo();
+            PropertyInfo fi = null;
+            while (fi == null && t != null)
+            {
+                fi = t.GetDeclaredProperty(propName);
+                t = t.BaseType.GetTypeInfo();
+            }
+            if (fi == null)
+                throw new ArgumentOutOfRangeException(nameof(propName),
+                    $"Field {propName} was not found in Type {obj.GetType().FullName}");
+            return (T)fi.GetValue(obj);
+        }
+
+        /// <summary>
+        ///     Set a private Property Value on a given Object. Uses Reflection.
+        /// </summary>
+        /// <typeparam name="T">Type of the Property</typeparam>
+        /// <param name="obj">Object from where the Property Value is returned</param>
+        /// <param name="propName">Propertyname as string.</param>
+        /// <param name="val">the value to set</param>
+        /// <exception cref="ArgumentOutOfRangeException">if the Property is not found</exception>
+        public static void SetPrivateFieldValue<T>(this object obj, string propName, T val)
+        {
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            var t = obj.GetType().GetTypeInfo();
+            FieldInfo fi = null;
+            while (fi == null && t != null)
+            {
+                fi = t.GetDeclaredField(propName);
+                t = t.BaseType.GetTypeInfo();
+            }
+            if (fi == null)
+                throw new ArgumentOutOfRangeException(nameof(propName),
+                    $"Field {propName} was not found in Type {obj.GetType().FullName}");
+            fi.SetValue(obj, val);
+        }
+
+        /// <summary>
+        ///     Sets a _private_ Property Value from a given Object. Uses Reflection.
+        ///     Throws a ArgumentOutOfRangeException if the Property is not found.
+        /// </summary>
+        /// <typeparam name="T">Type of the Property</typeparam>
+        /// <param name="obj">Object from where the Property Value is set</param>
+        /// <param name="propName">Propertyname as string.</param>
+        /// <param name="val">Value to set.</param>
+        /// <returns>PropertyValue</returns>
+        public static void SetPrivatePropertyValue<T>(this object obj, string propName, T val)
+        {
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            var t = obj.GetType().GetTypeInfo();
+            PropertyInfo fi = null;
+            while (fi == null && t != null)
+            {
+                fi = t.GetDeclaredProperty(propName);
+                t = t.BaseType.GetTypeInfo();
+            }
+            if (fi == null)
+                throw new ArgumentOutOfRangeException(nameof(propName),
+                    $"Field {propName} was not found in Type {obj.GetType().FullName}");
+            fi.SetValue(obj, val);
+        }
     }
 }

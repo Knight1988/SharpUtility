@@ -58,8 +58,23 @@
     <Compile Include="..\..\AssemblyInfo.Shared.cs">
       <Link>Properties\AssemblyInfo.Shared.cs</Link>
     </Compile>
-    <Compile Include="..\SharpUtility.Core.PCL\Common\CodeConfiguration.cs">
-      <Link>Common\CodeConfiguration.cs</Link>
+    <Compile Include="..\SharpUtility.Core.PCL\Common\CodeConfiguration\CodeConfiguration.cs">
+      <Link>Common\CodeConfiguration\CodeConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpUtility.Core.PCL\Common\CodeConfiguration\CodeConfigurationAction.cs">
+      <Link>Common\CodeConfiguration\CodeConfigurationAction.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpUtility.Core.PCL\Common\CodeConfiguration\CodeConfigurationActionAsync.cs">
+      <Link>Common\CodeConfiguration\CodeConfigurationActionAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpUtility.Core.PCL\Common\CodeConfiguration\CodeConfigurationFunction.cs">
+      <Link>Common\CodeConfiguration\CodeConfigurationFunction.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpUtility.Core.PCL\Common\CodeConfiguration\CodeConfigurationFunctionAsync.cs">
+      <Link>Common\CodeConfiguration\CodeConfigurationFunctionAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpUtility.Core.PCL\Common\CodeConfiguration\ExceptionHandlerAction.cs">
+      <Link>Common\CodeConfiguration\ExceptionHandlerAction.cs</Link>
     </Compile>
     <Compile Include="..\SharpUtility.Core.PCL\Linq\EnumerableExtensions.cs">
       <Link>Linq\EnumerableExtensions.cs</Link>
@@ -106,7 +121,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reflection\ObjectExtensions.Desktop.cs" />
     <Compile Include="Runtime\Remoting\Sponsor.cs" />
     <Compile Include="Security\Cryptography\AES.cs" />
     <Compile Include="Security\Cryptography\MD5Extensions.cs" />
