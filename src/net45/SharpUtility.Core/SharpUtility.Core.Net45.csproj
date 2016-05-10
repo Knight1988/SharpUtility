@@ -67,6 +67,9 @@
     <Compile Include="..\SharpUtility.Core.PCL\Common\CodeConfiguration\CodeConfigurationActionAsync.cs">
       <Link>Common\CodeConfiguration\CodeConfigurationActionAsync.cs</Link>
     </Compile>
+    <Compile Include="..\SharpUtility.Core.PCL\Common\CodeConfiguration\CodeConfigurationExtensions.cs">
+      <Link>Common\CodeConfiguration\CodeConfigurationExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\SharpUtility.Core.PCL\Common\CodeConfiguration\CodeConfigurationFunction.cs">
       <Link>Common\CodeConfiguration\CodeConfigurationFunction.cs</Link>
     </Compile>
@@ -78,6 +81,9 @@
     </Compile>
     <Compile Include="..\SharpUtility.Core.PCL\Linq\EnumerableExtensions.cs">
       <Link>Linq\EnumerableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpUtility.Core.PCL\Linq\JoinExtensions.cs">
+      <Link>Linq\JoinExtensions.cs</Link>
     </Compile>
     <Compile Include="..\SharpUtility.Core.PCL\Reflection\AssemblyExtensions.cs">
       <Link>Reflection\AssemblyExtensions.cs</Link>
@@ -113,7 +119,6 @@
     <Compile Include="IO\File.cs" />
     <Compile Include="IO\StreamExtensions.cs" />
     <Compile Include="Common\JobCounter.cs" />
-    <Compile Include="Linq\JoinExtensions.cs" />
     <Compile Include="Math\MathExtensions.cs" />
     <Compile Include="Net\FormData.cs" />
     <Compile Include="Net\Mail\ExtentedSmtpClient.cs" />

@@ -42,6 +42,7 @@
     <Compile Include="Common\CodeConfiguration\CodeConfigurationActionAsync.cs" />
     <Compile Include="Common\CodeConfiguration\CodeConfigurationFunction.cs" />
     <Compile Include="Common\CodeConfiguration\CodeConfigurationFunctionAsync.cs" />
+    <Compile Include="Common\CodeConfiguration\CodeConfigurationExtensions.cs" />
     <Compile Include="Common\CodeConfiguration\ExceptionHandlerAction.cs" />
     <Compile Include="Common\ConvertExtension.cs" />
     <Compile Include="Enum\EnumExtensions.cs" />
