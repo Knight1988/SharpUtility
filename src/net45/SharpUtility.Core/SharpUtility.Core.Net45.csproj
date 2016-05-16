@@ -79,6 +79,9 @@
     <Compile Include="..\SharpUtility.Core.PCL\Common\CodeConfiguration\ExceptionHandlerAction.cs">
       <Link>Common\CodeConfiguration\ExceptionHandlerAction.cs</Link>
     </Compile>
+    <Compile Include="..\SharpUtility.Core.PCL\Common\ConvertExtension.cs">
+      <Link>Common\ConvertExtension.cs</Link>
+    </Compile>
     <Compile Include="..\SharpUtility.Core.PCL\Linq\EnumerableExtensions.cs">
       <Link>Linq\EnumerableExtensions.cs</Link>
     </Compile>
@@ -137,7 +140,6 @@
     <Compile Include="String\RandomString.cs" />
     <Compile Include="String\StringExtensions.cs" />
     <Compile Include="String\StringInjectExtensions.cs" />
-    <Compile Include="Common\ConvertExtension.cs" />
     <Compile Include="Common\AppDomainExentions.cs" />
     <Compile Include="Threading\AsyncLazy.cs" />
     <Compile Include="Threading\TaskPause.cs" />

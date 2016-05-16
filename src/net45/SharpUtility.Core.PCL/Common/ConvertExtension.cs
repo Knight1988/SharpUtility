@@ -363,5 +363,20 @@ namespace SharpUtility.Common
             }
             return defaultValue;
         }
+
+        public static DateTime JsTimeTicksToDateTime(this long jsTimeTicks)
+        {
+            return new DateTime(1970, 1, 1) + new TimeSpan(jsTimeTicks * 10000);
+        }
+
+        public static DateTime JsTimeTicksToDateTime(this int jsTimeTicks)
+        {
+            return new DateTime(1970, 1, 1) + new TimeSpan(jsTimeTicks * 10000);
+        }
+
+        public static long ToJsTimeTicks(this DateTime dateTime)
+        {
+            return (long) dateTime.Subtract(new DateTime(1970, 1, 1)).TotalMilliseconds;
+        }
     }
 }
