@@ -6,6 +6,8 @@ namespace SharpUtility.Threading
     {
         public object[] Arguments { get; }
 
+        public DoWorkEventArgs() { }
+
         public DoWorkEventArgs(object[] arguments)
         {
             Arguments = arguments;

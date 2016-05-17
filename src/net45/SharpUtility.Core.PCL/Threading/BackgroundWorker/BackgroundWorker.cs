@@ -6,92 +6,52 @@ namespace SharpUtility.Threading
 {
     public class BackgroundWorker
     {
-        protected Action Action;
-        protected Func<Task> ActionTask;
-
-        /// <summary>
-        /// Current progressPercentage
-        /// </summary>
-        public double ProgressPercentage { get; private set; }
-
-        /// <summary>
-        /// Create backgroundWorker without a task. 
-        /// Task must be set in delivery class.
-        /// </summary>
-        protected BackgroundWorker()
+        public async Task RunWorkerAsync()
         {
+            await Task.Factory.StartNew(() => OnDoWork(new DoWorkEventArgs()), TaskCreationOptions.LongRunning);
         }
 
         /// <summary>
-        /// Create backgroundWorker run an async task
-        /// </summary>
-        /// <param name="action"></param>
-        public BackgroundWorker(Func<Task> action)
-        {
-            ActionTask = action;
-        }
-
-        /// <summary>
-        /// Create Background worker run a task
-        /// </summary>
-        /// <param name="action"></param>
-        public BackgroundWorker(Action action)
-        {
-            Action = action;
-        }
-
-        /// <summary>
-        /// Report progress
-        /// </summary>
-        /// <param name="progressPercentage"></param>
-        public void ReportProgress(double progressPercentage)
-        {
-            ProgressPercentage = progressPercentage;
-            OnProgressChanged(new ProgressChangedEventArgs(progressPercentage, null));
-        }
-
-        /// <summary>
-        /// Report progress with userState
+        /// Report the task progress
         /// </summary>
         /// <param name="progressPercentage"></param>
         /// <param name="userState"></param>
         public void ReportProgress(double progressPercentage, object userState)
         {
-            ProgressPercentage = progressPercentage;
             OnProgressChanged(new ProgressChangedEventArgs(progressPercentage, userState));
         }
 
         /// <summary>
-        /// Start the task
+        /// Report the task progress
         /// </summary>
-        /// <param name="token"></param>
-        /// <returns></returns>
-        public async Task RunWorkerAsync(CancellationToken token)
+        /// <param name="progressPercentage"></param>
+        public void ReportProgress(double progressPercentage)
         {
-            if (Action != null)
-            {
-                await Task.Run(Action, token);
-            }
-
-            if (ActionTask != null)
-            {
-                await Task.Run(ActionTask, token);
-            }
+            OnProgressChanged(new ProgressChangedEventArgs(progressPercentage, null));
         }
 
         /// <summary>
-        /// Start the task
+        /// Report the task progress
         /// </summary>
-        /// <returns></returns>
-        public Task RunWorkerAsync()
+        /// <param name="max"></param>
+        /// <param name="userState"></param>
+        /// <param name="value"></param>
+        public void ReportProgress(double value, double max, object userState)
         {
-            if (Action != null)
-            {
-                return Task.Run(Action);
-            }
-
-            return ActionTask != null ? Task.Run(ActionTask) : Task.FromResult(true);
+            OnProgressChanged(new ProgressChangedEventArgs(value/max, userState));
         }
+
+        /// <summary>
+        /// Report the task progress
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="max"></param>
+        public void ReportProgress(double value, double max)
+        {
+            OnProgressChanged(new ProgressChangedEventArgs(value/max, null));
+        }
+
+        public event EventHandler<DoWorkEventArgs> DoWork;
 
         /// <summary>
         /// Raise complete event
@@ -120,5 +80,10 @@ namespace SharpUtility.Threading
         /// Progress changed event
         /// </summary>
         public event EventHandler<ProgressChangedEventArgs> ProgressChanged;
+
+        protected virtual void OnDoWork(DoWorkEventArgs e)
+        {
+            DoWork?.Invoke(this, e);
+        }
     }
 }

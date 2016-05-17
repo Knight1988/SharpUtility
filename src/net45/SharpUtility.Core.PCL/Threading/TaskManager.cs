@@ -8,6 +8,10 @@ namespace SharpUtility.Threading
 {
     public static class TaskManager
     {
+        /// <summary>
+        /// Execute and forget task
+        /// </summary>
+        /// <param name="task"></param>
         public static void Forget(this Task task)
         {
         }

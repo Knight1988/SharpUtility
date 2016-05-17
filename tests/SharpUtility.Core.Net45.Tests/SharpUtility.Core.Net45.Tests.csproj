@@ -95,7 +95,6 @@
     <Compile Include="String\StringExtensionsTests.cs" />
     <Compile Include="Threading\AsyncLazyTest.cs" />
     <Compile Include="Threading\BackgroundWorkerTests.cs" />
-    <Compile Include="Threading\BasicWorker.cs" />
     <Compile Include="WinForm\FormExtensionTests.cs" />
     <Compile Include="WinForm\FormTest.cs">
       <SubType>Form</SubType>
