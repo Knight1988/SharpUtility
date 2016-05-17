@@ -30,8 +30,8 @@ namespace SharpUtility.Core.Tests.Common
         [Test]
         [TestCase(1302203200000, "4/7/2011")]
         [TestCase(1463131655693, "5/13/2016")]
-        [TestCase(1463097600000, "4/7/2011")]
-        [TestCase(1302134400000, "5/13/2016")]
+        [TestCase(1302134400000, "4/7/2011")]
+        [TestCase(1463097600000, "5/13/2016")]
         public void JsTimeTicksToDateTimeTest(long jsTimeTicks, string date)
         {
             /* Act */
@@ -43,8 +43,8 @@ namespace SharpUtility.Core.Tests.Common
         }
 
         [Test]
-        [TestCase(1463097600000, "4/7/2011")]
-        [TestCase(1302134400000, "5/13/2016")]
+        [TestCase(1302134400000, "4/7/2011")]
+        [TestCase(1463097600000, "5/13/2016")]
         public void ToJsTimeTicksTest(long jsTimeTicks, string date)
         {
             /* Act */
