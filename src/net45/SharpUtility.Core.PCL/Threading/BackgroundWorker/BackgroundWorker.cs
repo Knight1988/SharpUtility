@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace SharpUtility.Threading
 {
-    public class BackgroundWorker
+    public class BackgroundWorker : IBackgroundWorker
     {
         public async Task RunWorkerAsync()
         {

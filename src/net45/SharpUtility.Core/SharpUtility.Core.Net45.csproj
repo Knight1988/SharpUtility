@@ -106,6 +106,9 @@
     <Compile Include="..\SharpUtility.Core.PCL\Threading\BackgroundWorker\DoWorkEventArgs.cs">
       <Link>Threading\BackgroundWorker\DoWorkEventArgs.cs</Link>
     </Compile>
+    <Compile Include="..\SharpUtility.Core.PCL\Threading\BackgroundWorker\IBackgroundWorker.cs">
+      <Link>Threading\BackgroundWorker\IBackgroundWorker.cs</Link>
+    </Compile>
     <Compile Include="..\SharpUtility.Core.PCL\Threading\BackgroundWorker\ProgressChangedEventArgs.cs">
       <Link>Threading\BackgroundWorker\ProgressChangedEventArgs.cs</Link>
     </Compile>

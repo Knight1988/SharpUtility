@@ -65,6 +65,7 @@
     <Compile Include="Threading\BackgroundWorker\BackgroundWorker.cs" />
     <Compile Include="Threading\BackgroundWorker\CompleteEventArgs.cs" />
     <Compile Include="Threading\BackgroundWorker\DoWorkEventArgs.cs" />
+    <Compile Include="Threading\BackgroundWorker\IBackgroundWorker.cs" />
     <Compile Include="Threading\BackgroundWorker\ProgressChangedEventArgs.cs" />
     <Compile Include="Threading\TaskManager.cs" />
     <Compile Include="Threading\TaskPause.cs" />
