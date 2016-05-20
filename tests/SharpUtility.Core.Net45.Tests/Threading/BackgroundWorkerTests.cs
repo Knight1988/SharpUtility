@@ -26,5 +26,38 @@ namespace SharpUtility.Core.Tests.Threading
 
             Assert.AreEqual(10, j);
         }
+
+        [Test]
+        public async Task TaskWorkerTest()
+        {
+            var worker = new BackgroundWorker();
+            var j = 0;
+
+            worker.DoWork += async (sender, args) =>
+            {
+                for (var i = 0; i < 10; i++)
+                {
+                    worker.ReportProgress(await Task.FromResult(i), 9);
+                }
+            };
+            worker.ProgressChanged += (sender, args) => { j++; };
+
+            await worker.RunWorkerAsync();
+
+            Assert.AreEqual(10, j);
+        }
+
+        [Test]
+        public void RetryTest()
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += (sender, args) =>
+            {
+                for (var i = 0; i < 10; i++)
+                {
+                    worker.ReportProgress(i, 9);
+                }
+            };
+        }
     }
 }
