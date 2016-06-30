@@ -61,12 +61,6 @@
   <ItemGroup>
     <None Include="SharpUtility.MEF.snk" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SharpUtility.Core\SharpUtility.Core.Net45.csproj">
-      <Project>{9CFC6221-753E-4674-B0DA-B085D8DF82A5}</Project>
-      <Name>SharpUtility.Core.Net45</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

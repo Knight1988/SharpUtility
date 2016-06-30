@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using MEFInterface;
 
 namespace SharpUtility.MEF.Tests
 {
+    [Serializable]
     public class Runner : RunnerBase<IExport>
     {
         public string DoSomething()

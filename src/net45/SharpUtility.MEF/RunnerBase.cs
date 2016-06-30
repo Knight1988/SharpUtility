@@ -5,11 +5,11 @@ using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Registration;
 using System.IO;
 using System.Linq;
-using SharpUtility.Runtime.Remoting;
 
 namespace SharpUtility.MEF
 {
-    public class RunnerBase<T> : Sponsor where T : IExporterBase
+    [Serializable]
+    public class RunnerBase<T> where T : IExporterBase
     {
         private CompositionContainer _container;
         private readonly List<DirectoryCatalog> _directoryCatalogs = new List<DirectoryCatalog>();
