@@ -100,7 +100,8 @@ namespace SharpUtility.MEF.Tests
             // Copy lib1
             File.Copy(lib1V1Path, lib1PluginPath);
 
-            var runner = RunnerManager.CreateRunner<Runner, IExport>("Plugins", pluginPath);
+            var runner = RunnerManager.CreateRunner<Runner, IExport>("Plugins");
+            runner.PluginPath = pluginPath;
 
             var actual = runner.DoSomething();
             var expected = "Lib1";

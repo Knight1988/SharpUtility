@@ -6,9 +6,4 @@ namespace SharpUtility.MEF
     {
         string Name { get; set; }
     }
-
-    public interface IExporterBase<TEventHandler> : IExporterBase where TEventHandler : MarshalByRefObject
-    {
-        TEventHandler EventHandler { get; set; }
-    }
 }
