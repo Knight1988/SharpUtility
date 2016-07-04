@@ -1,64 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Registration;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using SharpUtility.MEF.Annotations;
 
 namespace SharpUtility.MEF
 {
     [Serializable]
-    public class RunnerBase<T> : INotifyPropertyChanged where T : IExporterBase
+    public class RunnerBase<T> where T : IExporterBase
     {
         private CompositionContainer _container;
-        private List<DirectoryCatalog> _directoryCatalogs = new List<DirectoryCatalog>();
-        private string _pluginPath;
-        private IEnumerable<string> _searchPatterns;
+        private readonly List<DirectoryCatalog> _directoryCatalogs = new List<DirectoryCatalog>();
         public Dictionary<string, T> Exports { get; private set; }
 
-        public string PluginPath
+        public string PluginPath { get; private set; }
+
+        public void Initialize()
         {
-            get { return _pluginPath; }
-            set
-            {
-                _pluginPath = value;
-                OnPropertyChanged();
-            }
+            var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
+            Initialize(pluginPath, "*.dll", "*.exe");
         }
 
-        public string SearchPatterns
+        public void Initialize(string pluginPath)
         {
-            get { return string.Join(",", _searchPatterns); }
-            set
-            {
-                _searchPatterns = value.Split(',').Select(p => p.Trim());
-                OnPropertyChanged();
-            }
+            Initialize(pluginPath, "*.dll", "*.exe");
         }
 
-        public RunnerBase()
+        public void Initialize(string pluginPath, params string[] searchPatterns)
         {
-            PluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
-            SearchPatterns = "*.dll";
-            Initialize();
-            PropertyChanged += (sender, args) => Initialize();
-        }
+            PluginPath = pluginPath;
 
-        private void Initialize()
-        {
             // Use RegistrationBuilder to set up our MEF parts.
             var regBuilder = new RegistrationBuilder();
             regBuilder.ForTypesDerivedFrom<T>().Export<T>();
 
             var catalog = new AggregateCatalog();
-            _directoryCatalogs = new List<DirectoryCatalog>();
-            foreach (var searchPattern in _searchPatterns)
+            foreach (var searchPattern in searchPatterns)
             {
-                var directoryCatalog = new DirectoryCatalog(PluginPath, searchPattern, regBuilder);
+                var directoryCatalog = new DirectoryCatalog(pluginPath, searchPattern, regBuilder);
                 catalog.Catalogs.Add(directoryCatalog);
                 _directoryCatalogs.Add(directoryCatalog);
             }
@@ -89,14 +70,6 @@ namespace SharpUtility.MEF
                 _container.ComposeParts(directoryCatalog.Parts);
             }
             Exports = GetExportedValues();
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

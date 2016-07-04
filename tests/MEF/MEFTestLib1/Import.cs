@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.Composition;
+﻿using System;
+using System.ComponentModel.Composition;
 using MEFInterface;
-using SharpUtility.Runtime.Remoting;
 
 namespace MEFTestLib1
 {
     [Export(typeof(IExport))]
-    public class Import : Sponsor, IExport
+    [Serializable]
+    public class Import : IExport
     {
         public string InHere()
         {

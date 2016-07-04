@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using SharpUtility.Runtime.Remoting;
 
 namespace SharpUtility.Core.Tests
 {
@@ -23,7 +22,7 @@ namespace SharpUtility.Core.Tests
         }
     }
 
-    public class SponsorImplement : Sponsor
+    public class SponsorImplement
     {
         ~SponsorImplement()
         {
