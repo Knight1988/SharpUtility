@@ -12,15 +12,25 @@ namespace SharpUtility.MEF
     public class RunnerBase<T> where T : IExporterBase
     {
         private CompositionContainer _container;
-        private readonly List<DirectoryCatalog> _directoryCatalogs = new List<DirectoryCatalog>();
-        public Dictionary<string, T> Exports { get; private set; }
+        private List<DirectoryCatalog> _directoryCatalogs;
+        private Dictionary<string, T> _exports;
+
+        public Dictionary<string, T> Exports
+        {
+            get
+            {
+                if (!IsInitialized) throw new Exception("Must call Initialize first.");
+                return _exports;
+            }
+            private set { _exports = value; }
+        }
 
         public string PluginPath { get; private set; }
 
         public void Initialize()
         {
             var pluginPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Plugins");
-            Initialize(pluginPath, "*.dll", "*.exe");
+            Initialize(pluginPath);
         }
 
         public void Initialize(string pluginPath)
@@ -37,6 +47,7 @@ namespace SharpUtility.MEF
             regBuilder.ForTypesDerivedFrom<T>().Export<T>();
 
             var catalog = new AggregateCatalog();
+            _directoryCatalogs = new List<DirectoryCatalog>();
             foreach (var searchPattern in searchPatterns)
             {
                 var directoryCatalog = new DirectoryCatalog(pluginPath, searchPattern, regBuilder);
@@ -49,7 +60,10 @@ namespace SharpUtility.MEF
 
             // Get our exports available to the rest of Program.
             Exports = GetExportedValues();
+            IsInitialized = true;
         }
+
+        public bool IsInitialized { get; private set; }
 
         private Dictionary<string, T> GetExportedValues()
         {
@@ -64,6 +78,8 @@ namespace SharpUtility.MEF
 
         public void Recompose()
         {
+            if (!IsInitialized) throw new Exception("Must call Initialize first.");
+
             foreach (var directoryCatalog in _directoryCatalogs)
             {
                 directoryCatalog.Refresh();

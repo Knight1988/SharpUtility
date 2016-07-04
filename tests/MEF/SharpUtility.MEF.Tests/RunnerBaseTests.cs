@@ -6,7 +6,6 @@ using MEFInterface;
 using NUnit.Framework;
 
 // ReSharper disable PossibleNullReferenceException
-
 namespace SharpUtility.MEF.Tests
 {
     [TestFixture]
@@ -201,6 +200,24 @@ namespace SharpUtility.MEF.Tests
             expected = string.Empty;
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void InitializeTest()
+        {
+            /* Arrange */
+            var runner = new Runner();
+
+            /* Act */
+            var recompoceException = Assert.Throws<Exception>(runner.Recompose);
+            var exportException = Assert.Throws<Exception>(() =>
+            {
+                var test = runner.Exports;
+            });
+
+            /* Assert */
+            Assert.AreEqual("Must call Initialize first.", recompoceException.Message);
+            Assert.AreEqual("Must call Initialize first.", exportException.Message);
         }
     }
 }
