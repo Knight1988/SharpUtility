@@ -52,6 +52,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Telerik.JustMock, Version=2016.1.107.7, Culture=neutral, PublicKeyToken=721b6c5bc0326b3a, processorArchitecture=MSIL">
@@ -95,6 +96,13 @@
     <Compile Include="String\StringExtensionsTests.cs" />
     <Compile Include="Threading\AsyncLazyTest.cs" />
     <Compile Include="Threading\BackgroundWorkerTests.cs" />
+    <Compile Include="WindowService\TestService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WindowService\TestService.Designer.cs">
+      <DependentUpon>TestService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WindowService\WindowServiceManagerTests.cs" />
     <Compile Include="WinForm\FormExtensionTests.cs" />
     <Compile Include="WinForm\FormTest.cs">
       <SubType>Form</SubType>
@@ -123,6 +131,10 @@
       <Project>{8450FFD3-39AA-4139-9054-209928A72224}</Project>
       <Name>SharpUtility.Runtime.Caching</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\net45\SharpUtility.WindowService\SharpUtility.WindowService.csproj">
+      <Project>{DDB67A30-83B2-491F-9F33-D2883CB3FDE5}</Project>
+      <Name>SharpUtility.WindowService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\net45\SharpUtility.WinForm.Net45\SharpUtility.WinForm.Net45.csproj">
       <Project>{854D8526-8E8C-4A32-BC49-4D224EA9D2B7}</Project>
       <Name>SharpUtility.WinForm.Net45</Name>
@@ -133,6 +145,7 @@
       <DependentUpon>FormTest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
