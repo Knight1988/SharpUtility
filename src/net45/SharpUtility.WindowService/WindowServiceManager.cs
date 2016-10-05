@@ -82,8 +82,7 @@ namespace SharpUtility.WindowService
         /// <returns></returns>
         public static bool IsIntalled(string serviceName)
         {
-            var serviceController = ServiceController.GetServices().FirstOrDefault(s => s.ServiceName == serviceName);
-            return serviceController != null;
+            return ServiceController.GetServices().Any(s => s.ServiceName == serviceName);
         }
     }
 }
