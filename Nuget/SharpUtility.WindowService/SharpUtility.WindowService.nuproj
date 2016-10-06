@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>35c24b4b-f426-403c-82ed-bab553186b6c</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NuProjPath Condition=" '$(NuProjPath)' == '' ">$(MSBuildExtensionsPath)\NuProj\</NuProjPath>
+  </PropertyGroup>
+  <Import Project="$(NuProjPath)\NuProj.props" Condition="Exists('$(NuProjPath)\NuProj.props')" />
+  <PropertyGroup Label="Configuration">
+    <Id>SharpUtility.WindowService</Id>
+    <Version>2.0.1</Version>
+    <Title>SharpUtility.WindowService</Title>
+    <Authors>Dark Knight</Authors>
+    <Owners>Dark Knight</Owners>
+    <Summary>Allow Install/Uninstall a window service. Need to run as Administrator right.</Summary>
+    <Description>Allow Install/Uninstall a window service. Need to run as Administrator right.</Description>
+    <ReleaseNotes>
+    </ReleaseNotes>
+    <ProjectUrl>https://github.com/Knight1988/SharpUtility</ProjectUrl>
+    <LicenseUrl>https://github.com/Knight1988/SharpUtility</LicenseUrl>
+    <Copyright>Copyright © Dark Knight 2016</Copyright>
+    <Tags>SharpUtility,WindowService</Tags>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\net45\SharpUtility.WindowService\SharpUtility.WindowService.csproj" />
+  </ItemGroup>
+  <Import Project="$(NuProjPath)\NuProj.targets" />
+</Project>

@@ -9,7 +9,7 @@ namespace SharpUtility.Core.Tests.WindowService
         [Test()]
         public void InstallTest()
         {
-            WindowServiceManager.Install("TestService", "TestService", "TestService", "C:\\");
+            WindowServiceManager.Install("TestService", "TestService", "TestService");
 
             var isInstalled = WindowServiceManager.IsIntalled("TestService");
 
