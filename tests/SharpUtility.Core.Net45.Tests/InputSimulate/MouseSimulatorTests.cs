@@ -40,7 +40,20 @@ namespace SharpUtility.Core.Tests.InputSimulate
             var handle = window.Handle;
 
             /* Atc */
-            await MouseSimulator.ClickAsync(handle, MouseButton.Left, 50, 500, 1, 10);
+            await MouseSimulator.ClickAsync(handle, MouseButton.Left, 50, 500, 5, 250);
+        }
+
+        [Test]
+        public async Task MouseDownUpTests()
+        {
+            /* Arrange */
+            var window = WindowList.GetAllWindows().Single(p => p.Caption.Contains(WindowTitle));
+            var handle = window.Handle;
+
+            /* Atc */
+            MouseSimulator.Down(handle, MouseButton.Left, 50, 500);
+            await Task.Delay(100);
+            MouseSimulator.Up(handle, MouseButton.Left, 50, 500);
         }
     }
 }

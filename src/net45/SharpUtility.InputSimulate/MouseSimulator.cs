@@ -118,7 +118,7 @@ namespace SharpUtility.InputSimulate
                     break;
 
             }
-            Win32.PostMessage(windowHandle, (IntPtr)msg, (IntPtr)0x00000001,
+            Win32.PostMessage(windowHandle, (IntPtr)msg, (IntPtr)0x00000000,
                 Win32.CreateLParam(x, y));
         }
     }
