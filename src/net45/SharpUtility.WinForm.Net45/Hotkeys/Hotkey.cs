@@ -7,14 +7,14 @@ namespace SharpUtility.WinForm.Hotkeys
 {
     public static class Hotkey
     {
-        private static readonly List<HotkeyInfo> _actions;
-        private static readonly KeyboardHook _hook;
+        private static readonly List<HotkeyInfo> Actions;
+        private static readonly KeyboardHook Hook;
 
         static Hotkey()
         {
-            _actions = new List<HotkeyInfo>();
-            _hook = new KeyboardHook();
-            _hook.KeyPressed += HookOnKeyPressed;
+            Actions = new List<HotkeyInfo>();
+            Hook = new KeyboardHook();
+            Hook.KeyPressed += HookOnKeyPressed;
         }
 
         public static void DisableHotkey(ModifierKeys modifierKeys, Keys keys)
@@ -22,8 +22,8 @@ namespace SharpUtility.WinForm.Hotkeys
             var hotkeyInfo = GetHotkeyInfo(modifierKeys, keys);
             if (hotkeyInfo != null)
             {
-                _hook.UnregisterHotkey(hotkeyInfo.Id);
-                _actions.Remove(hotkeyInfo);
+                Hook.UnregisterHotkey(hotkeyInfo.Id);
+                Actions.Remove(hotkeyInfo);
             }
         }
 
@@ -34,7 +34,7 @@ namespace SharpUtility.WinForm.Hotkeys
 
         public static void SetHotkey(ModifierKeys modifierKeys, Keys keys, Action action)
         {
-            var num = _hook.RegisterHotKey(modifierKeys, keys);
+            var num = Hook.RegisterHotKey(modifierKeys, keys);
             var hotkeyInfo = new HotkeyInfo
             {
                 Id = num,
@@ -42,7 +42,7 @@ namespace SharpUtility.WinForm.Hotkeys
                 Keys = keys,
                 Action = action
             };
-            _actions.Add(hotkeyInfo);
+            Actions.Add(hotkeyInfo);
         }
 
         public static void SetHotkey(Keys keys, Action action)
@@ -52,7 +52,7 @@ namespace SharpUtility.WinForm.Hotkeys
 
         private static HotkeyInfo GetHotkeyInfo(ModifierKeys modifierKeys, Keys keys)
         {
-            return _actions.FirstOrDefault(p =>
+            return Actions.FirstOrDefault(p =>
             {
                 if (p.ModifierKeys != modifierKeys)
                 {

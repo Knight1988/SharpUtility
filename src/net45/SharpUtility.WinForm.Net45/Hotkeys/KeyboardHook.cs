@@ -13,10 +13,7 @@ namespace SharpUtility.WinForm.Hotkeys
         {
             _window.KeyPressed += (sender, args) =>
             {
-                if (KeyPressed != null)
-                {
-                    KeyPressed(this, args);
-                }
+                KeyPressed?.Invoke(this, args);
             };
         }
 
@@ -71,10 +68,7 @@ namespace SharpUtility.WinForm.Hotkeys
                 {
                     var lParam = (Keys) ((int) m.LParam >> 16 & 65535);
                     var modifierKey = (ModifierKeys) ((int) m.LParam & 65535);
-                    if (KeyPressed != null)
-                    {
-                        KeyPressed(this, new KeyPressedEventArgs(modifierKey, lParam));
-                    }
+                    KeyPressed?.Invoke(this, new KeyPressedEventArgs(modifierKey, lParam));
                 }
             }
 

@@ -5,17 +5,14 @@ namespace SharpUtility.WinForm.Hotkeys
 {
     public class KeyPressedEventArgs : EventArgs
     {
-        private readonly Keys _key;
-        private readonly ModifierKeys _modifier;
+        public Keys Key { get; }
 
-        public Keys Key => _key;
-
-        public ModifierKeys Modifier => _modifier;
+        public ModifierKeys Modifier { get; }
 
         internal KeyPressedEventArgs(ModifierKeys modifier, Keys key)
         {
-            _modifier = modifier;
-            _key = key;
+            Modifier = modifier;
+            Key = key;
         }
     }
 }
