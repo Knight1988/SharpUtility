@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using NUnit.Framework.Internal;
 using NUnit.Framework;
 using SharpUtility.InputSimulate;
 
@@ -12,14 +8,14 @@ namespace SharpUtility.Core.Tests.InputSimulate
     [TestFixture]
     class MouseSimulatorTests
     {
-        private string _windowTitle =
-            "Genymotion for personal use - Google Nexus 5 - 6.0.0 - API 23 - 1080x1920 (1080x1920, 480dpi) - 192.168.56.101";
+        private const string WindowTitle = "Genymotion for personal use - Google Nexus 5";
 
         [Test]
         public async Task MouseClickTests()
         {
             /* Arrange */
-            var handle = WindowFinder.FindWindow(null, _windowTitle);
+            var window = WindowList.GetAllWindows().Single(p => p.Caption.Contains(WindowTitle));
+            var handle = window.Handle;
 
             /* Atc */
             await MouseSimulator.ClickAsync(handle, MouseButton.Left, 190, 400, 1, 250);
@@ -29,7 +25,8 @@ namespace SharpUtility.Core.Tests.InputSimulate
         public async Task MouseClickDownDelayTests()
         {
             /* Arrange */
-            var handle = WindowFinder.FindWindow(null, _windowTitle);
+            var window = WindowList.GetAllWindows().Single(p => p.Caption.Contains(WindowTitle));
+            var handle = window.Handle;
 
             /* Atc */
             await MouseSimulator.ClickAsync(handle, MouseButton.Left, 50, 50, 1, 10, 1000);
@@ -39,7 +36,8 @@ namespace SharpUtility.Core.Tests.InputSimulate
         public async Task MouseClickRepeatClickTests()
         {
             /* Arrange */
-            var handle = WindowFinder.FindWindow(null, _windowTitle);
+            var window = WindowList.GetAllWindows().Single(p => p.Caption.Contains(WindowTitle));
+            var handle = window.Handle;
 
             /* Atc */
             await MouseSimulator.ClickAsync(handle, MouseButton.Left, 50, 500, 1, 10);
