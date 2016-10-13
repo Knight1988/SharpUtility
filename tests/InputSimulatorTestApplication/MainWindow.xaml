@@ -1,0 +1,13 @@
+﻿<Window x:Class="InputSimulatorTestApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InputSimulatorTestApplication"
+        mc:Ignorable="d"
+        Title="TestWindow" Height="400" Width="400" MouseUp="MainWindow_OnMouseUp">
+    <Grid>
+        <Button x:Name="CenterButton" Content="Center" HorizontalAlignment="Left" Margin="160,170,0,0" VerticalAlignment="Top" Width="75" Click="CenterButton_OnClick"/>
+        <Label x:Name="lblPosition" Content="[0, 0]" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

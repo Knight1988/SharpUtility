@@ -58,6 +58,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{6FF0AC67
 EndProject
 Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "SharpUtility.WindowService", "Nuget\SharpUtility.WindowService\SharpUtility.WindowService.nuproj", "{35C24B4B-F426-403C-82ED-BAB553186B6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InputSimulatorTestApplication", "tests\InputSimulatorTestApplication\InputSimulatorTestApplication.csproj", "{50AE2E91-D9DD-4042-8490-F3DEE53F037B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -144,6 +146,10 @@ Global
 		{35C24B4B-F426-403C-82ED-BAB553186B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35C24B4B-F426-403C-82ED-BAB553186B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35C24B4B-F426-403C-82ED-BAB553186B6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50AE2E91-D9DD-4042-8490-F3DEE53F037B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50AE2E91-D9DD-4042-8490-F3DEE53F037B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50AE2E91-D9DD-4042-8490-F3DEE53F037B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50AE2E91-D9DD-4042-8490-F3DEE53F037B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -173,5 +179,6 @@ Global
 		{DDB67A30-83B2-491F-9F33-D2883CB3FDE5} = {0B1E3E3B-95AD-4427-9235-879A65DEE41F}
 		{6FF0AC67-A4B2-44E8-8D8B-6F5D57810EFA} = {5A530614-F36B-42AD-8C67-2F9987C95729}
 		{35C24B4B-F426-403C-82ED-BAB553186B6C} = {6FF0AC67-A4B2-44E8-8D8B-6F5D57810EFA}
+		{50AE2E91-D9DD-4042-8490-F3DEE53F037B} = {F133496B-23D3-4A95-B516-BF981373A881}
 	EndGlobalSection
 EndGlobal
