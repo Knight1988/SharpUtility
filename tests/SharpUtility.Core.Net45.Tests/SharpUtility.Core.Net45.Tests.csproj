@@ -93,6 +93,7 @@
     <Compile Include="Security\Cryptography\RSAExtensionsTests.cs" />
     <Compile Include="SmtpClientTests.cs" />
     <Compile Include="SponsorTests.cs" />
+    <Compile Include="StringManipulation\StringConvertTests.cs" />
     <Compile Include="String\QueryStringBuilderTests.cs" />
     <Compile Include="String\StringExtensionsTests.cs" />
     <Compile Include="Threading\AsyncLazyTest.cs" />
@@ -131,6 +132,14 @@
     <ProjectReference Include="..\..\src\net45\SharpUtility.Runtime.Caching\SharpUtility.Runtime.Caching.csproj">
       <Project>{8450FFD3-39AA-4139-9054-209928A72224}</Project>
       <Name>SharpUtility.Runtime.Caching</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\net45\SharpUtility.StringManipulation\SharpUtility.StringManipulation.csproj">
+      <Project>{D7F56E4B-B6CC-4908-9F3A-D9F89B85EBB4}</Project>
+      <Name>SharpUtility.StringManipulation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\net45\SharpUtility.Win32API\SharpUtility.Win32API.csproj">
+      <Project>{E8F3B873-05BC-4961-A02D-AD1C025246E3}</Project>
+      <Name>SharpUtility.Win32API</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\net45\SharpUtility.WindowService\SharpUtility.WindowService.csproj">
       <Project>{DDB67A30-83B2-491F-9F33-D2883CB3FDE5}</Project>
