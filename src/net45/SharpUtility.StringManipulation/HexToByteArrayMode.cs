@@ -2,7 +2,12 @@
 {
     public enum HexToByteArrayMode
     {
-        NathanMoinvaziri,
-        Tomalak
+        Lookup,
+        Complex,
+        ByteParse,
+        Enumerable,
+        ByteCasting,
+        ConvertToByte,
+        DictionaryAndList,
     }
 }

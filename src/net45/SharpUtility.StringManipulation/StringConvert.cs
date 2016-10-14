@@ -9,13 +9,21 @@ namespace SharpUtility.StringManipulation
         /// Default: LookupPerByte (fastest and safe in most case)
         /// mode LookupUnsafeDirect is the fastest but unsafe
         /// </summary>
-        /// <param name="bytes"></param>
+        /// <param name="bytes">byte to convert</param>
         /// <returns></returns>
         public static string ByteArrayToHex(byte[] bytes)
         {
             return ByteArrayToHex(bytes, ByteArrayToHexMode.LookupPerByte);
         }
 
+        /// <summary>
+        /// Convert byte array to hex
+        /// Default: LookupPerByte (fastest and safe in most case)
+        /// mode LookupUnsafeDirect is the fastest but unsafe
+        /// </summary>
+        /// <param name="bytes">byte to convert</param>
+        /// <param name="mode">convert mode</param>
+        /// <returns></returns>
         public static string ByteArrayToHex(byte[] bytes, ByteArrayToHexMode mode)
         {
             switch (mode)
@@ -48,6 +56,50 @@ namespace SharpUtility.StringManipulation
                     return ByteArrayToHexConverter.StringBuilderAggregateAppendFormat(bytes);
                 default:
                     return ByteArrayToHexConverter.LookupPerByte(bytes);
+            }
+        }
+
+        /// <summary>
+        /// Convert hex to byte array
+        /// Default: ByteCasting (fastest)
+        /// </summary>
+        /// <param name="hex">hex string to convert</param>
+        /// <returns></returns>
+        public static byte[] HexToByteArray(string hex)
+        {
+            return HexToByteArray(hex, HexToByteArrayMode.ByteCasting);
+        }
+
+        /// <summary>
+        /// Convert hex to byte array
+        /// Default: ByteCasting (fastest)
+        /// </summary>
+        /// <param name="hex">hex string to convert</param>
+        /// <param name="mode">convert mode</param>
+        /// <returns></returns>
+        public static byte[] HexToByteArray(string hex, HexToByteArrayMode mode)
+        {
+            if (hex.Length % 2 == 1)
+                throw new Exception("The binary key cannot have an odd number of digits");
+
+            switch (mode)
+            {
+                case HexToByteArrayMode.Lookup:
+                    return HexToByteArrayConverter.Lookup(hex);
+                case HexToByteArrayMode.Complex:
+                    return HexToByteArrayConverter.Complex(hex);
+                case HexToByteArrayMode.ByteParse:
+                    return HexToByteArrayConverter.ByteParse(hex);
+                case HexToByteArrayMode.Enumerable:
+                    return HexToByteArrayConverter.Enumerable(hex);
+                case HexToByteArrayMode.ByteCasting:
+                    return HexToByteArrayConverter.ByteCasting(hex);
+                case HexToByteArrayMode.ConvertToByte:
+                    return HexToByteArrayConverter.ConvertToByte(hex);
+                case HexToByteArrayMode.DictionaryAndList:
+                    return HexToByteArrayConverter.DictionaryAndList(hex);
+                default:
+                    return HexToByteArrayConverter.ByteCasting(hex);
             }
         }
 

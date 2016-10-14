@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="ByteArrayToHexConverter.cs" />
     <Compile Include="ByteArrayToHexMode.cs" />
+    <Compile Include="HexToByteArrayConverter.cs" />
     <Compile Include="HexToByteArrayMode.cs" />
     <Compile Include="StringConvert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

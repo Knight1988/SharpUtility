@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SharpUtility.StringManipulation
 {
-    internal class ByteArrayToHexConverter
+    internal static class ByteArrayToHexConverter
     {
         private const string HexAlphabet = "0123456789ABCDEF";
 
