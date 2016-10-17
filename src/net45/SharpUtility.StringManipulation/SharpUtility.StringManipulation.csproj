@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Base64.cs" />
+    <Compile Include="QueryStringBuilder.cs" />
     <Compile Include="RandomString\CharLimit.cs" />
     <Compile Include="RandomString\RandomString.cs" />
     <Compile Include="StringAndBytes\ByteArrayToHexConverter.cs" />

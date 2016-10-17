@@ -35,7 +35,7 @@ namespace SharpUtility.WindowService
         /// <param name="settings">(optional) more settings</param>
         public static void Install(string serviceName, string displayName, string description, string fileName = null, ServiceSettings settings = null)
         {
-            if (fileName == null) fileName = Assembly.GetEntryAssembly().Location;
+            if (fileName == null) fileName = Assembly.GetExecutingAssembly().Location;
 
             if (settings == null)
             {

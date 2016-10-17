@@ -56,7 +56,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\AssemblyExtensions.cs" />
     <Compile Include="Reflection\TypeExtensions.cs" />
-    <Compile Include="String\QueryStringBuilder.cs" />
     <Compile Include="String\StringExtensions.cs" />
     <Compile Include="String\StringInjectExtensions.cs" />
     <Compile Include="Threading\BackgroundWorker\BackgroundWorker.cs" />

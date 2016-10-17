@@ -103,9 +103,9 @@
     <Compile Include="SmtpClientTests.cs" />
     <Compile Include="SponsorTests.cs" />
     <Compile Include="StringManipulation\Base64Tests.cs" />
+    <Compile Include="StringManipulation\QueryStringBuilderTests.cs" />
     <Compile Include="StringManipulation\RandomStringTests.cs" />
     <Compile Include="StringManipulation\StringConvertTests.cs" />
-    <Compile Include="String\QueryStringBuilderTests.cs" />
     <Compile Include="String\StringExtensionsTests.cs" />
     <Compile Include="Threading\AsyncLazyTest.cs" />
     <Compile Include="Threading\BackgroundWorkerTests.cs" />
