@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace SharpUtility.StringManipulation
@@ -9,7 +8,7 @@ namespace SharpUtility.StringManipulation
         public static IEnumerable<ByteArrayToHexResult> ByteArrayToHexPerformanceTest(byte[] bytes, int loops)
         {
             // loop al modes
-            foreach (ByteArrayToHexMode mode in Enum.GetValues(typeof(ByteArrayToHexMode)))
+            foreach (ByteArrayToHexMode mode in System.Enum.GetValues(typeof(ByteArrayToHexMode)))
             {
                 // create test result
                 var result = new ByteArrayToHexResult {Mode = mode};
@@ -34,7 +33,7 @@ namespace SharpUtility.StringManipulation
         public static IEnumerable<HexToByteArrayResult> HexToByteArrayPerformanceTest(string hex, int loops)
         {
             // loop al modes
-            foreach (HexToByteArrayMode mode in Enum.GetValues(typeof(HexToByteArrayMode)))
+            foreach (HexToByteArrayMode mode in System.Enum.GetValues(typeof(HexToByteArrayMode)))
             {
                 // create test result
                 var result = new HexToByteArrayResult {Mode = mode};

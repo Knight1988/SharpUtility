@@ -102,7 +102,8 @@
     <Compile Include="Security\Cryptography\RSAExtensionsTests.cs" />
     <Compile Include="SmtpClientTests.cs" />
     <Compile Include="SponsorTests.cs" />
-    <Compile Include="StringManipulation\Base64Test.cs" />
+    <Compile Include="StringManipulation\Base64Tests.cs" />
+    <Compile Include="StringManipulation\RandomStringTests.cs" />
     <Compile Include="StringManipulation\StringConvertTests.cs" />
     <Compile Include="String\QueryStringBuilderTests.cs" />
     <Compile Include="String\StringExtensionsTests.cs" />

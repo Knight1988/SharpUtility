@@ -2,13 +2,13 @@
 using System.Text;
 using SharpUtility.Enum;
 
-namespace SharpUtility.String
+namespace SharpUtility.StringManipulation
 {
     public class RandomString
     {
-        public string CharLimit { get; set; } = String.CharLimit.Default.GetStringValue();
+        public string CharLimit { get; set; } = StringManipulation.CharLimit.Default.GetStringValue();
 
-        public Random Random { get; set; } = new Random();
+        protected Random Random { get; set; } = new Random();
 
         /// <summary>
         /// Set the char limit so the randomed string will only contain those characters
@@ -27,21 +27,21 @@ namespace SharpUtility.String
         public void SetCharLimit(CharLimit charLimit)
         {
             var limit = new StringBuilder();
-            if (charLimit.HasFlag(String.CharLimit.Default))
+            if (charLimit.HasFlag(StringManipulation.CharLimit.Default))
             {
-                limit.Append(String.CharLimit.Default.GetStringValue());
+                limit.Append(StringManipulation.CharLimit.Default.GetStringValue());
                 CharLimit = limit.ToString();
                 return;
             }
 
-            if (charLimit.HasFlag(String.CharLimit.UpperCase))
-                limit.Append(String.CharLimit.UpperCase.GetStringValue());
+            if (charLimit.HasFlag(StringManipulation.CharLimit.UpperCase))
+                limit.Append(StringManipulation.CharLimit.UpperCase.GetStringValue());
 
-            if (charLimit.HasFlag(String.CharLimit.LowerCase))
-                limit.Append(String.CharLimit.LowerCase.GetStringValue());
+            if (charLimit.HasFlag(StringManipulation.CharLimit.LowerCase))
+                limit.Append(StringManipulation.CharLimit.LowerCase.GetStringValue());
 
-            if (charLimit.HasFlag(String.CharLimit.Number))
-                limit.Append(String.CharLimit.Number.GetStringValue());
+            if (charLimit.HasFlag(StringManipulation.CharLimit.Number))
+                limit.Append(StringManipulation.CharLimit.Number.GetStringValue());
 
             CharLimit = limit.ToString();
         }
