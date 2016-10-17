@@ -1,6 +1,5 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
-using SharpUtility.String;
 using SharpUtility.StringManipulation;
 
 namespace SharpUtility.Security.Cryptography
