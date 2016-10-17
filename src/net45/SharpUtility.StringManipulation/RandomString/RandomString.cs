@@ -6,7 +6,7 @@ namespace SharpUtility.StringManipulation
 {
     public class RandomString
     {
-        public string CharLimit { get; set; } = StringManipulation.CharLimit.Default.GetStringValue();
+        protected string CharLimit { get; set; } = StringManipulation.CharLimit.Default.GetStringValue();
 
         protected Random Random { get; set; } = new Random();
 

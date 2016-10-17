@@ -4,6 +4,10 @@ using System.Net;
 
 namespace SharpUtility.StringManipulation
 {
+    /// <summary>
+    /// Build a query string
+    /// Add key & value then call ToString to make a querystring
+    /// </summary>
     public class QueryStringBuilder : Dictionary<string, object>
     {
         public override string ToString()
