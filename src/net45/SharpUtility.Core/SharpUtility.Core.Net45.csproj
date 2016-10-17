@@ -131,8 +131,6 @@
       <Link>Time\RemainingTimer.cs</Link>
     </Compile>
     <Compile Include="Drawing\ImageHandler.cs" />
-    <Compile Include="Enum\EnumExtensions.cs" />
-    <Compile Include="Enum\StringValue.cs" />
     <Compile Include="IO\DirectoryExtended.cs" />
     <Compile Include="IO\File.cs" />
     <Compile Include="IO\StreamExtensions.cs" />

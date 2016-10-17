@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using SharpUtility.String;
 
 namespace SharpUtility.Enum
 {
@@ -27,7 +24,7 @@ namespace SharpUtility.Enum
         public static IEnumerable<TAttribute> GetCustomAttributes<TAttribute>(this System.Enum value)
         {
             var type = value.GetType();
-            var fi = type.GetRuntimeField(value.ToString());
+            var fi = type.GetField(value.ToString());
             var attrs = fi.GetCustomAttributes(typeof(TAttribute), false).Cast<TAttribute>();
 
             return attrs;

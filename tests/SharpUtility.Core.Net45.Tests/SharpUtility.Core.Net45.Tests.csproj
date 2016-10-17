@@ -131,6 +131,10 @@
       <Project>{9CFC6221-753E-4674-B0DA-B085D8DF82A5}</Project>
       <Name>SharpUtility.Core.Net45</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\net45\SharpUtility.Enum\SharpUtility.Enum.csproj">
+      <Project>{45896457-6325-4272-8E78-CA1BD0FB6AA1}</Project>
+      <Name>SharpUtility.Enum</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\net45\SharpUtility.InputSimulate\SharpUtility.InputSimulate.csproj">
       <Project>{D0375FD1-CBC6-44E2-91ED-FA0BEA30DE9A}</Project>
       <Name>SharpUtility.InputSimulate</Name>
