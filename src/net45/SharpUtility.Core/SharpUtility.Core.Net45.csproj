@@ -147,7 +147,6 @@
     <Compile Include="Security\Cryptography\MD5Extensions.cs" />
     <Compile Include="Security\Cryptography\RSAExtensions.cs" />
     <Compile Include="Security\Cryptography\SHA1Extensions.cs" />
-    <Compile Include="String\StringInjectExtensions.cs" />
     <Compile Include="Common\AppDomainExentions.cs" />
     <Compile Include="Threading\AsyncLazy.cs" />
     <Compile Include="Threading\TaskPause.cs" />
