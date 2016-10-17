@@ -16,6 +16,6 @@ test:
   categories:
     except:
     - InternetRequired
-    - CloundIgnore
+    - CloudIgnore
 install:
     - cinst nubuild
