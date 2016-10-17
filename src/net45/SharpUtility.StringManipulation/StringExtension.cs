@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using SharpUtility.Linq;
 
-namespace SharpUtility.String
+namespace SharpUtility.StringManipulation
 {
-    public static class StringExtensions
+    public static class StringExtension
     {
         /// <summary>
         ///     Containt with comparison type
@@ -99,7 +98,7 @@ namespace SharpUtility.String
         }
 
         /// <summary>
-        ///     Trim string, double space, convert space-like to space.
+        ///     Trim string, double space, convert special white-space to normal white-space.
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -112,8 +111,11 @@ namespace SharpUtility.String
                 " ",    // atl + 0160,
                 "​",     // CharCode: 8203
             };
+            // replace special white-space
             sb.Replace(charCodes, " ");
+            // remove leading & trailling white-space
             s = sb.ToString().Trim();
+            // remove double white-space
             s = Regex.Replace(s, @"\s+", " ");
             return s;
         }

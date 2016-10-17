@@ -46,6 +46,7 @@
     <Compile Include="StringAndBytes\StringConvert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringAndBytes\StringConvertPerformance.cs" />
+    <Compile Include="StringExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Runtime.InteropServices">

@@ -106,7 +106,7 @@
     <Compile Include="StringManipulation\QueryStringBuilderTests.cs" />
     <Compile Include="StringManipulation\RandomStringTests.cs" />
     <Compile Include="StringManipulation\StringConvertTests.cs" />
-    <Compile Include="String\StringExtensionsTests.cs" />
+    <Compile Include="StringManipulation\StringExtensionTests.cs" />
     <Compile Include="Threading\AsyncLazyTest.cs" />
     <Compile Include="Threading\BackgroundWorkerTests.cs" />
     <Compile Include="WindowService\TestService.cs">
