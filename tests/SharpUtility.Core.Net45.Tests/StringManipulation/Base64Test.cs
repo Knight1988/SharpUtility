@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FluentAssertions;
 using SharpUtility.StringManipulation;
 
 namespace SharpUtility.Core.Tests.StringManipulation
@@ -16,10 +17,21 @@ namespace SharpUtility.Core.Tests.StringManipulation
         public void DecodeTest(string str, string encoded)
         {
             /* Act */
-            var decoded = Base64.Base64Decode(encoded);
+            var actual = Base64.Decode(encoded);
 
             /* Assert */
-            Assert.AreEqual(str, decoded);
+            actual.Should().Be(str);
+        }
+
+        [TestCase("Hello", "SGVsbG8=")]
+        [TestCase("Hello World", "SGVsbG8gV29ybGQ=")]
+        public void EncodeTest(string str, string encoded)
+        {
+            /* Act */
+            var actual = Base64.Encode(str);
+
+            /* Assert */
+            actual.Should().Be(encoded);
         }
     }
 }
