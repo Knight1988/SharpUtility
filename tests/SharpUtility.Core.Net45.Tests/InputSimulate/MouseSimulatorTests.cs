@@ -5,12 +5,12 @@ using SharpUtility.InputSimulate;
 
 namespace SharpUtility.Core.Tests.InputSimulate
 {
-    [TestFixture, Category("CloudIgnore")]
+    [TestFixture]
     class MouseSimulatorTests
     {
         private const string WindowTitle = "Genymotion for personal use - Google Nexus 5";
 
-        [Test]
+        [Test, Category("CloudIgnore")]
         public async Task MouseClickTests()
         {
             /* Arrange */
@@ -21,7 +21,7 @@ namespace SharpUtility.Core.Tests.InputSimulate
             await MouseSimulator.ClickAsync(handle, MouseButton.Left, 190, 400, 1, 250);
         }
 
-        [Test]
+        [Test, Category("CloudIgnore")]
         public async Task MouseClickDownDelayTests()
         {
             /* Arrange */
@@ -32,7 +32,7 @@ namespace SharpUtility.Core.Tests.InputSimulate
             await MouseSimulator.ClickAsync(handle, MouseButton.Left, 50, 50, 1, 10, 1000);
         }
 
-        [Test]
+        [Test, Category("CloudIgnore")]
         public async Task MouseClickRepeatClickTests()
         {
             /* Arrange */
@@ -43,7 +43,7 @@ namespace SharpUtility.Core.Tests.InputSimulate
             await MouseSimulator.ClickAsync(handle, MouseButton.Left, 50, 500, 5, 250);
         }
 
-        [Test]
+        [Test, Category("CloudIgnore")]
         public async Task MouseDownUpTests()
         {
             /* Arrange */
