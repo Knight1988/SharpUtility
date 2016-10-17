@@ -39,6 +39,24 @@
     <Reference Include="System.ServiceProcess" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\StringManipulation\Base64Tests.cs">
+      <Link>StringManipulation\Base64Tests.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\StringManipulation\QueryStringBuilderTests.cs">
+      <Link>StringManipulation\QueryStringBuilderTests.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\StringManipulation\RandomStringTests.cs">
+      <Link>StringManipulation\RandomStringTests.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\StringManipulation\StringConvertTests.cs">
+      <Link>StringManipulation\StringConvertTests.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\StringManipulation\StringExtensionTests.cs">
+      <Link>StringManipulation\StringExtensionTests.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\StringManipulation\StringInjectExtensionTests.cs">
+      <Link>StringManipulation\StringInjectExtensionTests.cs</Link>
+    </Compile>
     <Compile Include="..\..\SharpUtility.Core.Net45.Tests\WindowService\TestService.cs">
       <Link>WindowService\TestService.cs</Link>
       <SubType>Component</SubType>

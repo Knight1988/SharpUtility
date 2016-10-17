@@ -156,9 +156,9 @@
     <None Include="SharpUtiliy.Core.snk" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SharpUtility.StringManipulation\SharpUtility.StringManipulation.csproj">
+    <ProjectReference Include="..\SharpUtility.String\SharpUtility.String.csproj">
       <Project>{D7F56E4B-B6CC-4908-9F3A-D9F89B85EBB4}</Project>
-      <Name>SharpUtility.StringManipulation</Name>
+      <Name>SharpUtility.String</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

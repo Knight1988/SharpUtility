@@ -8,8 +8,8 @@
     <ProjectGuid>{D7F56E4B-B6CC-4908-9F3A-D9F89B85EBB4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SharpUtility.StringManipulation</RootNamespace>
-    <AssemblyName>SharpUtility.StringManipulation</AssemblyName>
+    <RootNamespace>SharpUtility.String</RootNamespace>
+    <AssemblyName>SharpUtility.String</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\AssemblyInfo.Shared.cs">
+      <Link>Properties\AssemblyInfo.Shared.cs</Link>
+    </Compile>
     <Compile Include="Base64.cs" />
     <Compile Include="QueryStringBuilder.cs" />
     <Compile Include="RandomString\CharLimit.cs" />

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{67D88177-BAB4-4A5A-A285-C2F3558AC0C0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SharpUtility.StringManipulation</RootNamespace>
+    <AssemblyName>SharpUtility.StringManipulation</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile328</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\AssemblyInfo.Shared.cs">
+      <Link>Properties\AssemblyInfo.Shared.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.StringManipulation\Base64.cs">
+      <Link>Base64.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.StringManipulation\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.StringManipulation\QueryStringBuilder.cs">
+      <Link>QueryStringBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.StringManipulation\RandomString\CharLimit.cs">
+      <Link>RandomString\CharLimit.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.StringManipulation\RandomString\RandomString.cs">
+      <Link>RandomString\RandomString.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.StringManipulation\StringAndBytes\ByteArrayToHexConverter.cs">
+      <Link>StringAndBytes\ByteArrayToHexConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.StringManipulation\StringAndBytes\ByteArrayToHexMode.cs">
+      <Link>StringAndBytes\ByteArrayToHexMode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.StringManipulation\StringAndBytes\HexToByteArrayConverter.cs">
+      <Link>StringAndBytes\HexToByteArrayConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.StringManipulation\StringAndBytes\HexToByteArrayMode.cs">
+      <Link>StringAndBytes\HexToByteArrayMode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.StringManipulation\StringAndBytes\StringConvert.cs">
+      <Link>StringAndBytes\StringConvert.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.StringManipulation\StringAndBytes\StringConvertPerformance.cs">
+      <Link>StringAndBytes\StringConvertPerformance.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.StringManipulation\StringExtension.cs">
+      <Link>StringExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.StringManipulation\StringInjectExtensions.cs">
+      <Link>StringInjectExtensions.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
