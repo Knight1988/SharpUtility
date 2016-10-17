@@ -9,7 +9,7 @@ using SharpUtility.InputSimulate;
 
 namespace SharpUtility.Core.Tests.InputSimulate
 {
-    [TestFixture]
+    [TestFixture, Category("CloudIgnore")]
     public class KeyboardSimulatorTests
     {
         private const string WindowTitle = "Genymotion for personal use - Google Nexus 5";

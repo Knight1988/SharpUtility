@@ -3,10 +3,10 @@ using SharpUtility.WindowService;
 
 namespace SharpUtility.Core.Tests.WindowService
 {
-    [TestFixture()]
+    [TestFixture, Category("CloudIgnore")]
     public class WindowServiceManagerTests
     {
-        [Test()]
+        [Test]
         public void InstallTest()
         {
             WindowServiceManager.Install("TestService", "TestService", "TestService");
@@ -16,7 +16,7 @@ namespace SharpUtility.Core.Tests.WindowService
             Assert.True(isInstalled);
         }
 
-        [Test()]
+        [Test]
         public void UninstallTest()
         {
             WindowServiceManager.Uninstall("TestService");

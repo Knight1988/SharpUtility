@@ -5,7 +5,7 @@ using SharpUtility.InputSimulate;
 
 namespace SharpUtility.Core.Tests.InputSimulate
 {
-    [TestFixture]
+    [TestFixture, Category("CloudIgnore")]
     class MouseSimulatorTests
     {
         private const string WindowTitle = "Genymotion for personal use - Google Nexus 5";

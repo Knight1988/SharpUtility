@@ -4,7 +4,7 @@ using SharpUtility.IO;
 namespace SharpUtility.Core.Tests.IO
 {
     [TestFixture]
-    [Category("CloundIgnore")]
+    [Category("CloudIgnore")]
     public class FileTests
     {
         [Test, Ignore("Error")]

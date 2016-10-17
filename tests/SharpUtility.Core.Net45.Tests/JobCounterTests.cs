@@ -7,7 +7,7 @@ namespace SharpUtility.Core.Tests
     [TestFixture]
     class JobCounterTests
     {
-        [Test, Category("CloundIgnore")]
+        [Test, Category("CloudIgnore")]
         public void TestJob()
         {
             /* Arrange */
