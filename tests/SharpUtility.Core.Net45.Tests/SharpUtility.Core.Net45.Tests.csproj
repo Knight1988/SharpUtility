@@ -43,6 +43,14 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentAssertions, Version=4.15.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentAssertions.4.15.0\lib\net45\FluentAssertions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=4.15.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentAssertions.4.15.0\lib\net45\FluentAssertions.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="nunit.framework, Version=3.0.5813.39031, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
@@ -55,6 +63,7 @@
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="Telerik.JustMock, Version=2016.1.107.7, Culture=neutral, PublicKeyToken=721b6c5bc0326b3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\JustMock.2016.1.307.3\lib\Net35\Telerik.JustMock.dll</HintPath>
@@ -93,6 +102,7 @@
     <Compile Include="Security\Cryptography\RSAExtensionsTests.cs" />
     <Compile Include="SmtpClientTests.cs" />
     <Compile Include="SponsorTests.cs" />
+    <Compile Include="StringManipulation\Base64Test.cs" />
     <Compile Include="StringManipulation\StringConvertTests.cs" />
     <Compile Include="String\QueryStringBuilderTests.cs" />
     <Compile Include="String\StringExtensionsTests.cs" />

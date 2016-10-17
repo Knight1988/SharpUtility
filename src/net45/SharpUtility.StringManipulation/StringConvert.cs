@@ -103,14 +103,25 @@ namespace SharpUtility.StringManipulation
             }
         }
 
-        public static byte[] StringToBytes(string str)
+        /// <summary>
+        /// Convert string to byte array, work on any encoding.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static byte[] GetBytes(string str)
         {
             var bytes = new byte[str.Length*sizeof(char)];
             Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
             return bytes;
         }
 
-        public static string BytesToString(byte[] bytes)
+        /// <summary>
+        /// Convert byte array to string.
+        /// Only work on string converted by StringConvert.GetBytes
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
+        public static string GetString(byte[] bytes)
         {
             var chars = new char[bytes.Length/sizeof(char)];
             Buffer.BlockCopy(bytes, 0, chars, 0, bytes.Length);

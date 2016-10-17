@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using FluentAssertions;
 using NUnit.Framework;
 using SharpUtility.StringManipulation;
 
@@ -24,18 +24,19 @@ namespace SharpUtility.Core.Tests.StringManipulation
         [TestCase(ByteArrayToHexMode.StringBuilderAggregateAppendFormat)]
         public void ByteArrayToHexTest(ByteArrayToHexMode mode)
         {
-            var sw = new Stopwatch();
-            sw.Start();
+            /* Arrage */
             const string str = "a à á ả ã ạ";
-            var bytes = StringConvert.StringToBytes(str);
+
+            /* Atc */
+            var bytes = StringConvert.GetBytes(str);
             var hex = StringConvert.ByteArrayToHex(bytes, mode);
             for (var i = 0; i < 10; i++)
             {
                 hex = StringConvert.ByteArrayToHex(bytes, mode);
             }
-            Assert.AreEqual("61002000E0002000E1002000A31E2000E3002000A11E", hex);
-            sw.Stop();
-            Console.WriteLine(@"{0:n0}", sw.ElapsedTicks);
+
+            /* Assert */
+            hex.Should().Be("61002000E0002000E1002000A31E2000E3002000A11E");
         }
 
         [TestCase(1)]
@@ -51,7 +52,7 @@ namespace SharpUtility.Core.Tests.StringManipulation
             {
                 sb.Append("a à á ả ã ạ");
             }
-            var bytes = StringConvert.StringToBytes(sb.ToString());
+            var bytes = StringConvert.GetBytes(sb.ToString());
             var results = StringConvertPerformance.ByteArrayToHexPerformanceTest(bytes, 10).OrderBy(p => p.ElapsedTicks);
             foreach (var result in results)
             {
@@ -68,19 +69,20 @@ namespace SharpUtility.Core.Tests.StringManipulation
         [TestCase(HexToByteArrayMode.DictionaryAndList)]
         public void HexToByteArrayTest(HexToByteArrayMode mode)
         {
-            var sw = new Stopwatch();
-            sw.Start();
+            /* Arrage */
             const string str = "a à á ả ã ạ";
-            var bytes = StringConvert.StringToBytes(str);
+
+            /* Act */
+            var bytes = StringConvert.GetBytes(str);
             var hex = StringConvert.ByteArrayToHex(bytes);
             for (var i = 0; i < 10; i++)
             {
                 bytes = StringConvert.HexToByteArray(hex, mode);
             }
-            var result = StringConvert.BytesToString(bytes);
-            Assert.AreEqual(str, result);
-            sw.Stop();
-            Console.WriteLine(@"{0:n0}", sw.ElapsedTicks);
+            var result = StringConvert.GetString(bytes);
+
+            /* Assert */
+            result.Should().Be(str);
         }
 
         [TestCase(1)]
@@ -96,13 +98,25 @@ namespace SharpUtility.Core.Tests.StringManipulation
             {
                 sb.Append("a à á ả ã ạ");
             }
-            var bytes = StringConvert.StringToBytes(sb.ToString());
+            var bytes = StringConvert.GetBytes(sb.ToString());
             var hex = StringConvert.ByteArrayToHex(bytes);
             var results = StringConvertPerformance.HexToByteArrayPerformanceTest(hex, 10).OrderBy(p => p.ElapsedTicks);
             foreach (var result in results)
             {
                 Console.WriteLine(result);
             }
+        }
+
+        [TestCase("A duel also ends whenever another duel on one of the participants ends.")]
+        [TestCase("a à á ả ã ạ")]
+        public void StringToByteAndViceVersaTest(string str)
+        {
+            /* Act */
+            var bytes = StringConvert.GetBytes(str);
+            var result = StringConvert.GetString(bytes);
+
+            /* Assert */
+            result.Should().Be(str);
         }
     }
 }

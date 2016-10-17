@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Base64.cs" />
     <Compile Include="ByteArrayToHexConverter.cs" />
     <Compile Include="ByteArrayToHexMode.cs" />
     <Compile Include="HexToByteArrayConverter.cs" />

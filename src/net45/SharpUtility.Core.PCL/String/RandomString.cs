@@ -6,15 +6,24 @@ namespace SharpUtility.String
 {
     public class RandomString
     {
-        private string _charLimit = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        private Random _random = new Random();
+        public string CharLimit { get; set; } = String.CharLimit.Default.GetStringValue();
 
-        public string CharLimit
+        public Random Random { get; set; } = new Random();
+
+        /// <summary>
+        /// Set the char limit so the randomed string will only contain those characters
+        /// </summary>
+        /// <param name="charLimits"></param>
+        public void SetCharLimit(string charLimits)
         {
-            get { return _charLimit; }
-            set { _charLimit = value; }
+            CharLimit = charLimits;
         }
 
+        /// <summary>
+        /// Set the char limit so the randomed string will only contain those characters.
+        /// You can combine lower and upper by using CharLimit.UpperCase | UpperCase.LowerCase
+        /// </summary>
+        /// <param name="charLimit"></param>
         public void SetCharLimit(CharLimit charLimit)
         {
             var limit = new StringBuilder();
@@ -26,27 +35,15 @@ namespace SharpUtility.String
             }
 
             if (charLimit.HasFlag(String.CharLimit.UpperCase))
-            {
                 limit.Append(String.CharLimit.UpperCase.GetStringValue());
-            }
 
             if (charLimit.HasFlag(String.CharLimit.LowerCase))
-            {
                 limit.Append(String.CharLimit.LowerCase.GetStringValue());
-            }
 
             if (charLimit.HasFlag(String.CharLimit.Number))
-            {
                 limit.Append(String.CharLimit.Number.GetStringValue());
-            }
 
             CharLimit = limit.ToString();
-        }
-
-        public Random Random
-        {
-            get { return _random; }
-            set { _random = value; }
         }
 
         /// <summary>
@@ -59,9 +56,7 @@ namespace SharpUtility.String
             var stringChars = new char[length];
 
             for (var i = 0; i < stringChars.Length; i++)
-            {
                 stringChars[i] = CharLimit[Random.Next(CharLimit.Length)];
-            }
 
             var finalString = new string(stringChars);
             return finalString;
