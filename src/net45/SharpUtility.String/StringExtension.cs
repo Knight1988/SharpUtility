@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace SharpUtility.StringManipulation
+namespace SharpUtility.String
 {
     public static class StringExtension
     {

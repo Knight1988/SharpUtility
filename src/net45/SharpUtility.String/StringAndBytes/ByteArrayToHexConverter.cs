@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace SharpUtility.StringManipulation
+namespace SharpUtility.String
 {
     internal static class ByteArrayToHexConverter
     {

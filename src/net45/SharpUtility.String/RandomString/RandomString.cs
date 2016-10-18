@@ -2,11 +2,11 @@
 using System.Text;
 using SharpUtility.Enum;
 
-namespace SharpUtility.StringManipulation
+namespace SharpUtility.String
 {
     public class RandomString
     {
-        protected string CharLimit { get; set; } = StringManipulation.CharLimit.Default.GetStringValue();
+        protected string CharLimit { get; set; } = String.CharLimit.Default.GetStringValue();
 
         protected Random Random { get; set; } = new Random();
 
@@ -27,21 +27,21 @@ namespace SharpUtility.StringManipulation
         public void SetCharLimit(CharLimit charLimit)
         {
             var limit = new StringBuilder();
-            if (charLimit.HasFlag(StringManipulation.CharLimit.Default))
+            if (charLimit.HasFlag(String.CharLimit.Default))
             {
-                limit.Append(StringManipulation.CharLimit.Default.GetStringValue());
+                limit.Append(String.CharLimit.Default.GetStringValue());
                 CharLimit = limit.ToString();
                 return;
             }
 
-            if (charLimit.HasFlag(StringManipulation.CharLimit.UpperCase))
-                limit.Append(StringManipulation.CharLimit.UpperCase.GetStringValue());
+            if (charLimit.HasFlag(String.CharLimit.UpperCase))
+                limit.Append(String.CharLimit.UpperCase.GetStringValue());
 
-            if (charLimit.HasFlag(StringManipulation.CharLimit.LowerCase))
-                limit.Append(StringManipulation.CharLimit.LowerCase.GetStringValue());
+            if (charLimit.HasFlag(String.CharLimit.LowerCase))
+                limit.Append(String.CharLimit.LowerCase.GetStringValue());
 
-            if (charLimit.HasFlag(StringManipulation.CharLimit.Number))
-                limit.Append(StringManipulation.CharLimit.Number.GetStringValue());
+            if (charLimit.HasFlag(String.CharLimit.Number))
+                limit.Append(String.CharLimit.Number.GetStringValue());
 
             CharLimit = limit.ToString();
         }

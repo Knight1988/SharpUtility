@@ -1,4 +1,4 @@
-﻿namespace SharpUtility.StringManipulation
+﻿namespace SharpUtility.String
 {
     public enum ByteArrayToHexMode
     {

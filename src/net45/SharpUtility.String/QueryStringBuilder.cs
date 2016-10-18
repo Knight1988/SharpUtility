@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 
-namespace SharpUtility.StringManipulation
+namespace SharpUtility.String
 {
     /// <summary>
     /// Build a query string
@@ -13,7 +14,7 @@ namespace SharpUtility.StringManipulation
         public override string ToString()
         {
             var array = from p in this
-                select $"{WebUtility.UrlEncode(p.Key)}={WebUtility.UrlEncode(p.Value.ToString())}";
+                select $"{Uri.EscapeDataString(p.Key)}={Uri.EscapeDataString(p.Value.ToString())}";
             return "?" + string.Join("&", array);
         }
     }

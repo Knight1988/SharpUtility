@@ -31,50 +31,64 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentAssertions, Version=4.15.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\FluentAssertions.4.15.0\lib\net40\FluentAssertions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=4.15.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\FluentAssertions.4.15.0\lib\net40\FluentAssertions.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.0.5813.39032, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\NUnit.3.0.1\lib\net40\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\StringManipulation\Base64Tests.cs">
-      <Link>StringManipulation\Base64Tests.cs</Link>
+    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\String\Base64Tests.cs">
+      <Link>String\Base64Tests.cs</Link>
     </Compile>
-    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\StringManipulation\QueryStringBuilderTests.cs">
-      <Link>StringManipulation\QueryStringBuilderTests.cs</Link>
+    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\String\QueryStringBuilderTests.cs">
+      <Link>String\QueryStringBuilderTests.cs</Link>
     </Compile>
-    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\StringManipulation\RandomStringTests.cs">
-      <Link>StringManipulation\RandomStringTests.cs</Link>
+    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\String\RandomStringTests.cs">
+      <Link>String\RandomStringTests.cs</Link>
     </Compile>
-    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\StringManipulation\StringConvertTests.cs">
-      <Link>StringManipulation\StringConvertTests.cs</Link>
+    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\String\StringConvertTests.cs">
+      <Link>String\StringConvertTests.cs</Link>
     </Compile>
-    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\StringManipulation\StringExtensionTests.cs">
-      <Link>StringManipulation\StringExtensionTests.cs</Link>
-    </Compile>
-    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\StringManipulation\StringInjectExtensionTests.cs">
-      <Link>StringManipulation\StringInjectExtensionTests.cs</Link>
-    </Compile>
-    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\WindowService\TestService.cs">
-      <Link>WindowService\TestService.cs</Link>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\WindowService\TestService.designer.cs">
-      <Link>WindowService\TestService.designer.cs</Link>
-      <DependentUpon>TestService.cs</DependentUpon>
+    <Compile Include="..\..\SharpUtility.Core.Net45.Tests\String\StringExtensionTests.cs">
+      <Link>String\StringExtensionTests.cs</Link>
     </Compile>
     <Compile Include="..\..\SharpUtility.Core.Net45.Tests\WindowService\WindowServiceManagerTests.cs">
       <Link>WindowService\WindowServiceManagerTests.cs</Link>
     </Compile>
-    <Compile Include="TestClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="String\StringInjectExtensionTests.cs" />
+    <Compile Include="WindowService\TestService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WindowService\TestService.Designer.cs">
+      <DependentUpon>TestService.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\net4\SharpUtility.Enum\SharpUtility.Enum.csproj">
+      <Project>{3a272b64-b04e-4d65-9b1e-e0b6b66da4e7}</Project>
+      <Name>SharpUtility.Enum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\net4\SharpUtility.String\SharpUtility.String.csproj">
+      <Project>{67D88177-BAB4-4A5A-A285-C2F3558AC0C0}</Project>
+      <Name>SharpUtility.String</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\src\net4\SharpUtility.WindowService\SharpUtility.WindowService.csproj">
       <Project>{5C1B6289-55A7-4CF2-95CA-4F0EAE649B7D}</Project>
       <Name>SharpUtility.WindowService</Name>

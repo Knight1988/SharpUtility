@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace SharpUtility.StringManipulation
+namespace SharpUtility.String
 {
     public static class Base64
     {

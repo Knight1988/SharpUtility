@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
-using SharpUtility.StringManipulation;
+using SharpUtility.String;
 
-namespace SharpUtility.Core.Tests.StringManipulation
+namespace SharpUtility.Core.Tests.String
 {
     [TestFixture]
     public class Base64Tests

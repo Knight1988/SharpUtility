@@ -70,6 +70,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.Core.Net4.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.String", "src\net4\SharpUtility.String\SharpUtility.String.csproj", "{67D88177-BAB4-4A5A-A285-C2F3558AC0C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.Enum", "src\net4\SharpUtility.Enum\SharpUtility.Enum.csproj", "{3A272B64-B04E-4D65-9B1E-E0B6B66DA4E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -180,6 +182,10 @@ Global
 		{67D88177-BAB4-4A5A-A285-C2F3558AC0C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67D88177-BAB4-4A5A-A285-C2F3558AC0C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67D88177-BAB4-4A5A-A285-C2F3558AC0C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A272B64-B04E-4D65-9B1E-E0B6B66DA4E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A272B64-B04E-4D65-9B1E-E0B6B66DA4E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A272B64-B04E-4D65-9B1E-E0B6B66DA4E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A272B64-B04E-4D65-9B1E-E0B6B66DA4E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -214,5 +220,6 @@ Global
 		{5C1B6289-55A7-4CF2-95CA-4F0EAE649B7D} = {B6ADCAB7-BD3A-4498-B8CD-690CFFC925B3}
 		{C2FA2A1C-770D-45C5-944B-4357FFEF847B} = {F133496B-23D3-4A95-B516-BF981373A881}
 		{67D88177-BAB4-4A5A-A285-C2F3558AC0C0} = {B6ADCAB7-BD3A-4498-B8CD-690CFFC925B3}
+		{3A272B64-B04E-4D65-9B1E-E0B6B66DA4E7} = {B6ADCAB7-BD3A-4498-B8CD-690CFFC925B3}
 	EndGlobalSection
 EndGlobal

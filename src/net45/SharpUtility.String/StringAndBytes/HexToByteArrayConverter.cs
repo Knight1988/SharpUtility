@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace SharpUtility.StringManipulation
+namespace SharpUtility.String
 {
     internal static class HexToByteArrayConverter
     {

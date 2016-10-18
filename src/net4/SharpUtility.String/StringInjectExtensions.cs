@@ -8,37 +8,6 @@ namespace SharpUtility.String
 {
     public static class StringInjectExtension
     {
-        private static IDictionary GetPropertyHash(object properties)
-        {
-            return properties?.GetType()
-                .GetRuntimeProperties()
-                .ToDictionary(property => property.Name, property => property.GetValue(properties, null));
-        }
-
-        /// <summary>
-        ///     Replaces the format item in a specified string with the string representation
-        ///     of a corresponding properties in a specified object.
-        /// </summary>
-        /// <param name="formatString">A composite format string.</param>
-        /// <param name="injectionObjects">An array object that contain property to format</param>
-        /// <returns></returns>
-        public static string Inject(this string formatString, params object[] injectionObjects)
-        {
-            return injectionObjects.Aggregate(formatString, Inject);
-        }
-
-        /// <summary>
-        ///     Replaces the format item in a specified string with the string representation
-        ///     of a corresponding properties in a specified object.
-        /// </summary>
-        /// <param name="formatString">A composite format string.</param>
-        /// <param name="injectionObject">A object that contain property to format</param>
-        /// <returns></returns>
-        public static string Inject(this string formatString, object injectionObject)
-        {
-            return formatString.Inject(GetPropertyHash(injectionObject));
-        }
-
         /// <summary>
         ///     Replaces the format item in a specified string with the string representation
         ///     of a corresponding value in a specified key.

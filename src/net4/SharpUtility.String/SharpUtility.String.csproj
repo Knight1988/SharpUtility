@@ -8,12 +8,12 @@
     <ProjectGuid>{67D88177-BAB4-4A5A-A285-C2F3558AC0C0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SharpUtility.StringManipulation</RootNamespace>
-    <AssemblyName>SharpUtility.StringManipulation</AssemblyName>
+    <RootNamespace>SharpUtility.String</RootNamespace>
+    <AssemblyName>SharpUtility.String</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile328</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile92</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,51 +35,63 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="..\..\AssemblyInfo.Shared.cs">
       <Link>Properties\AssemblyInfo.Shared.cs</Link>
     </Compile>
-    <Compile Include="..\..\net45\SharpUtility.StringManipulation\Base64.cs">
+    <Compile Include="..\..\net45\SharpUtility.String\Base64.cs">
       <Link>Base64.cs</Link>
     </Compile>
-    <Compile Include="..\..\net45\SharpUtility.StringManipulation\Properties\AssemblyInfo.cs">
+    <Compile Include="..\..\net45\SharpUtility.String\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\..\net45\SharpUtility.StringManipulation\QueryStringBuilder.cs">
+    <Compile Include="..\..\net45\SharpUtility.String\QueryStringBuilder.cs">
       <Link>QueryStringBuilder.cs</Link>
     </Compile>
-    <Compile Include="..\..\net45\SharpUtility.StringManipulation\RandomString\CharLimit.cs">
+    <Compile Include="..\..\net45\SharpUtility.String\RandomString\CharLimit.cs">
       <Link>RandomString\CharLimit.cs</Link>
     </Compile>
-    <Compile Include="..\..\net45\SharpUtility.StringManipulation\RandomString\RandomString.cs">
+    <Compile Include="..\..\net45\SharpUtility.String\RandomString\RandomString.cs">
       <Link>RandomString\RandomString.cs</Link>
     </Compile>
-    <Compile Include="..\..\net45\SharpUtility.StringManipulation\StringAndBytes\ByteArrayToHexConverter.cs">
+    <Compile Include="..\..\net45\SharpUtility.String\StringAndBytes\ByteArrayToHexConverter.cs">
       <Link>StringAndBytes\ByteArrayToHexConverter.cs</Link>
     </Compile>
-    <Compile Include="..\..\net45\SharpUtility.StringManipulation\StringAndBytes\ByteArrayToHexMode.cs">
+    <Compile Include="..\..\net45\SharpUtility.String\StringAndBytes\ByteArrayToHexMode.cs">
       <Link>StringAndBytes\ByteArrayToHexMode.cs</Link>
     </Compile>
-    <Compile Include="..\..\net45\SharpUtility.StringManipulation\StringAndBytes\HexToByteArrayConverter.cs">
+    <Compile Include="..\..\net45\SharpUtility.String\StringAndBytes\HexToByteArrayConverter.cs">
       <Link>StringAndBytes\HexToByteArrayConverter.cs</Link>
     </Compile>
-    <Compile Include="..\..\net45\SharpUtility.StringManipulation\StringAndBytes\HexToByteArrayMode.cs">
+    <Compile Include="..\..\net45\SharpUtility.String\StringAndBytes\HexToByteArrayMode.cs">
       <Link>StringAndBytes\HexToByteArrayMode.cs</Link>
     </Compile>
-    <Compile Include="..\..\net45\SharpUtility.StringManipulation\StringAndBytes\StringConvert.cs">
+    <Compile Include="..\..\net45\SharpUtility.String\StringAndBytes\StringConvert.cs">
       <Link>StringAndBytes\StringConvert.cs</Link>
     </Compile>
-    <Compile Include="..\..\net45\SharpUtility.StringManipulation\StringAndBytes\StringConvertPerformance.cs">
+    <Compile Include="..\..\net45\SharpUtility.String\StringAndBytes\StringConvertPerformance.cs">
       <Link>StringAndBytes\StringConvertPerformance.cs</Link>
     </Compile>
-    <Compile Include="..\..\net45\SharpUtility.StringManipulation\StringExtension.cs">
+    <Compile Include="..\..\net45\SharpUtility.String\StringExtension.cs">
       <Link>StringExtension.cs</Link>
     </Compile>
-    <Compile Include="..\..\net45\SharpUtility.StringManipulation\StringInjectExtensions.cs">
-      <Link>StringInjectExtensions.cs</Link>
-    </Compile>
+    <Compile Include="StringInjectExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.Extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharpUtility.Enum\SharpUtility.Enum.csproj">
+      <Project>{3a272b64-b04e-4d65-9b1e-e0b6b66da4e7}</Project>
+      <Name>SharpUtility.Enum</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace SharpUtility.StringManipulation
+namespace SharpUtility.String
 {
     public static class StringConvertPerformance
     {

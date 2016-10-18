@@ -1,7 +1,7 @@
 using System;
 using SharpUtility.Enum;
 
-namespace SharpUtility.StringManipulation
+namespace SharpUtility.String
 {
     [Flags]
     public enum CharLimit

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SharpUtility.StringManipulation
+namespace SharpUtility.String
 {
     public static class StringConvert
     {

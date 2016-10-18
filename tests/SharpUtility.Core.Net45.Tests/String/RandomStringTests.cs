@@ -1,10 +1,9 @@
-﻿using System.Linq;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
 using SharpUtility.Enum;
-using SharpUtility.StringManipulation;
+using SharpUtility.String;
 
-namespace SharpUtility.Core.Tests.StringManipulation
+namespace SharpUtility.Core.Tests.String
 {
     [TestFixture]
     public class RandomStringTests
