@@ -8,7 +8,7 @@ using NUnit.Framework;
 // ReSharper disable PossibleNullReferenceException
 namespace SharpUtility.MEF.Tests
 {
-    [TestFixture]
+    [TestFixture(Category = "CloudIgnore")]
     public class RunnerBaseTests
     {
         [SetUp]
