@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5A530614-F36B-42AD-8C67-2F9987C95729}"
 	ProjectSection(SolutionItems) = preProject
 		src\AssemblyInfo.Shared.cs = src\AssemblyInfo.Shared.cs
+		src\SharpUtiliy.snk = src\SharpUtiliy.snk
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F133496B-23D3-4A95-B516-BF981373A881}"
