@@ -121,8 +121,11 @@ namespace SharpUtility.Core.Tests.Reflection
 
         private class TestClass
         {
+#pragma warning disable 169
+            // ReSharper disable once UnusedMember.Local
             private int PrivateProperty { get; set; } = 2;
             private int _privateField = 1;
+#pragma warning restore 169
         }
 
         private class MySubClass : TestClass

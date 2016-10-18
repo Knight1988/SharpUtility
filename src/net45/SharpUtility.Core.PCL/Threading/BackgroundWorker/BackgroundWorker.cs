@@ -154,11 +154,6 @@ namespace SharpUtility.Threading
         private bool _set;
 
         /// <summary>
-        /// The semi-unique identifier for this instance. This is 0 if the id has not yet been created.
-        /// </summary>
-        private int _id;
-
-        /// <summary>
         /// The object used for mutual exclusion.
         /// </summary>
         private readonly object _mutex;
