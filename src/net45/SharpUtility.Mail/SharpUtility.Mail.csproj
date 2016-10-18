@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LiteGuard, Version=0.10.0.0, Culture=neutral, PublicKeyToken=d38e0b7ae24b08a1, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\LiteGuard.0.10.0\lib\net35\LiteGuard.dll</HintPath>
+    <Reference Include="LiteGuard, Version=0.11.0.0, Culture=neutral, PublicKeyToken=d38e0b7ae24b08a1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\LiteGuard.0.11.0\lib\net35\LiteGuard.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PrimS.Telnet, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -52,6 +52,7 @@
     <Compile Include="..\..\AssemblyInfo.Shared.cs">
       <Link>Properties\AssemblyInfo.Shared.cs</Link>
     </Compile>
+    <Compile Include="Dummy.cs" />
     <Compile Include="MailPinger.cs" />
     <Compile Include="PingStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
