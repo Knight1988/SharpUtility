@@ -33,8 +33,17 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\SharpUtiliy.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <None Include="..\..\SharpUtiliy.snk">
+      <Link>SharpUtiliy.snk</Link>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\AssemblyInfo.Shared.cs">
