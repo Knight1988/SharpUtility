@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{10ADF9FC-C0DF-4829-AC8C-47933A16E0CD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SharpUtility.String</RootNamespace>
+    <AssemblyName>SharpUtility.String</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\SharpUtiliy.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <None Include="..\..\SharpUtiliy.snk">
+      <Link>SharpUtiliy.snk</Link>
+    </None>
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\net45\SharpUtility.String\Base64.cs">
+      <Link>Base64.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.String\QueryStringBuilder.cs">
+      <Link>QueryStringBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.String\RandomString\CharLimit.cs">
+      <Link>RandomString\CharLimit.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.String\RandomString\RandomString.cs">
+      <Link>RandomString\RandomString.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.String\StringAndBytes\ByteArrayToHexConverter.cs">
+      <Link>StringAndBytes\ByteArrayToHexConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.String\StringAndBytes\ByteArrayToHexMode.cs">
+      <Link>StringAndBytes\ByteArrayToHexMode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.String\StringAndBytes\HexToByteArrayConverter.cs">
+      <Link>StringAndBytes\HexToByteArrayConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.String\StringAndBytes\HexToByteArrayMode.cs">
+      <Link>StringAndBytes\HexToByteArrayMode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.String\StringAndBytes\StringConvert.cs">
+      <Link>StringAndBytes\StringConvert.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.String\StringAndBytes\StringConvertPerformance.cs">
+      <Link>StringAndBytes\StringConvertPerformance.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.String\StringExtension.cs">
+      <Link>StringExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\..\net45\SharpUtility.String\StringInjectExtensions.cs">
+      <Link>StringInjectExtensions.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharpUtility.Enum\SharpUtility.Enum.csproj">
+      <Project>{976c5306-53f9-4d62-b5cd-cfed2fd02984}</Project>
+      <Name>SharpUtility.Enum</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Runtime.InteropServices">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETPortable\v4.5\Profile\Profile111\System.Runtime.InteropServices.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
