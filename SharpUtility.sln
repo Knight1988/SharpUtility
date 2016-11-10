@@ -14,6 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5A530614-F36
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F133496B-23D3-4A95-B516-BF981373A881}"
+	ProjectSection(SolutionItems) = preProject
+		src\SharpUtiliy.snk = src\SharpUtiliy.snk
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net4", "net4", "{B6ADCAB7-BD3A-4498-B8CD-690CFFC925B3}"
 EndProject
