@@ -74,6 +74,7 @@
     <Compile Include="JobCounterTests.cs" />
     <Compile Include="Mail\MailPingerTests.cs" />
     <Compile Include="Math\MathExtensionsTests.cs" />
+    <Compile Include="Mklink\MklinkTests.cs" />
     <Compile Include="Net\FormDataTests.cs" />
     <Compile Include="Net\Mail\ExtentedSmtpClientTests.cs" />
     <Compile Include="Net\Mail\SmtpInfo.cs" />

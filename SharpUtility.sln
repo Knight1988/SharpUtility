@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.Core.Net45", "src\net45\SharpUtility.Core\SharpUtility.Core.Net45.csproj", "{9CFC6221-753E-4674-B0DA-B085D8DF82A5}"
 EndProject
@@ -51,6 +51,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.Win32API", "src\net45\SharpUtility.Win32API\SharpUtility.Win32API.csproj", "{E8F3B873-05BC-4961-A02D-AD1C025246E3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.InputSimulate", "src\net45\SharpUtility.InputSimulate\SharpUtility.InputSimulate.csproj", "{D0C6823E-CA98-40E9-829D-F23DD4EFD70E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUtility.Mklink", "src\net45\SharpUtility.Mklink\SharpUtility.Mklink.csproj", "{4CC1E984-A6D3-4FB1-BDC6-0F87AD2D4C55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -130,6 +132,10 @@ Global
 		{D0C6823E-CA98-40E9-829D-F23DD4EFD70E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0C6823E-CA98-40E9-829D-F23DD4EFD70E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0C6823E-CA98-40E9-829D-F23DD4EFD70E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CC1E984-A6D3-4FB1-BDC6-0F87AD2D4C55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CC1E984-A6D3-4FB1-BDC6-0F87AD2D4C55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CC1E984-A6D3-4FB1-BDC6-0F87AD2D4C55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CC1E984-A6D3-4FB1-BDC6-0F87AD2D4C55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -156,5 +162,6 @@ Global
 		{8EDF4429-251A-416D-BB68-93F227191BCF} = {F133496B-23D3-4A95-B516-BF981373A881}
 		{E8F3B873-05BC-4961-A02D-AD1C025246E3} = {0B1E3E3B-95AD-4427-9235-879A65DEE41F}
 		{D0C6823E-CA98-40E9-829D-F23DD4EFD70E} = {0B1E3E3B-95AD-4427-9235-879A65DEE41F}
+		{4CC1E984-A6D3-4FB1-BDC6-0F87AD2D4C55} = {0B1E3E3B-95AD-4427-9235-879A65DEE41F}
 	EndGlobalSection
 EndGlobal
