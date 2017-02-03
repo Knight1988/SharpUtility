@@ -58,9 +58,6 @@
     <Compile Include="..\..\AssemblyInfo.Shared.cs">
       <Link>Properties\AssemblyInfo.Shared.cs</Link>
     </Compile>
-    <Compile Include="..\SharpUtility.Core.PCL\CodeConfiguration.cs">
-      <Link>CodeConfiguration.cs</Link>
-    </Compile>
     <Compile Include="..\SharpUtility.Core.PCL\Reflection\AssemblyExtensions.cs">
       <Link>Reflection\AssemblyExtensions.cs</Link>
     </Compile>
